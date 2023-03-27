@@ -30,7 +30,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
         catch (ex: Throwable) {
-            Log.e("fdsf", ex.message.toString() )
+            Log.e("testEx", ex.message.toString() )
         }
     }
 

@@ -32,4 +32,8 @@ object DataContainer {
     val getMatchUseCase: GetMatchUseCase
         get() = GetMatchUseCase(dotaRepository)
 
+    val searchPlayersUseCase: GetMatchUseCase
+        get() = GetMatchUseCase(dotaRepository)
+
+
 }
