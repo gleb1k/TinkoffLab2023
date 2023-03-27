@@ -1,9 +1,9 @@
-package com.example.tinkofflab2023.data.remote.response.match
+package com.example.tinkofflab2023.data.remote.response.matches
 
 
 import com.google.gson.annotations.SerializedName
 
-data class XpPerMin(
+data class StunsPerMin(
     @SerializedName("pct")
     val pct: Double,
     @SerializedName("raw")

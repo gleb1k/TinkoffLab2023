@@ -1,6 +1,7 @@
 package com.example.tinkofflab2023.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -11,20 +12,25 @@ import com.example.tinkofflab2023.databinding.FragmentMainBinding
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.DotaRepository
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private var binding: FragmentMainBinding? = null
 
-    //todo
-    private val dotaRep: DotaRepositoryImpl = DotaRepositoryImpl(DataContainer.dotaApi)
+    private val getMatchUseCase = DataContainer.getMatchUseCase
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
 
-        lifecycleScope.launch {
-            binding?.tvTest?.text = dotaRep.getMatch(Constants.test_id).toString()
+        try {
+            lifecycleScope.launch {
+                binding?.tvTest?.text = getMatchUseCase(Constants.test_id).toString()
+            }
+        }
+        catch (ex: Throwable) {
+            Log.e("fdsf", ex.message.toString() )
         }
     }
 
