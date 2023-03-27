@@ -13,5 +13,5 @@ data class SearchResponse(
     @SerializedName("personaname")
     val personaname: String,
     @SerializedName("similarity")
-    val similarity: Int
+    val similarity: Double
 )

@@ -4,6 +4,7 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
+import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,8 +33,8 @@ object DataContainer {
     val getMatchUseCase: GetMatchUseCase
         get() = GetMatchUseCase(dotaRepository)
 
-    val searchPlayersUseCase: GetMatchUseCase
-        get() = GetMatchUseCase(dotaRepository)
+    val searchPlayersUseCase: SearchPlayersUseCase
+        get() = SearchPlayersUseCase(dotaRepository)
 
 
 }

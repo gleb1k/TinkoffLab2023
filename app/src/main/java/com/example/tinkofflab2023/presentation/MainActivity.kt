@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
 import com.example.tinkofflab2023.presentation.fragment.MainFragment
+import com.example.tinkofflab2023.presentation.fragment.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(
                 R.id.fragment_container,
-                MainFragment()
+                SearchFragment()
             )
             .commit()
     }

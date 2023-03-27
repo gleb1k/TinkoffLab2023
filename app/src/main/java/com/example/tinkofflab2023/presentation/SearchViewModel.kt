@@ -16,17 +16,21 @@ class SearchViewModel(
     val playersList: LiveData<ArrayList<SearchResponse>?>
         get() = _playersList
 
-    private fun searchPlayers(name: String){
+    fun onSearchClick(name: String){
+        searchPlayers(name)
+    }
+
+    private fun searchPlayers(name: String) {
         viewModelScope.launch {
             _playersList.value = searchPlayersUseCase.invoke(name)
         }
     }
 
     companion object {
-        val Factory : ViewModelProvider.Factory = viewModelFactory {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-               val searchPlayersUseCase = DataContainer.searchPlayersUseCase
-
+                val searchPlayersUseCase = DataContainer.searchPlayersUseCase
+                SearchViewModel(searchPlayersUseCase)
             }
         }
 
