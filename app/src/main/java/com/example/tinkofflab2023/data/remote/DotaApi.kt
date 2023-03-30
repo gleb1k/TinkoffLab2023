@@ -19,10 +19,10 @@ interface DotaApi {
         @Path("account_id") accountId: String
     ) : PlayerDataResponse
 
-    //todo что лучше возвращать?
+    //минимальное количество символов для поиска == 3, что очень печально
     @GET("search")
     suspend fun searchPlayers(
         @Query("q") name : String
-    ) : ArrayList<SearchResponse>
+    ) : List<SearchResponse>
 
 }

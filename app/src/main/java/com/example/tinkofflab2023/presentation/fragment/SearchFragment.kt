@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
-import com.example.tinkofflab2023.presentation.SearchViewModel
+import com.example.tinkofflab2023.presentation.viewmodel.SearchViewModel
 import com.example.tinkofflab2023.presentation.recyclerview.SearchPlayersAdapter
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -45,7 +45,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 override fun onQueryTextSubmit(p0: String?): Boolean {
                     if (!p0.isNullOrEmpty()) {
                         searchViewModel.onSearchClick(p0)
-                        //?
+                        //todo ?
                         return true
                     }
                     return false

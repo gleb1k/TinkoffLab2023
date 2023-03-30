@@ -20,7 +20,6 @@ object DataContainer {
     private val retrofit by lazy {
         Retrofit.Builder()
             .client(httpClient)
-            //todo какую фабрику?
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(Constants.BASE_DOTA_API_URL)
             .build()
@@ -35,6 +34,5 @@ object DataContainer {
 
     val searchPlayersUseCase: SearchPlayersUseCase
         get() = SearchPlayersUseCase(dotaRepository)
-
 
 }

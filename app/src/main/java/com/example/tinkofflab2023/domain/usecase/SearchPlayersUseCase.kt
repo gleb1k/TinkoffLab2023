@@ -8,5 +8,5 @@ class SearchPlayersUseCase(
 ) {
     suspend operator fun invoke(
         name: String
-    ): ArrayList<SearchResponse> = dotaRepository.searchPlayers(name)
+    ): List<SearchResponse> = dotaRepository.searchPlayers(name)
 }

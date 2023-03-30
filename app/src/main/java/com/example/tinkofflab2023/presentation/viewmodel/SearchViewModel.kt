@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.presentation
+package com.example.tinkofflab2023.presentation.viewmodel
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
@@ -12,8 +12,8 @@ class SearchViewModel(
     private val searchPlayersUseCase: SearchPlayersUseCase
 ) : ViewModel() {
 
-    private val _playersList = MutableLiveData<ArrayList<SearchResponse>?>(null)
-    val playersList: LiveData<ArrayList<SearchResponse>?>
+    private val _playersList = MutableLiveData<List<SearchResponse>?>(null)
+    val playersList: LiveData<List<SearchResponse>?>
         get() = _playersList
 
     fun onSearchClick(name: String){
@@ -33,7 +33,6 @@ class SearchViewModel(
                 SearchViewModel(searchPlayersUseCase)
             }
         }
-
     }
 
 }

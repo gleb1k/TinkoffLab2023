@@ -20,6 +20,11 @@ class SearchPlayersHolder(
             glide
                 .load(player.avatarfull)
                 .into(ivIcon)
+
+            //todo ?? обычно не работает
+            root.setOnClickListener {
+                onItemClick
+            }
         }
     }
 

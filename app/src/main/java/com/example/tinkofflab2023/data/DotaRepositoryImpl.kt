@@ -16,6 +16,6 @@ class DotaRepositoryImpl(
     override suspend fun getPlayerData(accountId: String): PlayerDataResponse =
         api.getPlayerData(accountId)
 
-    override suspend fun searchPlayers(name: String): ArrayList<SearchResponse> =
+    override suspend fun searchPlayers(name: String): List<SearchResponse> =
         api.searchPlayers(name)
 }

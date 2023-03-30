@@ -10,5 +10,5 @@ interface DotaRepository {
 
     suspend fun getPlayerData(accountId: String) : PlayerDataResponse
 
-    suspend fun searchPlayers(name : String) : ArrayList<SearchResponse>
+    suspend fun searchPlayers(name : String) : List<SearchResponse>
 }
