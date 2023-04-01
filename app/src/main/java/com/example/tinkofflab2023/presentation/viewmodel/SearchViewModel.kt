@@ -21,6 +21,10 @@ class SearchViewModel(
     }
 
     private fun searchPlayers(name: String) {
+        if (name.length < 3)
+            //todo view.showSnackbar("Минимальная длинна никнейма 3 символа")
+            //как мне вывести снак бар не имея вьюшки?
+            return
         viewModelScope.launch {
             _playersList.value = searchPlayersUseCase.invoke(name)
         }

@@ -14,8 +14,6 @@ data class Benchmarks(
     val killsPerMin: KillsPerMin,
     @SerializedName("last_hits_per_min")
     val lastHitsPerMin: LastHitsPerMin,
-    @SerializedName("lhten")
-    val lhten: Lhten,
     @SerializedName("stuns_per_min")
     val stunsPerMin: StunsPerMin,
     @SerializedName("tower_damage")

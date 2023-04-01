@@ -21,7 +21,7 @@ class SearchPlayersHolder(
                 .load(player.avatarfull)
                 .into(ivIcon)
 
-            //todo ?? обычно не работает
+            //todo ?? обычно не работает кликабельность всей вьюшки
             root.setOnClickListener {
                 onItemClick
             }

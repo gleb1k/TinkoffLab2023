@@ -42,13 +42,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding?.run {
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                 androidx.appcompat.widget.SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(p0: String?): Boolean {
-                    if (!p0.isNullOrEmpty()) {
-                        searchViewModel.onSearchClick(p0)
-                        //todo ?
-                        return true
+                override fun onQueryTextSubmit(name: String?): Boolean {
+                    if (!name.isNullOrEmpty()) {
+                        //todo вот тут проверять на мин длину запроса?
+                        //но нельзя же писать логику в фрагменте
+                        searchViewModel.onSearchClick(name)
                     }
-                    return false
+                    return true
                 }
 
                 override fun onQueryTextChange(p0: String?): Boolean {
@@ -59,7 +59,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
     }
 
-    //todo
+    //todo навигатион
     private fun navigate(accountId: Int) {
 
     }
