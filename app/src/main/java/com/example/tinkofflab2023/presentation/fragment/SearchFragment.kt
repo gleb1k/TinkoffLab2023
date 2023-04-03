@@ -6,18 +6,30 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.tinkofflab2023.App
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
+import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.presentation.viewmodel.SearchViewModel
 import com.example.tinkofflab2023.presentation.recyclerview.SearchPlayersAdapter
+import com.github.terrakok.cicerone.Router
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private var binding: FragmentSearchBinding? = null
     private var searchAdapter: SearchPlayersAdapter? = null
+    private val router: Router = DataContainer.router
 
     private val searchViewModel: SearchViewModel by viewModels {
         SearchViewModel.Factory
+    }
+
+    fun onOpenNewScreen() {
+        router.navigateTo(DataContainer.Player())
+    }
+
+    fun onBackPressed() {
+        router.exit()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,6 +48,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             binding?.rvPlayers?.adapter = adapter
         }
         setSearchView()
+
+        binding?.run {
+            tvSearch.setOnClickListener {
+                onOpenNewScreen()
+            }
+        }
     }
 
     private fun setSearchView() {
@@ -48,13 +66,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                         //но нельзя же писать логику в фрагменте
                         searchViewModel.onSearchClick(name)
                     }
+                    searchView.clearFocus()
                     return true
                 }
 
                 override fun onQueryTextChange(p0: String?): Boolean {
                     return false
                 }
-
             })
         }
     }

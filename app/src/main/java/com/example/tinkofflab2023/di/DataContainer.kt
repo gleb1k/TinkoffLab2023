@@ -4,8 +4,8 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
-import com.example.tinkofflab2023.presentation.fragment.MainFragment
-import com.example.tinkofflab2023.presentation.fragment.SearchFragment
+import com.example.tinkofflab2023.presentation.fragment.*
+import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -50,8 +50,17 @@ object DataContainer {
         get() = GetPlayerWLUseCase(dotaRepository)
 
 
+    private val cicerone = Cicerone.create()
+    val router get() = cicerone.router
+    val navigatorHolder get() = cicerone.getNavigatorHolder()
+
+
     //fragments region
     fun Main() = FragmentScreen { MainFragment() }
     fun Search() = FragmentScreen { SearchFragment() }
+    fun Player() = FragmentScreen { PlayerFragment() }
+    fun Settings() = FragmentScreen { SettingsFragment() }
+    fun Favorite() = FragmentScreen { FavoriteFragment() }
+
     //endregion
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TinkoffLab2023</string>
+    <string name="settings">Настройки</string>
 </resources>
