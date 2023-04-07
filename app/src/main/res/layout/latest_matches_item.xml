@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_latest_matches_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Latest matches"
+        android:textSize="20sp" />
+
+    <include
+        android:id="@+id/item_match_1"
+        layout="@layout/match_item" />
+
+    <include
+        android:id="@+id/item_match_2"
+        layout="@layout/match_item" />
+
+    <include
+        android:id="@+id/item_match_3"
+        layout="@layout/match_item" />
+
+    <include
+        android:id="@+id/item_match_4"
+        layout="@layout/match_item" />
+
+    <include
+        android:id="@+id/item_match_5"
+        layout="@layout/match_item" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

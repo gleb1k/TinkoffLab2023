@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.presentation.fragment.SearchFragment
+import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class MainActivity : AppCompatActivity() {

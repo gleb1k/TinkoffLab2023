@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.presentation.recyclerview
+package com.example.tinkofflab2023.presentation.fragment.search.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

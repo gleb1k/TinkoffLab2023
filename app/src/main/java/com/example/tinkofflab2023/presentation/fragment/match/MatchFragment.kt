@@ -1,18 +1,18 @@
-package com.example.tinkofflab2023.presentation.fragment
+package com.example.tinkofflab2023.presentation.fragment.match
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.tinkofflab2023.R
-import com.example.tinkofflab2023.databinding.FragmentSettingsBinding
+import com.example.tinkofflab2023.databinding.FragmentMatchBinding
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class MatchFragment : Fragment(R.layout.fragment_match){
 
-    private var binding: FragmentSettingsBinding? = null
+    private var binding: FragmentMatchBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentSettingsBinding.bind(view)
+        binding = FragmentMatchBinding.bind(view)
 
     }
 
@@ -21,5 +21,3 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding = null
     }
 }
-
-

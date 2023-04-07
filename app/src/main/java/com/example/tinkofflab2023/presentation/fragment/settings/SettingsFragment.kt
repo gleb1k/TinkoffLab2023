@@ -1,18 +1,18 @@
-package com.example.tinkofflab2023.presentation.fragment
+package com.example.tinkofflab2023.presentation.fragment.settings
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.tinkofflab2023.R
-import com.example.tinkofflab2023.databinding.FragmentFavoriteBinding
+import com.example.tinkofflab2023.databinding.FragmentSettingsBinding
 
-class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
+class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-    private var binding: FragmentFavoriteBinding? = null
+    private var binding: FragmentSettingsBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentFavoriteBinding.bind(view)
+        binding = FragmentSettingsBinding.bind(view)
 
     }
 
@@ -21,3 +21,5 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         binding = null
     }
 }
+
+

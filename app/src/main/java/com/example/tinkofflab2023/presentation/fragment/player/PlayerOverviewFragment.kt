@@ -1,18 +1,18 @@
-package com.example.tinkofflab2023.presentation.fragment
+package com.example.tinkofflab2023.presentation.fragment.player
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.tinkofflab2023.R
-import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
+import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
 
-class PlayerFragment : Fragment(R.layout.fragment_player) {
+class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
 
-    private var binding: FragmentPlayerBinding? = null
+    private var binding: FragmentPlayerOverviewBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentPlayerBinding.bind(view)
+        binding = FragmentPlayerOverviewBinding.bind(view)
 
     }
 

@@ -5,6 +5,10 @@ import com.example.tinkofflab2023.data.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
 import com.example.tinkofflab2023.presentation.fragment.*
+import com.example.tinkofflab2023.presentation.fragment.favorite.FavoriteFragment
+import com.example.tinkofflab2023.presentation.fragment.player.PlayerOverviewFragment
+import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
+import com.example.tinkofflab2023.presentation.fragment.settings.SettingsFragment
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import okhttp3.OkHttpClient
@@ -58,7 +62,7 @@ object DataContainer {
     //fragments region
     fun Main() = FragmentScreen { MainFragment() }
     fun Search() = FragmentScreen { SearchFragment() }
-    fun Player() = FragmentScreen { PlayerFragment() }
+    fun Player() = FragmentScreen { PlayerOverviewFragment() }
     fun Settings() = FragmentScreen { SettingsFragment() }
     fun Favorite() = FragmentScreen { FavoriteFragment() }
 

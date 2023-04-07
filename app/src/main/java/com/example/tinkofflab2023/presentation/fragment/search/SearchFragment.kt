@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.presentation.fragment
+package com.example.tinkofflab2023.presentation.fragment.search
 
 import android.os.Bundle
 import android.view.View
@@ -6,12 +6,11 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.tinkofflab2023.App
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.presentation.viewmodel.SearchViewModel
-import com.example.tinkofflab2023.presentation.recyclerview.SearchPlayersAdapter
+import com.example.tinkofflab2023.presentation.fragment.search.recyclerview.SearchPlayersAdapter
 import com.github.terrakok.cicerone.Router
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
