@@ -23,7 +23,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         SearchViewModel.Factory
     }
 
-    fun onOpenNewScreen() {
+    private fun onOpenNewScreen() {
         router.navigateTo(DataContainer.Player())
     }
 
