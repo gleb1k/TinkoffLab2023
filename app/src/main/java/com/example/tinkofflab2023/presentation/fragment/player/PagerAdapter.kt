@@ -13,7 +13,7 @@ class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
         return when (position) {
             0 -> PlayerOverviewFragment()
             1 -> PlayerMatchesFragment()
-            else -> PlayerMatchesFragment()
+            else -> PlayerHeroesFragment()
         }
     }
 }

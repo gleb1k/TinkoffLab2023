@@ -6,6 +6,7 @@ import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
 import com.example.tinkofflab2023.presentation.fragment.*
 import com.example.tinkofflab2023.presentation.fragment.favorite.FavoriteFragment
+import com.example.tinkofflab2023.presentation.fragment.player.PlayerFragment
 import com.example.tinkofflab2023.presentation.fragment.player.PlayerOverviewFragment
 import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
 import com.example.tinkofflab2023.presentation.fragment.settings.SettingsFragment
@@ -53,18 +54,15 @@ object DataContainer {
     val getPlayerWLUseCase: GetPlayerWLUseCase
         get() = GetPlayerWLUseCase(dotaRepository)
 
-
     private val cicerone = Cicerone.create()
     val router get() = cicerone.router
     val navigatorHolder get() = cicerone.getNavigatorHolder()
 
-
     //fragments region
     fun Main() = FragmentScreen { MainFragment() }
     fun Search() = FragmentScreen { SearchFragment() }
-    fun Player() = FragmentScreen { PlayerOverviewFragment() }
+    fun Player() = FragmentScreen { PlayerFragment() }
     fun Settings() = FragmentScreen { SettingsFragment() }
     fun Favorite() = FragmentScreen { FavoriteFragment() }
-
     //endregion
 }
