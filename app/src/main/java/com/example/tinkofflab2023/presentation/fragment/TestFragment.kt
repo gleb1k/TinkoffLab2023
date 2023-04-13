@@ -7,30 +7,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.data.Constants
-import com.example.tinkofflab2023.data.DotaRepositoryImpl
-import com.example.tinkofflab2023.databinding.FragmentMainBinding
+import com.example.tinkofflab2023.databinding.FragmentTestBinding
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.domain.DotaRepository
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class TestFragment : Fragment(R.layout.fragment_test) {
 
-    private var binding: FragmentMainBinding? = null
+    private var binding: FragmentTestBinding? = null
 
     private val getMatchUseCase = DataContainer.getMatchUseCase
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMainBinding.bind(view)
+        binding = FragmentTestBinding.bind(view)
 
         try {
             lifecycleScope.launch {
-                binding?.tvTest?.text = getMatchUseCase(Constants.test_id).toString()
+                binding?.tvTest?.text = getMatchUseCase(Constants.MATCH_TEST_ID).toString()
             }
-        }
-        catch (ex: Throwable) {
-            Log.e("testEx", ex.message.toString() )
+        } catch (ex: Throwable) {
+            Log.e("testEx", ex.message.toString())
         }
     }
 

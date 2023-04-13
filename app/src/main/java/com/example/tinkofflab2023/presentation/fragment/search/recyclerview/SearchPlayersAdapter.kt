@@ -8,7 +8,7 @@ import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
 
 class SearchPlayersAdapter(
     private val glide: RequestManager,
-    private val onItemClick: (Int) -> Unit,
+    private val onItemClick: (String) -> Unit,
 ) : ListAdapter<SearchResponse, SearchPlayersHolder>(object :
     DiffUtil.ItemCallback<SearchResponse>() {
     override fun areItemsTheSame(oldItem: SearchResponse, newItem: SearchResponse): Boolean =

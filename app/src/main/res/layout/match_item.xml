@@ -5,17 +5,17 @@
     android:layout_height="wrap_content"
     android:background="@color/background_test">
 
-    <!--        todo размер? 113x64-->
+    <!--todo размер? 113x64-->
     <ImageView
-    android:id="@+id/iv_hero"
-    android:layout_width="113dp"
-    android:layout_height="64dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:src="@drawable/tinker"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Тинкер мой любимый герой" />
+        android:id="@+id/iv_hero"
+        android:layout_width="113dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Тинкер мой любимый герой"
+        android:src="@drawable/tinker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_ranked"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-2dp"
-        android:text="01.04.2023"
+        android:text="@string/base_date"
         app:layout_constraintEnd_toEndOf="@+id/tv_wl"
         app:layout_constraintTop_toBottomOf="@+id/tv_wl" />
 

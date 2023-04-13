@@ -1,11 +1,10 @@
-package com.example.tinkofflab2023.presentation.viewmodel
+package com.example.tinkofflab2023.presentation.fragment.match
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
 import kotlinx.coroutines.launch
@@ -14,14 +13,18 @@ class MatchViewModel(
     private val getMatchUseCase: GetMatchUseCase
 ) : ViewModel() {
 
-    private val _matchResponse = MutableLiveData<MatchResponse?>(null)
-    val matchResponse: LiveData<MatchResponse?>
-        get() = _matchResponse
+    private val _match = MutableLiveData<MatchResponse?>(null)
+    val match: LiveData<MatchResponse?>
+        get() = _match
 
-    private fun getMatchData(matchId: String = Constants.test_id) {
+    private fun getMatchData(matchId: String = Constants.MATCH_TEST_ID) {
         viewModelScope.launch {
-            _matchResponse.value = getMatchUseCase(matchId)
+            _match.value = getMatchUseCase(matchId)
         }
+    }
+
+    fun loadData(matchId: String = Constants.MATCH_TEST_ID) {
+        getMatchData(matchId)
     }
 
     companion object {

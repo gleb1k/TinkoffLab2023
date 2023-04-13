@@ -2,6 +2,7 @@ package com.example.tinkofflab2023.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentFactory
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
 import com.example.tinkofflab2023.di.DataContainer
@@ -11,6 +12,8 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
+
+    //TODO CICERONE ??
     private val navigator = AppNavigator(
         this,
         R.id.fragment_container
@@ -41,14 +44,17 @@ class MainActivity : AppCompatActivity() {
                     else -> false
                 }
             }
+            bnvMain.selectedItemId = R.id.action_search
         }
 
-        supportFragmentManager.beginTransaction()
-            .add(
-                R.id.fragment_container,
-                SearchFragment()
-            )
-            .commit()
+//        supportFragmentManager.beginTransaction()
+//            .add(
+//                R.id.fragment_container,
+//                SearchFragment()
+//            )
+//            .commit()
+
+        router.navigateTo(DataContainer.Search())
     }
 
     override fun onResumeFragments() {

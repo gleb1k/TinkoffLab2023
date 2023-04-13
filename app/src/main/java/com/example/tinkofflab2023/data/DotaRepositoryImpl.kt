@@ -1,6 +1,8 @@
 package com.example.tinkofflab2023.data
 
 import com.example.tinkofflab2023.data.remote.DotaApi
+import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
+import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
@@ -29,6 +31,12 @@ class DotaRepositoryImpl(
         api.getPlayerRecentMatches(accountId)
 
     override suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse =
-        getPlayerHeroes(accountId)
+        api.getPlayerHeroes(accountId)
+
+    override suspend fun getHeroes(): HeroesResponse =
+        api.getHeroes()
+
+    override suspend fun getItems(): ItemsResponse =
+        api.getItems()
 
 }

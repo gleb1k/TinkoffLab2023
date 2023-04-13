@@ -4,10 +4,10 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
-import com.example.tinkofflab2023.presentation.fragment.*
+import com.example.tinkofflab2023.presentation.fragment.TestFragment
 import com.example.tinkofflab2023.presentation.fragment.favorite.FavoriteFragment
+import com.example.tinkofflab2023.presentation.fragment.match.MatchFragment
 import com.example.tinkofflab2023.presentation.fragment.player.PlayerFragment
-import com.example.tinkofflab2023.presentation.fragment.player.PlayerOverviewFragment
 import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
 import com.example.tinkofflab2023.presentation.fragment.settings.SettingsFragment
 import com.github.terrakok.cicerone.Cicerone
@@ -54,14 +54,22 @@ object DataContainer {
     val getPlayerWLUseCase: GetPlayerWLUseCase
         get() = GetPlayerWLUseCase(dotaRepository)
 
+    val getItems: GetItemsUseCase
+        get() = GetItemsUseCase(dotaRepository)
+
+    val getHeroesUseCase: GetHeroesUseCase
+        get() = GetHeroesUseCase(dotaRepository)
+
+    //region cicerone
     private val cicerone = Cicerone.create()
     val router get() = cicerone.router
     val navigatorHolder get() = cicerone.getNavigatorHolder()
 
-    //fragments region
-    fun Main() = FragmentScreen { MainFragment() }
+    fun Main() = FragmentScreen { TestFragment() }
     fun Search() = FragmentScreen { SearchFragment() }
-    fun Player() = FragmentScreen { PlayerFragment() }
+    fun Match(matchId: String) = FragmentScreen(matchId) { MatchFragment(matchId) }
+    //fragmentScreen key == accountId
+    fun Player(accountId: String) = FragmentScreen(accountId) { PlayerFragment(accountId) }
     fun Settings() = FragmentScreen { SettingsFragment() }
     fun Favorite() = FragmentScreen { FavoriteFragment() }
     //endregion

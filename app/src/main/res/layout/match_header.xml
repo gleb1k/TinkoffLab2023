@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:text="Match 343409834907"
+        android:text="Match 9999999999"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_wl"
+        android:id="@+id/tv_winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -45,7 +45,7 @@
         android:text="66"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/tv_match_time"
-        app:layout_constraintTop_toBottomOf="@+id/tv_wl" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_winner" />
 
     <TextView
         android:id="@+id/tv_dire_kills"

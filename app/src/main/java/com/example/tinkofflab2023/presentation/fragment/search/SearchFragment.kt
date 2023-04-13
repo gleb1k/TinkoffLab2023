@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.presentation.viewmodel.SearchViewModel
 import com.example.tinkofflab2023.presentation.fragment.search.recyclerview.SearchPlayersAdapter
 import com.github.terrakok.cicerone.Router
 
@@ -23,10 +22,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         SearchViewModel.Factory
     }
 
-    private fun onOpenNewScreen() {
-        router.navigateTo(DataContainer.Player())
+    private fun onOpenPlayerScreen(
+        accountId: String
+    ) {
+        router.navigateTo(DataContainer.Player(accountId))
     }
 
+    //todo ?
     fun onBackPressed() {
         router.exit()
     }
@@ -38,9 +40,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         searchAdapter = SearchPlayersAdapter(
             glide,
-            onItemClick = :: navigate
+            onItemClick = ::onOpenPlayerScreen
         ).also { adapter ->
-            searchViewModel.playersList.observe(viewLifecycleOwner){
+            searchViewModel.playersList.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 adapter.submitList(it)
             }
@@ -48,11 +50,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
         setSearchView()
 
-        binding?.run {
-            tvSearch.setOnClickListener {
-                onOpenNewScreen()
-            }
-        }
     }
 
     private fun setSearchView() {
@@ -74,11 +71,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 }
             })
         }
-    }
-
-    //todo навигатион
-    private fun navigate(accountId: Int) {
-
     }
 
     override fun onDestroy() {

@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.untils
+package com.example.tinkofflab2023.utils
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

@@ -10,7 +10,7 @@ import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
 class SearchPlayersHolder(
     private val binding: SearchPlayerItemBinding,
     private val glide: RequestManager,
-    private val onItemClick: (Int) -> Unit,
+    private val onItemClick: (String) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(player: SearchResponse) {
@@ -22,8 +22,11 @@ class SearchPlayersHolder(
                 .into(ivIcon)
 
             //todo ?? обычно не работает кликабельность всей вьюшки
-            root.setOnClickListener {
-                onItemClick
+//            root.setOnClickListener {
+//                onItemClick(player.accountId.toString())
+//            }
+            tvNickname.setOnClickListener {
+                onItemClick(player.accountId.toString())
             }
         }
     }
@@ -32,7 +35,7 @@ class SearchPlayersHolder(
         fun create(
             parent: ViewGroup,
             glide: RequestManager,
-            onItemClick: (Int) -> Unit,
+            onItemClick: (String) -> Unit,
         ): SearchPlayersHolder = SearchPlayersHolder(
             binding = SearchPlayerItemBinding.inflate(
                 LayoutInflater.from(parent.context),
