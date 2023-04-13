@@ -7,4 +7,33 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="red">#9F0303</color>
+    <color name="green">#026C0D</color>
+
+    <color name="background_test">#700B3B3C</color>
+
+    <!--    Light Mode:-->
+    <!-- Primary color: #FF6633 (bright orange) -->
+    <color name="bright_orange">#FF6633</color>
+    <!--    Secondary color: #1C1C1C (dark gray)-->
+    <color name="dark_gray">#1C1C1C</color>
+    <!--    Accent color: #6600CC (deep purple)-->
+    <color name="deep_purple">#6600CC</color>
+    <!--    Background color: #F5F5F5 (light gray)-->
+    <color name="light_gray">#F5F5F5</color>
+    <!--    Text color: #333333 (dark gray)-->
+    <color name="dark_gray_text">#333333</color>
+
+    <!--    Dark Mode:-->
+    <!--    Primary color: #FF5722 (deep orange)-->
+    <color name="deep_orange">#FF5722</color>
+    <!--    Secondary color: #E0E0E0 (light gray)-->
+    <color name="light_gray_dm">#E0E0E0</color>
+    <!--    Accent color: #9C27B0 (purple)-->
+    <color name="purple">#9C27B0</color>
+    <!--    Background color: #212121 (dark gray)-->
+    <color name="dark_gray_dm">#212121</color>
+    <!--    Text color: #FFFFFF (white)-->
+    <!-- white -->
 </resources>

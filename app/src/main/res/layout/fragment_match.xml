@@ -1,0 +1,31 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/match_header"
+            layout="@layout/match_header" />
+
+        <include
+            android:id="@+id/team_item_radiant"
+            layout="@layout/team_item" />
+
+        <include
+            android:id="@+id/team_item_dire"
+            layout="@layout/team_item" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
