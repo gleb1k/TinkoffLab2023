@@ -12,20 +12,15 @@ data class Profile(
     val avatarfull: String,
     @SerializedName("avatarmedium")
     val avatarmedium: String,
-    @SerializedName("cheese")
-    val cheese: Int,
-    @SerializedName("is_contributor")
-    val isContributor: Boolean,
-    @SerializedName("is_subscriber")
-    val isSubscriber: Boolean,
+//    @SerializedName("cheese")
+//    val cheese: Int,
     @SerializedName("last_login")
     val lastLogin: String,
     @SerializedName("loccountrycode")
     val loccountrycode: String,
-    @SerializedName("name")
-    val name: String,
     @SerializedName("personaname")
     val personaname: String,
+    //dota plus
     @SerializedName("plus")
     val plus: Boolean,
     @SerializedName("profileurl")

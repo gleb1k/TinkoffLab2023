@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentSettingsBinding
-import com.example.tinkofflab2023.di.DataContainer
+import com.example.tinkofflab2023.di.NavigationContainer
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
@@ -18,7 +18,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         binding?.run {
             tvSettings.setOnClickListener {
-                DataContainer.router.navigateTo(DataContainer.Match(Constants.MATCH_TEST_ID))
+                NavigationContainer.router.navigateTo(NavigationContainer.Match(Constants.MATCH_TEST_ID))
             }
         }
     }

@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.domain.DotaRepository
 
 class SearchPlayersUseCase(
     private val dotaRepository: DotaRepository
-) {
+) : UseCase {
     suspend operator fun invoke(
         name: String
     ): List<SearchResponse> = dotaRepository.searchPlayers(name)

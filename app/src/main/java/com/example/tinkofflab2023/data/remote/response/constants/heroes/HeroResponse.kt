@@ -50,8 +50,6 @@ data class HeroResponse(
     val img: String,
     @SerializedName("int_gain")
     val intGain: Double,
-    @SerializedName("legs")
-    val legs: Int,
     @SerializedName("localized_name")
     val localizedName: String,
     @SerializedName("move_speed")

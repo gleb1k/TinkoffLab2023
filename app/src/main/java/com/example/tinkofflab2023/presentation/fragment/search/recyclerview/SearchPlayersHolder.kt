@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
+import com.example.tinkofflab2023.utils.Converter
 
 class SearchPlayersHolder(
     private val binding: SearchPlayerItemBinding,
@@ -15,7 +16,7 @@ class SearchPlayersHolder(
 
     fun onBind(player: SearchResponse) {
         binding.run {
-            tvLastMatch.text = player.lastMatchTime
+            tvLastMatch.text = "Last match: ${Converter.lastMatchTime(player.lastMatchTime)}"
             tvNickname.text = player.personaname
             glide
                 .load(player.avatarfull)

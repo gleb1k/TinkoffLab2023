@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
+import com.example.tinkofflab2023.presentation.fragment.player.PlayerFragment
+import com.example.tinkofflab2023.utils.Converter
 
-class MatchFragment(
-    private val matchId: String
-) : Fragment(R.layout.fragment_match) {
+class MatchFragment : Fragment(R.layout.fragment_match) {
 
     private var binding: FragmentMatchBinding? = null
 
@@ -36,9 +36,8 @@ class MatchFragment(
                 if (it == null) return@observe
                 with(matchHeader) {
                     tvMatchId.text = "Match ${it.matchId}"
-                    //sampledateformat
-                    tvMatchTime.text = "${it.duration} sec"
-                    tvWinner.text = "Radiant win: ${it.radiantWin}"
+                    tvMatchTime.text = Converter.matchDuration(it.duration)
+                    tvWinner.text = Converter.win(it.radiantWin)
                     tvRadiantKills.text = it.radiantScore.toString()
                     tvDireKills.text = it.direScore.toString()
                 }
@@ -49,5 +48,16 @@ class MatchFragment(
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    companion object {
+
+        const val MATCH_ID_TAG = "MATCH_ID_TAG"
+
+        fun newInstance(message: String, tag: String = MATCH_ID_TAG) = PlayerFragment().apply {
+            arguments = Bundle().apply {
+                putString(tag, message)
+            }
+        }
     }
 }

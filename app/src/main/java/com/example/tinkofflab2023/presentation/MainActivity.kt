@@ -3,11 +3,9 @@ package com.example.tinkofflab2023.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentFactory
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
-import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
+import com.example.tinkofflab2023.di.NavigationContainer
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         this,
         R.id.fragment_container
     )
-    private val router = DataContainer.router
+    private val router = NavigationContainer.router
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +29,15 @@ class MainActivity : AppCompatActivity() {
             bnvMain.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_settings -> {
-                        router.navigateTo(DataContainer.Settings())
+                        router.navigateTo(NavigationContainer.Settings())
                         true
                     }
                     R.id.action_search -> {
-                        router.navigateTo(DataContainer.Search())
+                        router.navigateTo(NavigationContainer.Search())
                         true
                     }
                     R.id.action_favorite -> {
-                        router.navigateTo(DataContainer.Favorite())
+                        router.navigateTo(NavigationContainer.Favorite())
                         true
                     }
                     else -> false
@@ -48,23 +46,16 @@ class MainActivity : AppCompatActivity() {
             bnvMain.selectedItemId = R.id.action_search
         }
 
-//        supportFragmentManager.beginTransaction()
-//            .add(
-//                R.id.fragment_container,
-//                SearchFragment()
-//            )
-//            .commit()
-
-        router.navigateTo(DataContainer.Search())
+        router.navigateTo(NavigationContainer.Search())
     }
 
     override fun onResumeFragments() {
         super.onResumeFragments()
-        DataContainer.navigatorHolder.setNavigator(navigator)
+        NavigationContainer.navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
-        DataContainer.navigatorHolder.removeNavigator()
+        NavigationContainer.navigatorHolder.removeNavigator()
         super.onPause()
     }
 

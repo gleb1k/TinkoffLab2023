@@ -51,9 +51,5 @@ interface DotaApi {
 
     @GET("constants/heroes")
     suspend fun getHeroes(): HeroesResponse
-//
-//    @GET("constants/{resource}")
-//    suspend fun getConstants(
-//        @Path("resource") resource: String
-//    ): String
+
 }

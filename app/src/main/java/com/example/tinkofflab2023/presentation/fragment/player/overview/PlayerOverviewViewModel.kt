@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.presentation.fragment.player
+package com.example.tinkofflab2023.presentation.fragment.player.overview
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
@@ -13,7 +13,6 @@ import com.example.tinkofflab2023.domain.usecase.GetPlayerHeroesUseCase
 import com.example.tinkofflab2023.domain.usecase.GetPlayerResentMatchesUseCase
 import com.example.tinkofflab2023.domain.usecase.GetPlayerWLUseCase
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
 
 class PlayerOverviewViewModel(
     private val getPlayerHeroesUseCase: GetPlayerHeroesUseCase,
@@ -68,12 +67,6 @@ class PlayerOverviewViewModel(
         getPlayerRecentMatches(accountId)
         getPlayerHeroes(accountId)
     }
-
-    fun calculateWinrate(win: Int, loss: Int): Double {
-        val resultDouble = win.toDouble() / (win.toDouble() + loss.toDouble())
-        return (resultDouble * 1000.0).roundToInt().toDouble() / 10.0
-    }
-
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

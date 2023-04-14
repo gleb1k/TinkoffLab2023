@@ -3,6 +3,7 @@ package com.example.tinkofflab2023.presentation.fragment.player
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.tinkofflab2023.presentation.fragment.player.overview.PlayerOverviewFragment
 
 class PlayerPagerAdapter(
     fragmentActivity: FragmentActivity,

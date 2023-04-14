@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
-import com.example.tinkofflab2023.di.DataContainer
+import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.presentation.fragment.search.recyclerview.SearchPlayersAdapter
 import com.github.terrakok.cicerone.Router
 
@@ -16,7 +16,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private var binding: FragmentSearchBinding? = null
     private var searchAdapter: SearchPlayersAdapter? = null
-    private val router: Router = DataContainer.router
+    private val router: Router = NavigationContainer.router
 
     private val searchViewModel: SearchViewModel by viewModels {
         SearchViewModel.Factory
@@ -25,7 +25,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun onOpenPlayerScreen(
         accountId: String
     ) {
-        router.navigateTo(DataContainer.Player(accountId))
+        router.navigateTo(NavigationContainer.Player(accountId))
     }
 
     //todo ?

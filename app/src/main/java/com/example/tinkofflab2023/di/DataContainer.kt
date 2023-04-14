@@ -60,17 +60,4 @@ object DataContainer {
     val getHeroesUseCase: GetHeroesUseCase
         get() = GetHeroesUseCase(dotaRepository)
 
-    //region cicerone
-    private val cicerone = Cicerone.create()
-    val router get() = cicerone.router
-    val navigatorHolder get() = cicerone.getNavigatorHolder()
-
-    fun Main() = FragmentScreen { TestFragment() }
-    fun Search() = FragmentScreen { SearchFragment() }
-    fun Match(matchId: String) = FragmentScreen(matchId) { MatchFragment(matchId) }
-    //fragmentScreen key == accountId
-    fun Player(accountId: String) = FragmentScreen(accountId) { PlayerFragment(accountId) }
-    fun Settings() = FragmentScreen { SettingsFragment() }
-    fun Favorite() = FragmentScreen { FavoriteFragment() }
-    //endregion
 }

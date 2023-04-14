@@ -5,6 +5,6 @@ import com.example.tinkofflab2023.domain.DotaRepository
 
 class GetHeroesUseCase(
     private val dotaRepository: DotaRepository
-) {
+) : UseCase {
     suspend operator fun invoke(): HeroesResponse = dotaRepository.getHeroes()
 }

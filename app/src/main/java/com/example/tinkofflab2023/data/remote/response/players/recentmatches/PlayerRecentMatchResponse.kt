@@ -3,13 +3,11 @@ package com.example.tinkofflab2023.data.remote.response.players.recentmatches
 
 import com.google.gson.annotations.SerializedName
 
-data class PlayerRecentMatchesResponseItem(
+data class PlayerRecentMatchResponse(
     @SerializedName("assists")
     val assists: Int,
     @SerializedName("average_rank")
     val averageRank: Int,
-    @SerializedName("cluster")
-    val cluster: Int,
     @SerializedName("deaths")
     val deaths: Int,
     @SerializedName("duration")
@@ -46,8 +44,6 @@ data class PlayerRecentMatchesResponseItem(
     val playerSlot: Int,
     @SerializedName("radiant_win")
     val radiantWin: Boolean,
-    @SerializedName("skill")
-    val skill: Any,
     @SerializedName("start_time")
     val startTime: Int,
     @SerializedName("tower_damage")

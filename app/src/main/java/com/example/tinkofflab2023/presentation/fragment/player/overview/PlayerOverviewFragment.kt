@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.presentation.fragment.player
+package com.example.tinkofflab2023.presentation.fragment.player.overview
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
+import com.example.tinkofflab2023.utils.Converter
 
 class PlayerOverviewFragment(
     private val accountId: String
@@ -51,10 +52,9 @@ class PlayerOverviewFragment(
                 with(playerHeader) {
                     tvWl.text = "${it.win}-${it.lose}"
 
-                    tvWinrate.text = "${viewModel.calculateWinrate(it.win, it.lose)} %"
+                    tvWinrate.text = Converter.winrate(it.win, it.lose)
                 }
             }
-
 
         }
     }
