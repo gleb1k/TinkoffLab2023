@@ -13,7 +13,6 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
 
     private var binding: FragmentMatchBinding? = null
 
-
     private val viewModel: MatchViewModel by viewModels {
         MatchViewModel.Factory
     }

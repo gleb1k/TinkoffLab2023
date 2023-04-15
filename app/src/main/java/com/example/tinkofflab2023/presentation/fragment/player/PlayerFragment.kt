@@ -21,6 +21,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     }
 
+    //todo почему дергается этот фрагмент, когда навигируюсь на совершенно другие з
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPlayerBinding.bind(view)
