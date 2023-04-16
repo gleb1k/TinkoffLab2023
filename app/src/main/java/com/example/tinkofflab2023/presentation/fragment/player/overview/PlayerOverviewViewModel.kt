@@ -21,6 +21,7 @@ class PlayerOverviewViewModel(
     private val getPlayerDataUseCase: GetPlayerDataUseCase
 ) : ViewModel() {
 
+    //вот эти лайвдаты поидее не нужны
     private val _playerData = MutableLiveData<PlayerDataResponse?>(null)
     val playerData: LiveData<PlayerDataResponse?>
         get() = _playerData
@@ -37,35 +38,49 @@ class PlayerOverviewViewModel(
     val playerHeroes: LiveData<PlayerHeroesResponse?>
         get() = _playerHeroes
 
-    private fun getPlayerData(accountId: String) {
+    //todo ?
+    private val _viewList = MutableLiveData<ArrayList<Any>?>(null)
+    val viewList: LiveData<ArrayList<Any>?>
+        get() = _viewList
+
+    //todo если делать все это в разных viewModelScope, то падает nullPointer, тк
+    //данные не успеваю подгрузиться, а я уже их собираю в массив
+    //ВОПРОС: Как сделать красивее и эффективнее?
+    //ВОПРОС(1): Нужны ли лайвдаты под остальные переменные? или можно обойтись полями?
+    fun loadData(accountId: String) {
         viewModelScope.launch {
             _playerData.value = getPlayerDataUseCase(accountId)
-        }
-    }
-
-    private fun getPlayerWL(accountId: String) {
-        viewModelScope.launch {
             _playerWL.value = getPlayerWLUseCase(accountId)
-        }
-    }
-
-    private fun getPlayerRecentMatches(accountId: String) {
-        viewModelScope.launch {
             _playerResentMatches.value = getPlayerResentMatchesUseCase(accountId)
-        }
-    }
-
-    private fun getPlayerHeroes(accountId: String) {
-        viewModelScope.launch {
             _playerHeroes.value = getPlayerHeroesUseCase(accountId)
+            generateView()
         }
     }
 
-    fun loadData(accountId: String) {
-        getPlayerData(accountId)
-        getPlayerWL(accountId)
-        getPlayerRecentMatches(accountId)
-        getPlayerHeroes(accountId)
+    //todo вот так когда делаю падает nullPointer
+//    fun loadData(accountId: String) {
+//        if (accountId == "")
+//            return
+//        getPlayerData(accountId)
+//        getPlayerWL(accountId)
+//        getPlayerRecentMatches(accountId)
+//        getPlayerHeroes(accountId)
+//        generateView()
+//    }
+
+    //todo как красиво генерить список?
+    //жеско насрал
+    private fun generateView() {
+        _viewList.value = ArrayList<Any>(13).apply {
+            //todo проверка на нулЛ?
+            add(playerData.value!!)
+            add("Recent Matches")
+            for (i in 0 .. 4)
+                add(playerResentMatches.value!![i])
+            add("Most played Heroes")
+            for (i in 0 .. 4)
+                add(playerHeroes.value!![i])
+        }
     }
 
     companion object {

@@ -33,10 +33,17 @@ class DotaRepositoryImpl(
     override suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse =
         api.getPlayerHeroes(accountId)
 
+    //todo СУПЕР ВАЖНО. Возвращение правильного типа для ячейки рекуклера. Тоесть нужно наколхозить нечто такое?
+    //HeroItemData будет содержать данные о всех персонажах и данные о топ персонажах для игрока
+//    suspend fun getPlayerHeroItemData(accountId: String) : HeroItemData {
+//       return api.getPlayerHeroes(accountId) + api.getHeroes()
+//    }
+
     override suspend fun getHeroes(): HeroesResponse =
         api.getHeroes()
 
     override suspend fun getItems(): ItemsResponse =
         api.getItems()
+
 
 }

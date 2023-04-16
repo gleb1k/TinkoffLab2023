@@ -15,6 +15,10 @@ object Converter {
         return "${((resultDouble * 1000.0).roundToInt().toDouble() / 10.0)} %"
     }
 
+    fun wl(wins: Int, losses: Int) : String {
+        return "$wins/$losses"
+    }
+
     /**
      *  2023-03-13T14:24:58.892Z returns -> 13.03.2023
      */
@@ -28,7 +32,7 @@ object Converter {
         return "$day.$month.$year"
     }
 
-    fun win(radiantWin: Boolean): String {
+    fun winSide(radiantWin: Boolean): String {
         return if (radiantWin)
             "Radiant Victory"
         else
@@ -50,9 +54,9 @@ object Converter {
     }
 
     //todo ? epoch -> date по-человечески
-    fun startTime(totalSecs: String): String {
+    fun epochToDate(totalSecs: String): String {
         val sdf = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            SimpleDateFormat("MM/dd/yyyy")
+            SimpleDateFormat("dd/MM/yyyy")
         } else {
             TODO("VERSION.SDK_INT < N")
         }

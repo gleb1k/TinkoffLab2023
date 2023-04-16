@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:text="01.04.2023"
+        android:text="@string/base_date"
         app:layout_constraintBottom_toBottomOf="@+id/tv_last_played_const"
         app:layout_constraintStart_toEndOf="@+id/tv_last_played_const" />
 
@@ -60,7 +60,7 @@
         android:text="W/L"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_matches_const"
-        app:layout_constraintEnd_toStartOf="@+id/tv_win_const"
+        app:layout_constraintEnd_toStartOf="@+id/tv_winrate_const"
         app:layout_constraintStart_toEndOf="@id/tv_matches_const" />
 
     <TextView
@@ -73,23 +73,23 @@
         app:layout_constraintStart_toStartOf="@+id/tv_wl_const" />
 
     <TextView
-        android:id="@+id/tv_win_const"
+        android:id="@+id/tv_winrate_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="W/L"
+        android:text="Win %"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_wl_const"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_wl_const" />
 
     <TextView
-        android:id="@+id/tv_win"
+        android:id="@+id/tv_winrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
         android:text="50%"
-        app:layout_constraintBottom_toTopOf="@+id/tv_win_const"
-        app:layout_constraintStart_toStartOf="@+id/tv_win_const" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_winrate_const"
+        app:layout_constraintStart_toStartOf="@+id/tv_winrate_const" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

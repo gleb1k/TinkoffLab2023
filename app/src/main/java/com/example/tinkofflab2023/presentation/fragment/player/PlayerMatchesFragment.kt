@@ -20,5 +20,7 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         super.onDestroy()
         binding = null
     }
+
+
 }
 

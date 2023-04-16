@@ -27,6 +27,22 @@ class MatchViewModel(
         getMatchData(matchId)
     }
 
+//    fun abc() {
+//        binding?.run {
+//            viewModel.match.observe(viewLifecycleOwner) {
+//                if (it == null) return@observe
+//                with(matchHeader) {
+//                    tvMatchId.text = "Match ${it.matchId}"
+//                    tvMatchTime.text = Converter.matchDuration(it.duration)
+//                    tvWinner.text = Converter.winSide(it.radiantWin)
+//                    tvRadiantKills.text = it.radiantScore.toString()
+//                    tvDireKills.text = it.direScore.toString()
+//                }
+//            }
+//        }
+//    }
+
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
