@@ -1,5 +1,6 @@
 package com.example.tinkofflab2023.data
 
+import com.example.tinkofflab2023.data.model.TeamPlayer
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
@@ -33,17 +34,37 @@ class DotaRepositoryImpl(
     override suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse =
         api.getPlayerHeroes(accountId)
 
-    //todo СУПЕР ВАЖНО. Возвращение правильного типа для ячейки рекуклера. Тоесть нужно наколхозить нечто такое?
-    //HeroItemData будет содержать данные о всех персонажах и данные о топ персонажах для игрока
-//    suspend fun getPlayerHeroItemData(accountId: String) : HeroItemData {
-//       return api.getPlayerHeroes(accountId) + api.getHeroes()
-//    }
-
     override suspend fun getHeroes(): HeroesResponse =
         api.getHeroes()
 
     override suspend fun getItems(): ItemsResponse =
         api.getItems()
 
+    //todo СУПЕР ВАЖНО. Возвращение правильного типа для ячейки рекуклера. Тоесть нужно наколхозить нечто такое?
+    //HeroItemData будет содержать данные о всех персонажах и данные о топ персонажах для игрока
+//    suspend fun getPlayerHeroItemData(accountId: String) : HeroItemData {
+//       return api.getPlayerHeroes(accountId) + api.getHeroes()
+//    }
 
+    override suspend fun getTeamPlayers(matchId: String): List<TeamPlayer> {
+        val matchResponse = getMatch(matchId)
+        val heroesResponse = getHeroes()
+
+        val teamPlayers = ArrayList<TeamPlayer>(10)
+        matchResponse.players.map {
+            teamPlayers +=
+                TeamPlayer(
+                    accountId = it.accountId,
+                    name = it.personaname,
+                    kills = it.kills,
+                    assists = it.assists,
+                    deaths = it.deaths,
+                    net = it.netWorth,
+                    heroId = it.heroId,
+                    heroImg = heroesResponse.first
+                    { heroResponse -> it.heroId == heroResponse.id }.img
+                )
+        }
+        return teamPlayers
+    }
 }

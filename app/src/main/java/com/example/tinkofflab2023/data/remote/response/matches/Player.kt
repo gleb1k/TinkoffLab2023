@@ -13,7 +13,7 @@ data class Player(
     @SerializedName("ability_uses")
     val abilityUses: Any,
     @SerializedName("account_id")
-    val accountId: Int,
+    val accountId: String,
     @SerializedName("actions")
     val actions: Any,
     @SerializedName("additional_units")
