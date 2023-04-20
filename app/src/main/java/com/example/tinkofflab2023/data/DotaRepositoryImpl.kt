@@ -1,6 +1,7 @@
 package com.example.tinkofflab2023.data
 
-import com.example.tinkofflab2023.data.model.TeamPlayer
+import com.example.tinkofflab2023.ui.model.match.TeamOutcome
+import com.example.tinkofflab2023.ui.model.match.TeamPlayer
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
@@ -46,25 +47,59 @@ class DotaRepositoryImpl(
 //       return api.getPlayerHeroes(accountId) + api.getHeroes()
 //    }
 
-    override suspend fun getTeamPlayers(matchId: String): List<TeamPlayer> {
+    override suspend fun getTeamsPlayers(matchId: String): List<TeamPlayer> {
         val matchResponse = getMatch(matchId)
         val heroesResponse = getHeroes()
 
         val teamPlayers = ArrayList<TeamPlayer>(10)
-        matchResponse.players.map {
+        matchResponse.players.forEach {
             teamPlayers +=
                 TeamPlayer(
-                    accountId = it.accountId,
-                    name = it.personaname,
+                    playerSlot = it.playerSlot,
+                    name = it.personaname?: "Закрытый профиль",
                     kills = it.kills,
                     assists = it.assists,
                     deaths = it.deaths,
                     net = it.netWorth,
                     heroId = it.heroId,
-                    heroImg = heroesResponse.first
-                    { heroResponse -> it.heroId == heroResponse.id }.img
+                    heroImg = ""
+//                    heroImg = heroesResponse.first
+//                    { heroResponse -> it.heroId == heroResponse.id }.img
                 )
         }
         return teamPlayers
+    }
+
+    //NASRAL
+    override suspend fun getTeamsOutcomes(matchId: String): List<TeamOutcome> {
+        val matchResponse = getMatch(matchId)
+
+        var killsR = 0
+        var deathsR = 0
+        var assistsR = 0
+        var netR = 0
+
+        var killsD = 0
+        var deathsD = 0
+        var assistsD = 0
+        var netD = 0
+
+        matchResponse.players.forEach {
+            if (it.isRadiant) {
+                killsR += it.kills
+                deathsR += it.deaths
+                assistsR += it.assists
+                netR += it.netWorth
+            } else {
+                killsD += it.kills
+                deathsD += it.deaths
+                assistsD += it.assists
+                netD += it.netWorth
+            }
+        }
+        return listOf(
+            TeamOutcome(true, killsR, deathsR, assistsR, netR),
+            TeamOutcome(false, killsD, deathsD, assistsD, netD),
+        )
     }
 }

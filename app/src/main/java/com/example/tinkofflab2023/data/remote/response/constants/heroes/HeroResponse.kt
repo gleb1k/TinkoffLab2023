@@ -9,39 +9,39 @@ data class HeroResponse(
     @SerializedName("attack_point")
     val attackPoint: Double,
     @SerializedName("attack_range")
-    val attackRange: Int,
+    val attackRange: Double,
     @SerializedName("attack_rate")
     val attackRate: Double,
     @SerializedName("attack_type")
     val attackType: String,
     @SerializedName("base_agi")
-    val baseAgi: Int,
+    val baseAgi: Double,
     @SerializedName("base_armor")
-    val baseArmor: Int,
+    val baseArmor: Double,
     @SerializedName("base_attack_max")
-    val baseAttackMax: Int,
+    val baseAttackMax: Double,
     @SerializedName("base_attack_min")
-    val baseAttackMin: Int,
+    val baseAttackMin: Double,
     @SerializedName("base_attack_time")
-    val baseAttackTime: Int,
+    val baseAttackTime: Double,
     @SerializedName("base_health")
-    val baseHealth: Int,
+    val baseHealth: Double,
     @SerializedName("base_health_regen")
     val baseHealthRegen: Double,
     @SerializedName("base_int")
-    val baseInt: Int,
+    val baseInt: Double,
     @SerializedName("base_mana")
-    val baseMana: Int,
+    val baseMana: Double,
     @SerializedName("base_mana_regen")
-    val baseManaRegen: Int,
+    val baseManaRegen: Double,
     @SerializedName("base_mr")
-    val baseMr: Int,
+    val baseMr: Double,
     @SerializedName("base_str")
-    val baseStr: Int,
+    val baseStr: Double,
     @SerializedName("cm_enabled")
     val cmEnabled: Boolean,
     @SerializedName("day_vision")
-    val dayVision: Int,
+    val dayVision: Double,
     @SerializedName("icon")
     val icon: String,
     @SerializedName("id")
@@ -53,15 +53,15 @@ data class HeroResponse(
     @SerializedName("localized_name")
     val localizedName: String,
     @SerializedName("move_speed")
-    val moveSpeed: Int,
+    val moveSpeed: Double,
     @SerializedName("name")
     val name: String,
     @SerializedName("night_vision")
-    val nightVision: Int,
+    val nightVision: Double,
     @SerializedName("primary_attr")
     val primaryAttr: String,
     @SerializedName("projectile_speed")
-    val projectileSpeed: Int,
+    val projectileSpeed: Double,
     @SerializedName("roles")
     val roles: List<String>,
     @SerializedName("str_gain")

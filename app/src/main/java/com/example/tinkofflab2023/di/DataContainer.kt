@@ -4,14 +4,6 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
-import com.example.tinkofflab2023.presentation.fragment.TestFragment
-import com.example.tinkofflab2023.presentation.fragment.favorite.FavoriteFragment
-import com.example.tinkofflab2023.presentation.fragment.match.MatchFragment
-import com.example.tinkofflab2023.presentation.fragment.player.PlayerFragment
-import com.example.tinkofflab2023.presentation.fragment.search.SearchFragment
-import com.example.tinkofflab2023.presentation.fragment.settings.SettingsFragment
-import com.github.terrakok.cicerone.Cicerone
-import com.github.terrakok.cicerone.androidx.FragmentScreen
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -59,5 +51,11 @@ object DataContainer {
 
     val getHeroesUseCase: GetHeroesUseCase
         get() = GetHeroesUseCase(dotaRepository)
+
+    val getTeamsOutcomesUseCase: GetTeamsOutcomesUseCase
+        get() = GetTeamsOutcomesUseCase(dotaRepository)
+
+    val getTeamsPlayersUseCase: GetTeamsPlayersUseCase
+        get() = GetTeamsPlayersUseCase(dotaRepository)
 
 }

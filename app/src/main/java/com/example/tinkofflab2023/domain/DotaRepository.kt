@@ -1,6 +1,7 @@
 package com.example.tinkofflab2023.domain
 
-import com.example.tinkofflab2023.data.model.TeamPlayer
+import com.example.tinkofflab2023.ui.model.match.TeamOutcome
+import com.example.tinkofflab2023.ui.model.match.TeamPlayer
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
@@ -28,7 +29,9 @@ interface DotaRepository {
 
     suspend fun getItems() : ItemsResponse
 
-    suspend fun getTeamPlayers(matchId: String) : List<TeamPlayer>
+    suspend fun getTeamsPlayers(matchId: String) : List<TeamPlayer>
 
-    suspend fun getTeamOutcome(matchId: String)
+    suspend fun getTeamsOutcomes(matchId: String) :  List<TeamOutcome>
+
+//    suspend fun getModelForMacthFragment(matchId: String) : MatchModel
 }

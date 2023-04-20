@@ -165,7 +165,7 @@ data class Player(
     @SerializedName("permanent_buffs")
     val permanentBuffs: List<PermanentBuff>,
     @SerializedName("personaname")
-    val personaname: String,
+    val personaname: String?,
     @SerializedName("pings")
     val pings: Any,
     @SerializedName("player_slot")

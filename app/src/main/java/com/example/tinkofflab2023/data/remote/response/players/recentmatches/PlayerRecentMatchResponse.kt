@@ -37,7 +37,7 @@ data class PlayerRecentMatchResponse(
     @SerializedName("lobby_type")
     val lobbyType: Int,
     @SerializedName("match_id")
-    val matchId: Long,
+    val matchId: String,
     @SerializedName("party_size")
     val partySize: Int,
     @SerializedName("player_slot")
