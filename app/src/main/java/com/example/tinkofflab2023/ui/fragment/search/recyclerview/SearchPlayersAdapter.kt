@@ -21,7 +21,8 @@ class SearchPlayersAdapter(
 }
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchPlayersHolder =
-        SearchPlayersHolder.create(parent,glide,onItemClick)
+        SearchPlayersHolder.create(parent, glide, onItemClick, parent.context)
+
 
 
     override fun onBindViewHolder(holder: SearchPlayersHolder, position: Int) {

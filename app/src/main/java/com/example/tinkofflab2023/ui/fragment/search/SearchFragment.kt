@@ -36,7 +36,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSearchBinding.bind(view)
-        val glide = Glide.with(this@SearchFragment)
+        val glide = Glide
+            .with(this@SearchFragment)
 
         searchAdapter = SearchPlayersAdapter(
             glide,

@@ -34,7 +34,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
             MatchHeaderDelegateAdapter(),
             TeamHeaderDelegateAdapter(),
             TeamOutcomeDelegateAdapter(),
-            TeamPlayerDelegateAdapter(glide)
+            TeamPlayerDelegateAdapter(glide,requireContext())
         )
 
         arguments?.getString(MATCH_ID_TAG)?.let {

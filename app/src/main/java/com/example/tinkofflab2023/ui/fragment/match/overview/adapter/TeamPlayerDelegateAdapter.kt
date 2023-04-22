@@ -1,5 +1,7 @@
 package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
 
+import android.content.Context
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.ui.model.match.TeamPlayer
@@ -7,10 +9,16 @@ import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
 import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 
 class TeamPlayerDelegateAdapter(
-    private val glide: RequestManager
+    private val glide: RequestManager,
+    private val context: Context,
 ) : ViewBindingDelegateAdapter<TeamPlayer, TeamPlayerItemBinding>
     (TeamPlayerItemBinding::inflate) {
     override fun TeamPlayerItemBinding.onBind(item: TeamPlayer) {
+        val circularProgressDrawable = CircularProgressDrawable(context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+
         with(item) {
             tvPlayerName.text = name
             tvKills.text = "$kills"
@@ -19,6 +27,7 @@ class TeamPlayerDelegateAdapter(
             tvNet.text = "$net"
             glide
                 .load(heroImg)
+                .placeholder(circularProgressDrawable)
                 .into(ivHero)
         }
     }
