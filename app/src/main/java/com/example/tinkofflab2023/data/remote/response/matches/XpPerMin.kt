@@ -7,5 +7,5 @@ data class XpPerMin(
     @SerializedName("pct")
     val pct: Double,
     @SerializedName("raw")
-    val raw: Int
+    val raw: Double
 )

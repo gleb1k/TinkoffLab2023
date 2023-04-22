@@ -18,7 +18,7 @@ class TeamPlayerDelegateAdapter(
             tvAssists.text = "$assists"
             tvNet.text = "$net"
             glide
-                .load(Constants.DOTA_API_IMAGE_URL + heroImg)
+                .load(heroImg)
                 .into(ivHero)
         }
     }

@@ -33,5 +33,5 @@ interface DotaRepository {
 
     suspend fun getTeamsOutcomes(matchId: String) :  List<TeamOutcome>
 
-//    suspend fun getModelForMacthFragment(matchId: String) : MatchModel
+//    suspend fun getModelForMatchFragment(matchId: String) : MatchModel
 }

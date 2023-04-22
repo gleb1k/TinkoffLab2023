@@ -62,9 +62,7 @@ class DotaRepositoryImpl(
                     deaths = it.deaths,
                     net = it.netWorth,
                     heroId = it.heroId,
-                    heroImg = ""
-//                    heroImg = heroesResponse.first
-//                    { heroResponse -> it.heroId == heroResponse.id }.img
+                    heroImg = Constants.DOTA_API_IMAGE_URL + heroesResponse[it.heroId.toString()]?.img?: ""
                 )
         }
         return teamPlayers
