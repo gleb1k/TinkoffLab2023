@@ -3,9 +3,9 @@ package com.example.tinkofflab2023.data.remote.response.search
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
+data class SearchPlayerResponse(
     @SerializedName("account_id")
-    val accountId: Int,
+    val accountId: String,
     @SerializedName("avatarfull")
     val avatarfull: String,
     @SerializedName("last_match_time")

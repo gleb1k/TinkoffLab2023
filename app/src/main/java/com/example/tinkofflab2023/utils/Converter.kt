@@ -23,7 +23,7 @@ object Converter {
      *  2023-03-13T14:24:58.892Z returns -> 13.03.2023
      */
     //todo непонятно какой часовой пояс, дата может отставать
-    fun lastMatchTime(time: String?): String {
+    fun toDate(time: String?): String {
         if (time == null)
             return "-"
         val year = time.take(4)
@@ -53,6 +53,9 @@ object Converter {
             String.format("%02d:%02d", minutes, seconds)
     }
 
+    fun kda(kills:Int, deaths: Int, assists: Int) : String =
+        "$kills/$deaths/$assists"
+
     //todo ? epoch -> date по-человечески
     fun epochToDate(totalSecs: String): String {
         val sdf = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -62,6 +65,20 @@ object Converter {
         }
         val netDate = Date(totalSecs.toLong() * 1000)
         return sdf.format(netDate)
+    }
+
+    fun lostOrWonMatch(playerSlot: Int, radiantWin: Boolean) : String {
+        //0-127 are Radiant, 128-255 are Dire
+        if (playerSlot in 0..127 && radiantWin)
+            return "Won Match"
+        if (playerSlot in 0..127 && !radiantWin)
+            return "Lost Match"
+        if (playerSlot in 128..255 && radiantWin)
+            return "Lost Match"
+        if (playerSlot in 128..255 && !radiantWin)
+            return "Won Match"
+        return ""
+
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.tinkofflab2023.domain.usecase
 
-import com.example.tinkofflab2023.ui.model.match.TeamOutcome
+import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
 import com.example.tinkofflab2023.domain.DotaRepository
 
 class GetTeamsOutcomesUseCase(
@@ -8,5 +8,5 @@ class GetTeamsOutcomesUseCase(
 ) : UseCase {
     suspend operator fun invoke(
         matchId: String
-    ): List<TeamOutcome> = dotaRepository.getTeamsOutcomes(matchId)
+    ): List<TeamOutcomeItem> = dotaRepository.getTeamsOutcomes(matchId)
 }

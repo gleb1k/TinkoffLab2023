@@ -1,7 +1,7 @@
 package com.example.tinkofflab2023.domain
 
-import com.example.tinkofflab2023.ui.model.match.TeamOutcome
-import com.example.tinkofflab2023.ui.model.match.TeamPlayer
+import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
+import com.example.tinkofflab2023.ui.model.match.TeamPlayerItem
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
@@ -9,7 +9,8 @@ import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataRe
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
+import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
+import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
 
 interface DotaRepository {
 
@@ -17,7 +18,7 @@ interface DotaRepository {
 
     suspend fun getPlayerData(accountId: String): PlayerDataResponse
 
-    suspend fun searchPlayers(name: String): List<SearchResponse>
+    suspend fun searchPlayers(name: String): List<SearchPlayerResponse>
 
     suspend fun getPlayerWL(accountId: String): PlayerWLResponse
 
@@ -29,9 +30,11 @@ interface DotaRepository {
 
     suspend fun getItems() : ItemsResponse
 
-    suspend fun getTeamsPlayers(matchId: String) : List<TeamPlayer>
+    suspend fun getTeamsPlayers(matchId: String) : List<TeamPlayerItem>
 
-    suspend fun getTeamsOutcomes(matchId: String) :  List<TeamOutcome>
+    suspend fun getTeamsOutcomes(matchId: String) :  List<TeamOutcomeItem>
 
 //    suspend fun getModelForMatchFragment(matchId: String) : MatchModel
+
+    suspend fun getPlayerOverviewModel(accountId: String) : PlayerOverviewModel
 }

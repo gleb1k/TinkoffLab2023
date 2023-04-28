@@ -1,6 +1,6 @@
 package com.example.tinkofflab2023.ui.model.match
 
-data class TeamPlayer(
+data class TeamPlayerItem(
     val playerSlot : Int,
     val name: String?,
     val kills: Int,

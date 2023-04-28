@@ -1,29 +1,46 @@
 package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
 import com.bumptech.glide.RequestManager
-import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchResponse
+import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.MatchItemBinding
 import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
+import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
 import com.example.tinkofflab2023.utils.Converter
 
 class MatchDelegateAdapter(
     private val glide: RequestManager,
-    private val onMatchClick : (String) -> Unit
+    private val onMatchClick: (String) -> Unit
 ) :
-    ViewBindingDelegateAdapter<PlayerRecentMatchResponse, MatchItemBinding>(MatchItemBinding::inflate) {
+    ViewBindingDelegateAdapter<PlayerRecentMatchItem, MatchItemBinding>(MatchItemBinding::inflate) {
 
-    override fun MatchItemBinding.onBind(item: PlayerRecentMatchResponse) {
-        //ivHero
-        root.setOnClickListener {
-            onMatchClick(item.matchId)
+    override fun MatchItemBinding.onBind(item: PlayerRecentMatchItem) {
+        with(item) {
+            root.setOnClickListener {
+                onMatchClick(playerRecentMatchResponse.matchId)
+            }
+            tvPlayerRank.text = playerRecentMatchResponse.averageRank.toString()
+            tvKda.text = Converter.kda(
+                playerRecentMatchResponse.kills,
+                playerRecentMatchResponse.deaths,
+                playerRecentMatchResponse.assists
+            )
+            tvDuration.text = Converter.matchDuration(playerRecentMatchResponse.duration)
+            tvHeroName.text = heroResponse.localizedName
+            tvTime.text = Converter.epochToDate(playerRecentMatchResponse.startTime)
+            tvGameMode.text = Constants.gameModes[playerRecentMatchResponse.gameMode].toString()
+            tvRanked.text = Constants.lobbyTypes[playerRecentMatchResponse.lobbyType]
+            tvWl.text = Converter.lostOrWonMatch(
+                playerRecentMatchResponse.playerSlot,
+                playerRecentMatchResponse.radiantWin
+            )
+
+            glide
+                .load(Constants.DOTA_API_IMAGE_URL + heroResponse.img)
+                .into(ivHero)
         }
-        tvHeroName.text = item.heroId.toString()
-        tvPlayerRank.text = item.averageRank.toString()
-        tvKda.text = "${item.kills}k${item.deaths}d${item.assists}a"
-        tvDuration.text = Converter.matchDuration(item.duration)
     }
 
-    override fun isForViewType(item: Any): Boolean = item is PlayerRecentMatchResponse
+    override fun isForViewType(item: Any): Boolean = item is PlayerRecentMatchItem
 
-    override fun PlayerRecentMatchResponse.getItemId(): Any = matchId
+    override fun PlayerRecentMatchItem.getItemId(): Any = playerRecentMatchResponse.matchId
 }

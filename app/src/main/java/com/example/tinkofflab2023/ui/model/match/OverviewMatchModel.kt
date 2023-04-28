@@ -4,6 +4,6 @@ import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 
 data class OverviewMatchModel(
     val matchResponse: MatchResponse,
-    val teamOutcome: TeamOutcome,
-    val teamPlayer: TeamPlayer
+    val teamOutcomeItem: TeamOutcomeItem,
+    val teamPlayerItem: TeamPlayerItem
     )

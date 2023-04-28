@@ -7,7 +7,7 @@ import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataRe
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
+import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,7 +17,7 @@ interface DotaApi {
     @GET("search")
     suspend fun searchPlayers(
         @Query("q") name: String
-    ): List<SearchResponse>
+    ): List<SearchPlayerResponse>
 
     @GET("matches/{match_id}")
     suspend fun getMatch(

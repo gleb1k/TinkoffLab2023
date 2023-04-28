@@ -35,9 +35,7 @@ data class MatchResponse(
     @SerializedName("lobby_type")
     val lobbyType: Int,
     @SerializedName("match_id")
-    val matchId: Long,
-    @SerializedName("match_seq_num")
-    val matchSeqNum: Long,
+    val matchId: String,
     @SerializedName("negative_votes")
     val negativeVotes: Int,
     @SerializedName("objectives")
@@ -73,7 +71,7 @@ data class MatchResponse(
     @SerializedName("skill")
     val skill: Any,
     @SerializedName("start_time")
-    val startTime: Int,
+    val startTime: String,
     @SerializedName("teamfights")
     val teamfights: Any,
     @SerializedName("tower_status_dire")

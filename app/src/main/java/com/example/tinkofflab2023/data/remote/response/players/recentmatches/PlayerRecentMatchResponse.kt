@@ -21,7 +21,7 @@ data class PlayerRecentMatchResponse(
     @SerializedName("hero_healing")
     val heroHealing: Int,
     @SerializedName("hero_id")
-    val heroId: Int,
+    val heroId: String,
     @SerializedName("is_roaming")
     val isRoaming: Any,
     @SerializedName("kills")
@@ -45,7 +45,7 @@ data class PlayerRecentMatchResponse(
     @SerializedName("radiant_win")
     val radiantWin: Boolean,
     @SerializedName("start_time")
-    val startTime: Int,
+    val startTime: String,
     @SerializedName("tower_damage")
     val towerDamage: Int,
     @SerializedName("version")

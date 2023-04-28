@@ -3,31 +3,61 @@ package com.example.tinkofflab2023.ui.fragment.search
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
+import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
+import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.di.DataContainer
+import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val searchPlayersUseCase: SearchPlayersUseCase
+    private val searchPlayersUseCase: SearchPlayersUseCase,
+    private val getMatchUseCase: GetMatchUseCase
 ) : ViewModel() {
 
-    private val _playersList = MutableLiveData<List<SearchResponse>?>(null)
-    val playersList: LiveData<List<SearchResponse>?>
-        get() = _playersList
+    private val _viewList = MutableLiveData<ArrayList<Any>?>(null)
+    val viewList: LiveData<ArrayList<Any>?>
+        get() = _viewList
 
-    fun onSearchClick(name: String){
-        searchPlayers(name)
+    private val _error = MutableLiveData<Boolean>(false)
+    val error: LiveData<Boolean>
+        get() = _error
+
+
+    fun onSearchClick(query: String?) {
+        generateList(query)
     }
 
-    private fun searchPlayers(name: String) {
-        if (name.length < 3)
-            //оздать отдельную лайвдату для ошибки
-            //todo view.showSnackbar("Минимальная длинна никнейма 3 символа")
-            //как мне вывести снак бар не имея вьюшки?
+    //todo на вьюшку прихоидит только  _viewList.value = arrayListOf() а остальное куда-то пропадает, хотя в лайвдату записывается
+    private fun generateList(query: String?) {
+        if (query==null)
             return
+        _viewList.value = arrayListOf()
         viewModelScope.launch {
-            _playersList.value = searchPlayersUseCase.invoke(name)
+            searchMatch(query)?.also {
+                _viewList.value?.add(it)
+            }
+            searchPlayers(query).also {
+                val temp = it
+                _viewList.value?.add(it[0])
+                _viewList.value?.addAll(temp)
+            }
+        }
+    }
+
+    private suspend fun searchPlayers(name: String): List<SearchPlayerResponse> {
+        if (name.length < 3) {
+            _error.value = true
+            return listOf()
+        }
+        return searchPlayersUseCase(name)
+    }
+
+    private suspend fun searchMatch(matchId: String): MatchResponse? {
+        return try {
+            getMatchUseCase(matchId)
+        } catch (ex: Throwable) {
+            null
         }
     }
 
@@ -35,7 +65,8 @@ class SearchViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val searchPlayersUseCase = DataContainer.searchPlayersUseCase
-                SearchViewModel(searchPlayersUseCase)
+                val getMatchUseCase = DataContainer.getMatchUseCase
+                SearchViewModel(searchPlayersUseCase, getMatchUseCase)
             }
         }
     }

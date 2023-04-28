@@ -4,16 +4,16 @@ import android.content.Context
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.data.Constants
-import com.example.tinkofflab2023.ui.model.match.TeamPlayer
+import com.example.tinkofflab2023.ui.model.match.TeamPlayerItem
 import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
 import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 
 class TeamPlayerDelegateAdapter(
     private val glide: RequestManager,
     private val context: Context,
-) : ViewBindingDelegateAdapter<TeamPlayer, TeamPlayerItemBinding>
+) : ViewBindingDelegateAdapter<TeamPlayerItem, TeamPlayerItemBinding>
     (TeamPlayerItemBinding::inflate) {
-    override fun TeamPlayerItemBinding.onBind(item: TeamPlayer) {
+    override fun TeamPlayerItemBinding.onBind(item: TeamPlayerItem) {
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
@@ -26,14 +26,14 @@ class TeamPlayerDelegateAdapter(
             tvAssists.text = "$assists"
             tvNet.text = "$net"
             glide
-                .load(heroImg)
+                .load(Constants.DOTA_API_IMAGE_URL + heroImg)
                 .placeholder(circularProgressDrawable)
                 .into(ivHero)
         }
     }
 
-    override fun isForViewType(item: Any): Boolean = item is TeamPlayer
+    override fun isForViewType(item: Any): Boolean = item is TeamPlayerItem
 
-    override fun TeamPlayer.getItemId(): Any = playerSlot
+    override fun TeamPlayerItem.getItemId(): Any = playerSlot
 }
 

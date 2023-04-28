@@ -58,4 +58,7 @@ object DataContainer {
     val getTeamsPlayersUseCase: GetTeamsPlayersUseCase
         get() = GetTeamsPlayersUseCase(dotaRepository)
 
+    val getPlayerOverviewModelUseCase: GetPlayerOverviewModelUseCase
+        get() = GetPlayerOverviewModelUseCase(dotaRepository)
+
 }
