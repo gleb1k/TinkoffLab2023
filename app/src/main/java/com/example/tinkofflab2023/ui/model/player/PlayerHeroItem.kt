@@ -6,4 +6,4 @@ import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHero
 data class PlayerHeroItem(
     val playerHeroResponse: PlayerHeroResponse,
     val heroResponse: HeroResponse
-    )
+)

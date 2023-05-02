@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_hero"
         app:layout_constraintTop_toTopOf="parent"
-        android:maxWidth="140dp"/>
+        android:maxWidth="140dp" />
 
     <TextView
         android:id="@+id/tv_net"

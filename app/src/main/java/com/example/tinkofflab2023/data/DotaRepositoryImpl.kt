@@ -10,22 +10,24 @@ import com.example.tinkofflab2023.data.remote.response.players.recentmatches.Pla
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.domain.DotaRepository
-import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
-import com.example.tinkofflab2023.ui.model.match.TeamPlayerItem
+import com.example.tinkofflab2023.ui.model.match.MatchOverviewModel
+import com.example.tinkofflab2023.ui.model.match.MatchPlayerHeroItem
 import com.example.tinkofflab2023.ui.model.player.PlayerHeaderItem
 import com.example.tinkofflab2023.ui.model.player.PlayerHeroItem
 import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
 import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
+import com.example.tinkofflab2023.utils.getTeamsOutcomes
 
 class DotaRepositoryImpl(
     private val api: DotaApi
 ) : DotaRepository {
 
-    override suspend fun getMatch(matchId: String): MatchResponse =
-        api.getMatch(matchId)
+    override suspend fun getMatch(matchId: String): MatchResponse {
+        return api.getMatch(matchId)
+    }
 
     override suspend fun searchPlayers(name: String): List<SearchPlayerResponse> =
-        api.searchPlayers(name)
+        api.searchPlayers(name).subList(0, 24)
 
     override suspend fun getPlayerData(accountId: String): PlayerDataResponse =
         api.getPlayerData(accountId)
@@ -45,71 +47,36 @@ class DotaRepositoryImpl(
     override suspend fun getItems(): ItemsResponse =
         api.getItems()
 
-    //todo СУПЕР ВАЖНО. Возвращение правильного типа для ячейки рекуклера. Тоесть нужно наколхозить нечто такое?
-    //HeroItemData будет содержать данные о всех персонажах и данные о топ персонажах для игрока
-//    suspend fun getPlayerHeroItemData(accountId: String) : HeroItemData {
-//       return api.getPlayerHeroes(accountId) + api.getHeroes()
-//    }
-
     //region match
-    override suspend fun getTeamsPlayers(matchId: String): List<TeamPlayerItem> {
-        val matchResponse = getMatch(matchId)
-        val heroesResponse = getHeroes()
+    override suspend fun getMatchOverviewModel(matchId: String): MatchOverviewModel {
+        val heroes = getHeroes()
+        val match = getMatch(matchId)
 
-        val teamPlayerItems = ArrayList<TeamPlayerItem>(10)
-        matchResponse.players.forEach {
-            teamPlayerItems +=
-                TeamPlayerItem(
-                    playerSlot = it.playerSlot,
-                    name = it.personaname ?: "Закрытый профиль",
-                    kills = it.kills,
-                    assists = it.assists,
-                    deaths = it.deaths,
-                    net = it.netWorth,
-                    heroId = it.heroId,
-                    heroImg = heroesResponse[it.heroId.toString()]?.img ?: ""
-                )
-        }
-        return teamPlayerItems
-    }
-
-    //NASRAL
-    override suspend fun getTeamsOutcomes(matchId: String): List<TeamOutcomeItem> {
-        val matchResponse = getMatch(matchId)
-
-        var killsR = 0
-        var deathsR = 0
-        var assistsR = 0
-        var netR = 0
-
-        var killsD = 0
-        var deathsD = 0
-        var assistsD = 0
-        var netD = 0
-
-        matchResponse.players.forEach {
-            if (it.isRadiant) {
-                killsR += it.kills
-                deathsR += it.deaths
-                assistsR += it.assists
-                netR += it.netWorth
-            } else {
-                killsD += it.kills
-                deathsD += it.deaths
-                assistsD += it.assists
-                netD += it.netWorth
-            }
-        }
-        return listOf(
-            TeamOutcomeItem(true, killsR, deathsR, assistsR, netR),
-            TeamOutcomeItem(false, killsD, deathsD, assistsD, netD),
+        return MatchOverviewModel(
+            matchResponse = match,
+            players = getMatchPlayersWithHeroes(match, heroes),
+            teamOutcomes = match.getTeamsOutcomes()
         )
     }
 
+    private fun getMatchPlayersWithHeroes(
+        match: MatchResponse,
+        heroes: HeroesResponse
+    ): List<MatchPlayerHeroItem> {
+        val matchPlayersHeroes = ArrayList<MatchPlayerHeroItem>()
+
+        match.players.forEach {
+            matchPlayersHeroes += MatchPlayerHeroItem(
+                player = it,
+                heroResponse = heroes[it.heroId.toString()]!!,
+            )
+        }
+        return matchPlayersHeroes
+    }
     //endregion
 
     override suspend fun getPlayerOverviewModel(accountId: String): PlayerOverviewModel {
-        val heroes = api.getHeroes()
+        val heroes = getHeroes()
 
         return PlayerOverviewModel(
             header = getPlayerHeaderItem(accountId),
@@ -120,15 +87,15 @@ class DotaRepositoryImpl(
 
     private suspend fun getPlayerHeaderItem(accountId: String): PlayerHeaderItem =
         PlayerHeaderItem(
-            playerDataResponse = api.getPlayerData(accountId),
-            playerWL = api.getPlayerWL(accountId)
+            playerDataResponse = getPlayerData(accountId),
+            playerWL = getPlayerWL(accountId)
         )
 
     private suspend fun getPlayerHeroesItems(
         accountId: String,
         heroes: HeroesResponse
     ): List<PlayerHeroItem> {
-        val playerHeroes = api.getPlayerHeroes(accountId)
+        val playerHeroes = getPlayerHeroes(accountId)
 
         val listHeroes = ArrayList<PlayerHeroItem>()
 
@@ -145,7 +112,7 @@ class DotaRepositoryImpl(
         accountId: String,
         heroes: HeroesResponse
     ): List<PlayerRecentMatchItem> {
-        val playerRecentMatchesResponse = api.getPlayerRecentMatches(accountId)
+        val playerRecentMatchesResponse = getPlayerRecentMatches(accountId)
 
         val listMatches = ArrayList<PlayerRecentMatchItem>()
 

@@ -28,20 +28,20 @@ class SearchViewModel(
         generateList(query)
     }
 
-    //todo на вьюшку прихоидит только  _viewList.value = arrayListOf() а остальное куда-то пропадает, хотя в лайвдату записывается
     private fun generateList(query: String?) {
-        if (query==null)
+        if (query == null)
             return
-        _viewList.value = arrayListOf()
+
         viewModelScope.launch {
-            searchMatch(query)?.also {
-                _viewList.value?.add(it)
+            val list = ArrayList<Any>().apply {
+                searchMatch(query)?.also {
+                    add(it)
+                }
+                searchPlayers(query).also {
+                    addAll(it)
+                }
             }
-            searchPlayers(query).also {
-                val temp = it
-                _viewList.value?.add(it[0])
-                _viewList.value?.addAll(temp)
-            }
+            _viewList.value = list
         }
     }
 

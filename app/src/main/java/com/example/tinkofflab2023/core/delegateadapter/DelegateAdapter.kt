@@ -1,9 +1,8 @@
-package com.example.tinkofflab2023.ui.delegateadapter
+package com.example.tinkofflab2023.core.delegateadapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-//todo КУДА закинуть папку с этими интерфейсами всякими?
 interface DelegateAdapter {
     // same rv.adapter methods to delegate
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder

@@ -1,7 +1,6 @@
 package com.example.tinkofflab2023
 
 import android.app.Application
-import com.github.terrakok.cicerone.Cicerone
 
 
 class App : Application() {

@@ -1,9 +1,9 @@
 package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
 import com.bumptech.glide.RequestManager
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.HeroItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.ui.model.player.PlayerHeroItem
 import com.example.tinkofflab2023.utils.Converter
 
@@ -15,8 +15,18 @@ class HeroDelegateAdapter(
         with(item) {
             tvMatches.text = "${playerHeroResponse.games}"
             tvLastPlayed.text = "${Converter.epochToDate(playerHeroResponse.lastPlayed)}"
-            tvWl.text = "${Converter.wl(playerHeroResponse.win, playerHeroResponse.games - playerHeroResponse.win)}"
-            tvWinrate.text = "${Converter.winrate(playerHeroResponse.win, playerHeroResponse.games - playerHeroResponse.win)}"
+            tvWl.text = "${
+                Converter.wl(
+                    playerHeroResponse.win,
+                    playerHeroResponse.games - playerHeroResponse.win
+                )
+            }"
+            tvWinrate.text = "${
+                Converter.winrate(
+                    playerHeroResponse.win,
+                    playerHeroResponse.games - playerHeroResponse.win
+                )
+            }"
             glide
                 .load(Constants.DOTA_API_IMAGE_URL + heroResponse.img)
                 .into(ivHero)

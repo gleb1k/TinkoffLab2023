@@ -1,28 +1,37 @@
 package com.example.tinkofflab2023.ui.fragment.player
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
+import com.example.tinkofflab2023.utils.showSnackbar
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     private var binding: FragmentPlayerBinding? = null
 
-    private var accountId : String = ""
+    private var accountId: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.getString(ACCOUNT_ID_TAG)?.let {
             accountId = it
         }
     }
 
-    //todo почему дергается этот фрагмент, когда навигируюсь на совершенно другие экраны
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpToolBar()
         binding = FragmentPlayerBinding.bind(view)
 
         val tabLayout = binding!!.tabLayout
@@ -36,6 +45,39 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                 else -> tab.text = "Heroes"
             }
         }.attach()
+    }
+
+    private fun setUpToolBar() {
+        val menuHost: MenuHost = requireActivity().also {
+            if (it is ActivityToolBar){
+                it.changeToolBarTitle("Player $accountId")
+            }
+        }
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.top_app_bar, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
+                    R.id.action_heart -> addToFavorite()
+                }
+                return true
+            }
+
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    //todo nasral
+    private fun addToFavorite() {
+        binding?.root?.showSnackbar("added to favorite")
+//
+//        lifecycleScope.launch {
+//            DataContainer.getPlayerOverviewModelUseCase(accountId).also {
+//                Constants.favoritePLayers.add(it.)
+//            }
+//        }
     }
 
     override fun onDestroy() {

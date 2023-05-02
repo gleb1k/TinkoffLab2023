@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/hero_item"
-        tools:itemCount="10"/>
+        tools:itemCount="10" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

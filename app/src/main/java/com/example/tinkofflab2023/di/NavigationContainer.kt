@@ -17,9 +17,13 @@ object NavigationContainer {
 
     fun Main() = FragmentScreen { TestFragment() }
     fun Search() = FragmentScreen { SearchFragment() }
-    fun Match(matchId: String) = FragmentScreen(matchId) { MatchOverviewFragment.newInstance(matchId) }
+    fun Match(matchId: String) =
+        FragmentScreen(matchId) { MatchOverviewFragment.newInstance(matchId) }
+
     //fragmentScreen key == accountId
-    fun Player(accountId: String) = FragmentScreen(accountId) { PlayerFragment.newInstance(accountId) }
+    fun Player(accountId: String) =
+        FragmentScreen(accountId) { PlayerFragment.newInstance(accountId) }
+
     fun Settings() = FragmentScreen { SettingsFragment() }
     fun Favorite() = FragmentScreen { FavoriteFragment() }
 

@@ -3,12 +3,11 @@ package com.example.tinkofflab2023.ui.fragment.search.adapter
 import android.content.Context
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.RequestManager
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.utils.Converter
 
-//todo как провайдить контекст в адаптеры? или сразу дравабле в конструктор передавать?
 class SearchPlayerDelegateAdapter(
     private val glide: RequestManager,
     private val onItemClick: (String) -> Unit,
@@ -17,6 +16,9 @@ class SearchPlayerDelegateAdapter(
     SearchPlayerItemBinding::inflate
 ) {
     override fun SearchPlayerItemBinding.onBind(item: SearchPlayerResponse) {
+
+        //todo context
+        this.root.context
 
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
@@ -30,7 +32,7 @@ class SearchPlayerDelegateAdapter(
             .placeholder(circularProgressDrawable)
             .into(ivIcon)
 
-        root.setOnClickListener {
+        cardView.setOnClickListener {
             onItemClick(item.accountId)
         }
     }

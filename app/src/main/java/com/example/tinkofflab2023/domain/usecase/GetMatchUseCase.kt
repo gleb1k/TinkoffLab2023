@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.domain.DotaRepository
 
 class GetMatchUseCase(
     private val dotaRepository: DotaRepository
-): UseCase {
+) : UseCase {
     suspend operator fun invoke(
         matchId: String
     ): MatchResponse = dotaRepository.getMatch(matchId)

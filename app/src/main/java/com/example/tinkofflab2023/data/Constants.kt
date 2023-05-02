@@ -1,5 +1,8 @@
 package com.example.tinkofflab2023.data
 
+import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
+import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
+
 
 object Constants {
     const val BASE_DOTA_API_URL = "https://api.opendota.com/api/"
@@ -7,6 +10,10 @@ object Constants {
 
     const val RADIANT = "RADIANT"
     const val DIRE = "DIRE"
+
+    var favoritePLayers = arrayListOf<PlayerDataResponse>()
+
+    var favoriteMatches = arrayListOf<MatchResponse>()
 
     val lobbyTypes = mapOf(
         0 to "Normal",

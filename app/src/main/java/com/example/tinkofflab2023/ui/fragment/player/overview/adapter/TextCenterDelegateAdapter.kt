@@ -1,9 +1,8 @@
 package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TextCenterItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 
-//todo String == bad ?
 class TextCenterDelegateAdapter :
     ViewBindingDelegateAdapter<String, TextCenterItemBinding>(TextCenterItemBinding::inflate) {
     override fun TextCenterItemBinding.onBind(item: String) {

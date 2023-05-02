@@ -52,13 +52,9 @@ object DataContainer {
     val getHeroesUseCase: GetHeroesUseCase
         get() = GetHeroesUseCase(dotaRepository)
 
-    val getTeamsOutcomesUseCase: GetTeamsOutcomesUseCase
-        get() = GetTeamsOutcomesUseCase(dotaRepository)
-
-    val getTeamsPlayersUseCase: GetTeamsPlayersUseCase
-        get() = GetTeamsPlayersUseCase(dotaRepository)
-
     val getPlayerOverviewModelUseCase: GetPlayerOverviewModelUseCase
         get() = GetPlayerOverviewModelUseCase(dotaRepository)
 
+    val getMatchOverviewModelUseCase: GetMatchOverviewModelUseCase
+        get() = GetMatchOverviewModelUseCase(dotaRepository)
 }

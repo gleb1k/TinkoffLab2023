@@ -1,9 +1,9 @@
 package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
 import com.bumptech.glide.RequestManager
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.MatchItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
 import com.example.tinkofflab2023.utils.Converter
 

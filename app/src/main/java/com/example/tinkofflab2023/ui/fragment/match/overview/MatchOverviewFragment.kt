@@ -1,18 +1,31 @@
 package com.example.tinkofflab2023.ui.fragment.match.overview
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.core.ActivityToolBar
+import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
+import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
-import com.example.tinkofflab2023.ui.delegateadapter.CompositeDelegateAdapter
+import com.example.tinkofflab2023.di.DataContainer
+import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.MatchHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamOutcomeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamPlayerDelegateAdapter
+import com.example.tinkofflab2023.utils.showSnackbar
+import kotlinx.coroutines.launch
 
 class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
@@ -34,7 +47,11 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
             MatchHeaderDelegateAdapter(),
             TeamHeaderDelegateAdapter(),
             TeamOutcomeDelegateAdapter(),
-            TeamPlayerDelegateAdapter(glide,requireContext())
+            TeamPlayerDelegateAdapter(
+                glide,
+                ::onPlayerClick,
+                requireContext()
+            )
         )
 
         arguments?.getString(MATCH_ID_TAG)?.let {
@@ -46,13 +63,62 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMatchBinding.bind(view)
-
+        setUpToolBar()
         binding?.run {
             rvOverview.layoutManager = LinearLayoutManager(context)
             rvOverview.adapter = adapter
             viewModel.viewList.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 adapter?.swapData(it)
+            }
+        }
+    }
+
+    private fun onPlayerClick(accountId: String?) {
+        if (accountId == null) {
+            binding?.root?.showSnackbar("Profile Closed")
+            return
+        }
+        NavigationContainer.router.navigateTo(NavigationContainer.Player(accountId))
+    }
+
+    private fun setUpToolBar() {
+
+        val menuHost: MenuHost = requireActivity().also {
+            if (it is ActivityToolBar){
+                it.changeToolBarTitle("Match $matchId")
+            }
+        }
+
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.top_app_bar, menu)
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
+                    R.id.action_heart -> addToFavorite()
+                }
+                return true
+            }
+
+            override fun onMenuClosed(menu: Menu) {
+                super.onMenuClosed(menu)
+
+            }
+
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    //todo nasral
+    private fun addToFavorite() {
+        binding?.root?.showSnackbar("added to favorite")
+
+        lifecycleScope.launch {
+            DataContainer.getMatchUseCase(matchId).also {
+                Constants.favoriteMatches.add(it)
             }
         }
     }
@@ -66,10 +132,11 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
         const val MATCH_ID_TAG = "MATCH_ID_TAG"
 
-        fun newInstance(message: String, tag: String = MATCH_ID_TAG) = MatchOverviewFragment().apply {
-            arguments = Bundle().apply {
-                putString(tag, message)
+        fun newInstance(message: String, tag: String = MATCH_ID_TAG) =
+            MatchOverviewFragment().apply {
+                arguments = Bundle().apply {
+                    putString(tag, message)
+                }
             }
-        }
     }
 }

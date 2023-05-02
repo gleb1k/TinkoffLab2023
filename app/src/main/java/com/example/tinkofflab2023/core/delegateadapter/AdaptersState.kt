@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.delegateadapter
+package com.example.tinkofflab2023.core.delegateadapter
 
 /**
  * Class to hold [CompositeDelegateAdapter]'s adapters and data.

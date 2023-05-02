@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.delegateadapter
+package com.example.tinkofflab2023.core.delegateadapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * @author dumchev on 03.11.17.
  */
-open class CompositeDelegateAdapter(vararg adapters: DelegateAdapter) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+open class CompositeDelegateAdapter(vararg adapters: DelegateAdapter) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     //  Contract is: adapters position is used as ViewType.
     protected open var adapterState = AdaptersState(adapters.toList())
 
-    override fun getItemViewType(itemPosition: Int): Int = adapterState.getAdapterPosition(itemPosition)
+    override fun getItemViewType(itemPosition: Int): Int =
+        adapterState.getAdapterPosition(itemPosition)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         adapterState.getAdapter(viewType).onCreateViewHolder(parent, viewType)

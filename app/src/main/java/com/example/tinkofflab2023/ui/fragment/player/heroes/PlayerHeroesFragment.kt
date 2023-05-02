@@ -1,21 +1,14 @@
 package com.example.tinkofflab2023.ui.fragment.player.heroes
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerHeroesBinding
-import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
 import com.example.tinkofflab2023.di.NavigationContainer
-import com.example.tinkofflab2023.ui.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
-import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewViewModel
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.PlayerHeaderDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.TextCenterDelegateAdapter
 
 class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
 

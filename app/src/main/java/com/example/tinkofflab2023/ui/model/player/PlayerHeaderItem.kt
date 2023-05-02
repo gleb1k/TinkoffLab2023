@@ -5,5 +5,5 @@ import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLRespon
 
 data class PlayerHeaderItem(
     val playerDataResponse: PlayerDataResponse,
-    val playerWL : PlayerWLResponse,
+    val playerWL: PlayerWLResponse,
 )

@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
 import com.example.tinkofflab2023.di.NavigationContainer
-import com.example.tinkofflab2023.ui.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.PlayerHeaderDelegateAdapter

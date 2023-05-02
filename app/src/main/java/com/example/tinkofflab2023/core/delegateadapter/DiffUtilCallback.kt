@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.delegateadapter
+package com.example.tinkofflab2023.core.delegateadapter
 
 import androidx.recyclerview.widget.DiffUtil
 

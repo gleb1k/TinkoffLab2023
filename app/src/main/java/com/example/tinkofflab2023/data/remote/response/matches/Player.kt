@@ -13,7 +13,7 @@ data class Player(
     @SerializedName("ability_uses")
     val abilityUses: Any,
     @SerializedName("account_id")
-    val accountId: String,
+    val accountId: String?,
     @SerializedName("actions")
     val actions: Any,
     @SerializedName("additional_units")
@@ -142,8 +142,6 @@ data class Player(
     val maxHeroHit: Any,
     @SerializedName("multi_kills")
     val multiKills: Any,
-    @SerializedName("name")
-    val name: Any,
     @SerializedName("net_worth")
     val netWorth: Int,
     @SerializedName("obs")

@@ -1,11 +1,12 @@
 package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
 
-import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TeamOutcomeItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
+import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
 
-class TeamOutcomeDelegateAdapter : ViewBindingDelegateAdapter<TeamOutcomeItem, TeamOutcomeItemBinding>
-    (TeamOutcomeItemBinding::inflate) {
+class TeamOutcomeDelegateAdapter :
+    ViewBindingDelegateAdapter<TeamOutcomeItem, TeamOutcomeItemBinding>
+        (TeamOutcomeItemBinding::inflate) {
     override fun TeamOutcomeItemBinding.onBind(item: TeamOutcomeItem) {
         with(item) {
             tvKills.text = "$summaryKills"

@@ -1,7 +1,5 @@
 package com.example.tinkofflab2023.domain
 
-import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
-import com.example.tinkofflab2023.ui.model.match.TeamPlayerItem
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
@@ -10,6 +8,7 @@ import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHero
 import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
+import com.example.tinkofflab2023.ui.model.match.MatchOverviewModel
 import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
 
 interface DotaRepository {
@@ -26,15 +25,12 @@ interface DotaRepository {
 
     suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse
 
-    suspend fun getHeroes() : HeroesResponse
+    suspend fun getHeroes(): HeroesResponse
 
-    suspend fun getItems() : ItemsResponse
+    suspend fun getItems(): ItemsResponse
 
-    suspend fun getTeamsPlayers(matchId: String) : List<TeamPlayerItem>
+    suspend fun getMatchOverviewModel(matchId: String): MatchOverviewModel
 
-    suspend fun getTeamsOutcomes(matchId: String) :  List<TeamOutcomeItem>
+    suspend fun getPlayerOverviewModel(accountId: String): PlayerOverviewModel
 
-//    suspend fun getModelForMatchFragment(matchId: String) : MatchModel
-
-    suspend fun getPlayerOverviewModel(accountId: String) : PlayerOverviewModel
 }

@@ -1,9 +1,9 @@
 package com.example.tinkofflab2023.ui.fragment.search.adapter
 
+import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.databinding.SearchMatchItemBinding
-import com.example.tinkofflab2023.ui.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.utils.Converter
 
 class SearchMatchDelegateAdapter(
@@ -14,9 +14,9 @@ class SearchMatchDelegateAdapter(
         tvGameMode.text = Constants.gameModes[item.gameMode]
         tvLobbyType.text = Constants.lobbyTypes[item.lobbyType]
         tvMatch.text = item.matchId
-        tvTime.text = Converter.toDate(item.startTime)
+        tvTime.text = Converter.epochToDate(item.startTime)
 
-        root.setOnClickListener {
+        cardView.setOnClickListener {
             onItemClick(item.matchId)
         }
     }
