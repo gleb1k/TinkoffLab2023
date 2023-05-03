@@ -5,6 +5,8 @@ import com.example.tinkofflab2023.core.App
 import com.example.tinkofflab2023.data.*
 import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.remote.DotaApi
+import com.example.tinkofflab2023.data.repository.*
+import com.example.tinkofflab2023.domain.SearchRepository
 import com.example.tinkofflab2023.domain.usecase.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -35,45 +37,25 @@ object DataContainer {
 
     private val repositoryLocal = DotaRepositoryLocal(db)
 
-    private val repositoryRemote = DotaRepositoryRemote(
-        api
-    )
+    private val repositoryRemote = DotaRepositoryRemote(api)
 
     private val repository = Repository(
         repositoryLocal,
         repositoryRemote
     )
 
-    //todo delete
-    private val dotaRepository = DotaRepositoryImpl(api)
+    val getPlayerModelUseCase: GetPlayerModelUseCase
+        get() = GetPlayerModelUseCase(repository)
+
+    val getMatchModelUseCase: GetMatchModelUseCase
+        get() = GetMatchModelUseCase(repository)
+
+    private val searchRepository = SearchRepositoryImpl(api)
 
     val getMatchUseCase: GetMatchUseCase
-        get() = GetMatchUseCase(dotaRepository)
+        get() = GetMatchUseCase(searchRepository)
 
     val searchPlayersUseCase: SearchPlayersUseCase
-        get() = SearchPlayersUseCase(dotaRepository)
+        get() = SearchPlayersUseCase(searchRepository)
 
-    val getPlayerHeroesUseCase: GetPlayerHeroesUseCase
-        get() = GetPlayerHeroesUseCase(dotaRepository)
-
-    val getPlayerResentMatchesUseCase: GetPlayerResentMatchesUseCase
-        get() = GetPlayerResentMatchesUseCase(dotaRepository)
-
-    val getPlayerDataUseCase: GetPlayerDataUseCase
-        get() = GetPlayerDataUseCase(dotaRepository)
-
-    val getPlayerWLUseCase: GetPlayerWLUseCase
-        get() = GetPlayerWLUseCase(dotaRepository)
-
-    val getItems: GetItemsUseCase
-        get() = GetItemsUseCase(dotaRepository)
-
-    val getHeroesUseCase: GetHeroesUseCase
-        get() = GetHeroesUseCase(dotaRepository)
-
-    val getPlayerModelUseCase: GetPlayerModelUseCase
-        get() = GetPlayerModelUseCase(dotaRepository)
-
-    val getMatchOverviewModelUseCase: GetMatchOverviewModelUseCase
-        get() = GetMatchOverviewModelUseCase(dotaRepository)
 }

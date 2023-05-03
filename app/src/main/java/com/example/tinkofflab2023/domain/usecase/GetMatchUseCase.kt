@@ -2,11 +2,12 @@ package com.example.tinkofflab2023.domain.usecase
 
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.domain.DotaRepository
+import com.example.tinkofflab2023.domain.SearchRepository
 
 class GetMatchUseCase(
-    private val dotaRepository: DotaRepository
+    private val searchRepository: SearchRepository
 ) : UseCase {
     suspend operator fun invoke(
         matchId: String
-    ): MatchResponse = dotaRepository.getMatch(matchId)
+    ): MatchResponse = searchRepository.getMatch(matchId)
 }

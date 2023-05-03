@@ -13,20 +13,17 @@ import com.example.tinkofflab2023.ui.fragment.player.model.PlayerModel
 
 interface DotaRepository {
 
-    suspend fun getMatch(matchId: String): MatchResponse
+//    suspend fun getPlayerData(accountId: String): PlayerDataResponse
+//
+//    suspend fun getPlayerWL(accountId: String): PlayerWLResponse
+//
+//    suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse
+//
+//    suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse
 
-    suspend fun getPlayerData(accountId: String): PlayerDataResponse
-
-    suspend fun searchPlayers(name: String): List<SearchPlayerResponse>
-
-    suspend fun getPlayerWL(accountId: String): PlayerWLResponse
-
-    suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse
-    suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse
-
-    suspend fun getHeroes(): HeroesResponse
-
-    suspend fun getItems(): ItemsResponse
+//    suspend fun getHeroes(): HeroesResponse
+//
+//    suspend fun getItems(): ItemsResponse
 
     suspend fun getMatchModel(matchId: String): MatchModel
 

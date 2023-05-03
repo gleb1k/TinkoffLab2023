@@ -2,11 +2,12 @@ package com.example.tinkofflab2023.domain.usecase
 
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.domain.DotaRepository
+import com.example.tinkofflab2023.domain.SearchRepository
 
 class SearchPlayersUseCase(
-    private val dotaRepository: DotaRepository
+    private val searchRepository: SearchRepository
 ) : UseCase {
     suspend operator fun invoke(
         name: String
-    ): List<SearchPlayerResponse> = dotaRepository.searchPlayers(name)
+    ): List<SearchPlayerResponse> = searchRepository.searchPlayers(name)
 }
