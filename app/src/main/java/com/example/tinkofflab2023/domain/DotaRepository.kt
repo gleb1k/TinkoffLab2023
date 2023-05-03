@@ -8,8 +8,8 @@ import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHero
 import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
-import com.example.tinkofflab2023.ui.model.match.MatchOverviewModel
-import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
+import com.example.tinkofflab2023.ui.fragment.match.model.MatchModel
+import com.example.tinkofflab2023.ui.fragment.player.model.PlayerModel
 
 interface DotaRepository {
 
@@ -22,15 +22,13 @@ interface DotaRepository {
     suspend fun getPlayerWL(accountId: String): PlayerWLResponse
 
     suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse
-
     suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse
 
     suspend fun getHeroes(): HeroesResponse
 
     suspend fun getItems(): ItemsResponse
 
-    suspend fun getMatchOverviewModel(matchId: String): MatchOverviewModel
+    suspend fun getMatchModel(matchId: String): MatchModel
 
-    suspend fun getPlayerOverviewModel(accountId: String): PlayerOverviewModel
-
+    suspend fun getPlayerModel(accountId: String): PlayerModel
 }

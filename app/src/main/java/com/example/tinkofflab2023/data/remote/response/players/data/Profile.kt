@@ -5,15 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class Profile(
     @SerializedName("account_id")
-    val accountId: Int,
+    val accountId: String,
     @SerializedName("avatar")
     val avatar: String,
     @SerializedName("avatarfull")
     val avatarfull: String,
     @SerializedName("avatarmedium")
     val avatarmedium: String,
-//    @SerializedName("cheese")
-//    val cheese: Int,
     @SerializedName("last_login")
     val lastLogin: String,
     @SerializedName("loccountrycode")

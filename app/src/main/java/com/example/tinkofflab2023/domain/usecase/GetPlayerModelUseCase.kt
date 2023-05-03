@@ -1,12 +1,12 @@
 package com.example.tinkofflab2023.domain.usecase
 
 import com.example.tinkofflab2023.domain.DotaRepository
-import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
+import com.example.tinkofflab2023.ui.model.player.PlayerEntity
 
-class GetPlayerOverviewModelUseCase(
+class GetPlayerModelUseCase(
     private val dotaRepository: DotaRepository
 ) : UseCase {
     suspend operator fun invoke(
         accountId: String
-    ): PlayerOverviewModel = dotaRepository.getPlayerOverviewModel(accountId)
+    ): PlayerEntity = dotaRepository.getPlayerModel(accountId)
 }

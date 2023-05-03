@@ -6,7 +6,7 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
-import com.example.tinkofflab2023.ui.model.match.MatchPlayerHeroItem
+import com.example.tinkofflab2023.ui.fragment.match.model.MatchPlayerHeroItem
 
 class TeamPlayerDelegateAdapter(
     private val glide: RequestManager,

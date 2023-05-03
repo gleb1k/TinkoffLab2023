@@ -4,11 +4,11 @@ import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.domain.usecase.GetPlayerOverviewModelUseCase
+import com.example.tinkofflab2023.domain.usecase.GetPlayerModelUseCase
 import kotlinx.coroutines.launch
 
 class PlayerOverviewViewModel(
-    private val getPlayerOverviewModelUseCase: GetPlayerOverviewModelUseCase,
+    private val getPlayerModelUseCase: GetPlayerModelUseCase,
 ) : ViewModel() {
 
     private val _viewList = MutableLiveData<ArrayList<Any>?>(null)
@@ -23,7 +23,7 @@ class PlayerOverviewViewModel(
 
     private fun generateView(accountId: String) {
         viewModelScope.launch {
-            val model = getPlayerOverviewModelUseCase(accountId)
+            val model = getPlayerModelUseCase(accountId)
             _viewList.value = ArrayList<Any>(13).apply {
                 add(model.header)
                 add("Latest Matches")
@@ -45,7 +45,7 @@ class PlayerOverviewViewModel(
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val getPlayerOverviewModelUseCase = DataContainer.getPlayerOverviewModelUseCase
+                val getPlayerOverviewModelUseCase = DataContainer.getPlayerModelUseCase
 
                 PlayerOverviewViewModel(
                     getPlayerOverviewModelUseCase,

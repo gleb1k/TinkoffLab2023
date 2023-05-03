@@ -8,6 +8,8 @@ object Constants {
     const val BASE_DOTA_API_URL = "https://api.opendota.com/api/"
     const val DOTA_API_IMAGE_URL = "https://api.opendota.com"
 
+    const val DOTA_DATABASE_NAME = "dota_db"
+
     const val RADIANT = "RADIANT"
     const val DIRE = "DIRE"
 

@@ -53,6 +53,13 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
+    // region Room
+    def  room = '2.4.3'
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    kapt "androidx.room:room-compiler:$room"
+    // endregion
+
     // region Network
     def retrofit = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit"

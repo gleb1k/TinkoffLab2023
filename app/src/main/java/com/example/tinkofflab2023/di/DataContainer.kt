@@ -1,14 +1,16 @@
 package com.example.tinkofflab2023.di
 
-import com.example.tinkofflab2023.data.Constants
-import com.example.tinkofflab2023.data.DotaRepositoryImpl
+import androidx.room.Room
+import com.example.tinkofflab2023.core.App
+import com.example.tinkofflab2023.data.*
+import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.usecase.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//временная мера, потом будет Dagger,                                               или нет
+//временная мера, потом будет Dagger,                  или нет
 object DataContainer {
 
     private val httpClient by lazy {
@@ -24,9 +26,26 @@ object DataContainer {
             .build()
     }
 
-    private val dotaApi = retrofit.create(DotaApi::class.java)
+    private val api = retrofit.create(DotaApi::class.java)
 
-    private val dotaRepository = DotaRepositoryImpl(dotaApi)
+    private val db by lazy {
+        Room.databaseBuilder(App.INSTANCE, AppDatabase::class.java, Constants.DOTA_DATABASE_NAME)
+            .build()
+    }
+
+    private val repositoryLocal = DotaRepositoryLocal(db)
+
+    private val repositoryRemote = DotaRepositoryRemote(
+        api
+    )
+
+    private val repository = Repository(
+        repositoryLocal,
+        repositoryRemote
+    )
+
+    //todo delete
+    private val dotaRepository = DotaRepositoryImpl(api)
 
     val getMatchUseCase: GetMatchUseCase
         get() = GetMatchUseCase(dotaRepository)
@@ -52,8 +71,8 @@ object DataContainer {
     val getHeroesUseCase: GetHeroesUseCase
         get() = GetHeroesUseCase(dotaRepository)
 
-    val getPlayerOverviewModelUseCase: GetPlayerOverviewModelUseCase
-        get() = GetPlayerOverviewModelUseCase(dotaRepository)
+    val getPlayerModelUseCase: GetPlayerModelUseCase
+        get() = GetPlayerModelUseCase(dotaRepository)
 
     val getMatchOverviewModelUseCase: GetMatchOverviewModelUseCase
         get() = GetMatchOverviewModelUseCase(dotaRepository)

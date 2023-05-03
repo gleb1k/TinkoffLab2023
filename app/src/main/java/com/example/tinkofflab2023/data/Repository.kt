@@ -9,12 +9,12 @@ import com.example.tinkofflab2023.data.remote.response.players.recentmatches.Pla
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.domain.DotaRepository
-import com.example.tinkofflab2023.ui.model.match.MatchOverviewModel
-import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
+import com.example.tinkofflab2023.ui.model.match.MatchEntity
+import com.example.tinkofflab2023.ui.model.player.PlayerEntity
 
 class Repository(
-    val localRepository: DotaRepositoryLocal,
-    val remoteRepository: DotaRepository
+    val repositoryLocal: DotaRepositoryLocal,
+    val repositoryRemote: DotaRepositoryRemote
 ) : DotaRepository {
     override suspend fun getMatch(matchId: String): MatchResponse {
         TODO("Not yet implemented")
@@ -48,11 +48,11 @@ class Repository(
         TODO("Not yet implemented")
     }
 
-    override suspend fun getMatchOverviewModel(matchId: String): MatchOverviewModel {
+    override suspend fun getMatchModel(matchId: String): MatchEntity {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getPlayerOverviewModel(accountId: String): PlayerOverviewModel {
+    override suspend fun getPlayerModel(accountId: String): PlayerEntity {
         TODO("Not yet implemented")
     }
 }

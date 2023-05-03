@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.model.match
+package com.example.tinkofflab2023.ui.fragment.match.model
 
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroResponse
 import com.example.tinkofflab2023.data.remote.response.matches.Player

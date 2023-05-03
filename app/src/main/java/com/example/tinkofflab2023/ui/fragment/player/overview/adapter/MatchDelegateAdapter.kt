@@ -4,7 +4,7 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.MatchItemBinding
-import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
+import com.example.tinkofflab2023.ui.fragment.player.model.PlayerRecentMatchItem
 import com.example.tinkofflab2023.core.utils.Converter
 
 class MatchDelegateAdapter(

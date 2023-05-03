@@ -10,12 +10,12 @@ import com.example.tinkofflab2023.data.remote.response.players.recentmatches.Pla
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.domain.DotaRepository
-import com.example.tinkofflab2023.ui.model.match.MatchOverviewModel
-import com.example.tinkofflab2023.ui.model.match.MatchPlayerHeroItem
-import com.example.tinkofflab2023.ui.model.player.PlayerHeaderItem
-import com.example.tinkofflab2023.ui.model.player.PlayerHeroItem
-import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
-import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
+import com.example.tinkofflab2023.ui.model.match.MatchEntity
+import com.example.tinkofflab2023.ui.fragment.match.model.MatchPlayerHeroItem
+import com.example.tinkofflab2023.ui.fragment.player.model.PlayerHeaderItem
+import com.example.tinkofflab2023.ui.fragment.player.model.PlayerHeroItem
+import com.example.tinkofflab2023.ui.model.player.PlayerEntity
+import com.example.tinkofflab2023.ui.fragment.player.model.PlayerRecentMatchItem
 import com.example.tinkofflab2023.core.utils.getTeamsOutcomes
 
 class DotaRepositoryImpl(
@@ -48,11 +48,11 @@ class DotaRepositoryImpl(
         api.getItems()
 
     //region match
-    override suspend fun getMatchOverviewModel(matchId: String): MatchOverviewModel {
+    override suspend fun getMatchModel(matchId: String): MatchEntity {
         val heroes = getHeroes()
         val match = getMatch(matchId)
 
-        return MatchOverviewModel(
+        return MatchEntity(
             matchResponse = match,
             players = getMatchPlayersWithHeroes(match, heroes),
             teamOutcomes = match.getTeamsOutcomes()
@@ -75,10 +75,10 @@ class DotaRepositoryImpl(
     }
     //endregion
 
-    override suspend fun getPlayerOverviewModel(accountId: String): PlayerOverviewModel {
+    override suspend fun getPlayerModel(accountId: String): PlayerEntity {
         val heroes = getHeroes()
 
-        return PlayerOverviewModel(
+        return PlayerEntity(
             header = getPlayerHeaderItem(accountId),
             heroes = getPlayerHeroesItems(accountId, heroes),
             recentMatches = getPlayerRecentMatchesItems(accountId, heroes),

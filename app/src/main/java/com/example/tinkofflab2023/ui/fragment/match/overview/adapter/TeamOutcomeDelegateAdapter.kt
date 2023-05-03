@@ -2,7 +2,7 @@ package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TeamOutcomeItemBinding
-import com.example.tinkofflab2023.ui.model.match.TeamOutcomeItem
+import com.example.tinkofflab2023.ui.fragment.match.model.TeamOutcomeItem
 
 class TeamOutcomeDelegateAdapter :
     ViewBindingDelegateAdapter<TeamOutcomeItem, TeamOutcomeItemBinding>

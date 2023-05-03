@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.model.match
+package com.example.tinkofflab2023.ui.fragment.match.model
 
 data class TeamOutcomeItem(
     val isRadiant: Boolean,

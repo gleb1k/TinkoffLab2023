@@ -1,6 +1,6 @@
-package com.example.tinkofflab2023.ui.model.player
+package com.example.tinkofflab2023.ui.fragment.player.model
 
-data class PlayerOverviewModel(
+data class PlayerModel(
     val header: PlayerHeaderItem,
     val heroes: List<PlayerHeroItem>,
     val recentMatches: List<PlayerRecentMatchItem>
