@@ -6,7 +6,7 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
-import com.example.tinkofflab2023.utils.Converter
+import com.example.tinkofflab2023.core.utils.Converter
 
 class SearchPlayerDelegateAdapter(
     private val glide: RequestManager,

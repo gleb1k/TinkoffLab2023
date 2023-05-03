@@ -17,7 +17,7 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentFavoritePlayersBinding
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegateAdapter
-import com.example.tinkofflab2023.utils.showSnackbar
+import com.example.tinkofflab2023.core.utils.showSnackbar
 
 class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
 

@@ -1,10 +1,8 @@
-package com.example.tinkofflab2023
+package com.example.tinkofflab2023.core
 
 import android.app.Application
 
-
 class App : Application() {
-
 
     override fun onCreate() {
         super.onCreate()

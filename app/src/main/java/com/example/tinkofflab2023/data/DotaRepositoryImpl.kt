@@ -16,7 +16,7 @@ import com.example.tinkofflab2023.ui.model.player.PlayerHeaderItem
 import com.example.tinkofflab2023.ui.model.player.PlayerHeroItem
 import com.example.tinkofflab2023.ui.model.player.PlayerOverviewModel
 import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
-import com.example.tinkofflab2023.utils.getTeamsOutcomes
+import com.example.tinkofflab2023.core.utils.getTeamsOutcomes
 
 class DotaRepositoryImpl(
     private val api: DotaApi

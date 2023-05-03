@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.MatchItemBinding
 import com.example.tinkofflab2023.ui.model.player.PlayerRecentMatchItem
-import com.example.tinkofflab2023.utils.Converter
+import com.example.tinkofflab2023.core.utils.Converter
 
 class MatchDelegateAdapter(
     private val glide: RequestManager,

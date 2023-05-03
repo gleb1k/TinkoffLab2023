@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.HeroItemBinding
 import com.example.tinkofflab2023.ui.model.player.PlayerHeroItem
-import com.example.tinkofflab2023.utils.Converter
+import com.example.tinkofflab2023.core.utils.Converter
 
 class HeroDelegateAdapter(
     private val glide: RequestManager,

@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.utils
+package com.example.tinkofflab2023.core.utils
 
 import android.icu.text.SimpleDateFormat
 import java.util.*

@@ -20,7 +20,7 @@ import com.example.tinkofflab2023.databinding.FragmentSearchBinding
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegateAdapter
-import com.example.tinkofflab2023.utils.showSnackbar
+import com.example.tinkofflab2023.core.utils.showSnackbar
 import com.github.terrakok.cicerone.Router
 
 

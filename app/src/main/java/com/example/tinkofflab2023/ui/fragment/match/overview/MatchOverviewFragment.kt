@@ -24,7 +24,7 @@ import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.MatchHeader
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamOutcomeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamPlayerDelegateAdapter
-import com.example.tinkofflab2023.utils.showSnackbar
+import com.example.tinkofflab2023.core.utils.showSnackbar
 import kotlinx.coroutines.launch
 
 class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
