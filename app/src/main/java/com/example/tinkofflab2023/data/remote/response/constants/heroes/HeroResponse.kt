@@ -66,6 +66,4 @@ data class HeroResponse(
     val roles: List<String>,
     @SerializedName("str_gain")
     val strGain: Double,
-    @SerializedName("turn_rate")
-    val turnRate: Any
 )

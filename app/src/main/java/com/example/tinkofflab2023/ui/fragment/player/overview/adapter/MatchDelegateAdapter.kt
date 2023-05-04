@@ -4,16 +4,16 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.core.utils.Converter
 import com.example.tinkofflab2023.data.Constants
-import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.databinding.MatchItemBinding
 
 class MatchDelegateAdapter(
     private val glide: RequestManager,
     private val onMatchClick: (String) -> Unit
 ) :
-    ViewBindingDelegateAdapter<PlayerRecentMatchResponse, MatchItemBinding>(MatchItemBinding::inflate) {
+    ViewBindingDelegateAdapter<PlayerMatchResponse, MatchItemBinding>(MatchItemBinding::inflate) {
 
-    override fun MatchItemBinding.onBind(item: PlayerRecentMatchResponse) {
+    override fun MatchItemBinding.onBind(item: PlayerMatchResponse) {
         with(item) {
             root.setOnClickListener {
                 onMatchClick(matchId)
@@ -41,7 +41,7 @@ class MatchDelegateAdapter(
         }
     }
 
-    override fun isForViewType(item: Any): Boolean = item is PlayerRecentMatchResponse
+    override fun isForViewType(item: Any): Boolean = item is PlayerMatchResponse
 
-    override fun PlayerRecentMatchResponse.getItemId(): Any = matchId
+    override fun PlayerMatchResponse.getItemId(): Any = matchId
 }

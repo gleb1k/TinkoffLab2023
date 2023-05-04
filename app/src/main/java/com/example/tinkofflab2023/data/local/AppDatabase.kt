@@ -2,6 +2,8 @@ package com.example.tinkofflab2023.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.tinkofflab2023.data.local.dao.MatchDao
+import com.example.tinkofflab2023.data.local.dao.PlayerDao
 import com.example.tinkofflab2023.data.local.entity.MatchEntity
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 

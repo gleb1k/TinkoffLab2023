@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.data.local
+package com.example.tinkofflab2023.data.local.dao
 
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.MatchEntity

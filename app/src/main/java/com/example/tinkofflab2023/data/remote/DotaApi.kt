@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResp
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import retrofit2.http.GET
@@ -38,7 +38,12 @@ interface DotaApi {
     @GET("players/{account_id}/recentMatches")
     suspend fun getPlayerRecentMatches(
         @Path("account_id") accountId: String
-    ): PlayerRecentMatchesResponse
+    ): PlayerMatchesResponse
+
+    @GET("players/{account_id}/matches")
+    suspend fun getPlayerMatches(
+        @Path("account_id") accountId: String
+    ): PlayerMatchesResponse
 
     @GET("players/{account_id}/heroes")
     suspend fun getPlayerHeroes(

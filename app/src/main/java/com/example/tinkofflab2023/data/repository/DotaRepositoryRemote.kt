@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.matches.getTeamsOutcomes
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.domain.DotaRepository
 import com.example.tinkofflab2023.ui.fragment.match.model.MatchModel
@@ -91,7 +91,7 @@ class DotaRepositoryRemote(
     private suspend fun getPlayerWL(accountId: String): PlayerWLResponse =
         api.getPlayerWL(accountId)
 
-    private suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse =
+    private suspend fun getPlayerRecentMatches(accountId: String): PlayerMatchesResponse =
         api.getPlayerRecentMatches(accountId)
 
     private suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse =

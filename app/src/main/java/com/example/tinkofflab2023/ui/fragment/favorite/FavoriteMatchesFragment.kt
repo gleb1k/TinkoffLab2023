@@ -14,6 +14,7 @@ import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegate
 class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
 
     private var binding: FragmentFavoriteMatchesBinding? = null
+
     private var adapter: CompositeDelegateAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +44,6 @@ class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
     private fun onMatchClick(matchId: String) {
         NavigationContainer.router.navigateTo(NavigationContainer.Match(matchId))
     }
-
-
 
     override fun onDestroy() {
         super.onDestroy()

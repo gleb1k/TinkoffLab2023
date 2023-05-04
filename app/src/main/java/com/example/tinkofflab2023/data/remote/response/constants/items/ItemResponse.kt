@@ -4,14 +4,14 @@ package com.example.tinkofflab2023.data.remote.response.constants.items
 import com.google.gson.annotations.SerializedName
 
 data class ItemResponse(
-    @SerializedName("attrib")
-    val attrib: List<Any>,
+//    @SerializedName("attrib")
+//    val attrib: List<Any>,
     @SerializedName("cd")
     val cd: Int,
     @SerializedName("charges")
     val charges: Boolean,
-    @SerializedName("components")
-    val components: Any,
+//    @SerializedName("components")
+//    val components: Any,
     @SerializedName("cost")
     val cost: Int,
     @SerializedName("created")

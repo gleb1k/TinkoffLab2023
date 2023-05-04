@@ -6,16 +6,10 @@ import com.google.gson.annotations.SerializedName
 data class Profile(
     @SerializedName("account_id")
     val accountId: String,
-    @SerializedName("avatar")
-    val avatar: String,
     @SerializedName("avatarfull")
     val avatarfull: String,
-    @SerializedName("avatarmedium")
-    val avatarmedium: String,
     @SerializedName("last_login")
     val lastLogin: String,
-    @SerializedName("loccountrycode")
-    val loccountrycode: String,
     @SerializedName("personaname")
     val personaname: String,
     //dota plus
