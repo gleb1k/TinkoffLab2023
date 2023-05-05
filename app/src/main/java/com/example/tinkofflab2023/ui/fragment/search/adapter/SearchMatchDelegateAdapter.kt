@@ -1,10 +1,10 @@
 package com.example.tinkofflab2023.ui.fragment.search.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
+import com.example.tinkofflab2023.core.utils.Converter
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.databinding.SearchMatchItemBinding
-import com.example.tinkofflab2023.core.utils.Converter
 
 class SearchMatchDelegateAdapter(
     private val onItemClick: (String) -> Unit,

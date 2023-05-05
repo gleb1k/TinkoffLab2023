@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
+import com.example.tinkofflab2023.core.utils.showSnackbar
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
 import com.example.tinkofflab2023.di.DataContainer
@@ -24,7 +25,6 @@ import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.MatchHeader
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamOutcomeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamPlayerDelegateAdapter
-import com.example.tinkofflab2023.core.utils.showSnackbar
 import kotlinx.coroutines.launch
 
 class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
@@ -85,7 +85,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
     private fun setUpToolBar() {
 
         val menuHost: MenuHost = requireActivity().also {
-            if (it is ActivityToolBar){
+            if (it is ActivityToolBar) {
                 it.changeToolBarTitle("Match $matchId")
             }
         }

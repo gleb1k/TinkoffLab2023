@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
-import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
 import com.example.tinkofflab2023.core.utils.showSnackbar
+import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PlayerFragment : Fragment(R.layout.fragment_player) {
@@ -49,7 +49,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     private fun setUpToolBar() {
         val menuHost: MenuHost = requireActivity().also {
-            if (it is ActivityToolBar){
+            if (it is ActivityToolBar) {
                 it.changeToolBarTitle("Player $accountId")
             }
         }

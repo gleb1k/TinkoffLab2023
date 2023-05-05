@@ -2,8 +2,8 @@ package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
-import com.example.tinkofflab2023.databinding.PlayerHeaderBinding
 import com.example.tinkofflab2023.core.utils.Converter
+import com.example.tinkofflab2023.databinding.PlayerHeaderBinding
 import com.example.tinkofflab2023.ui.fragment.player.model.PlayerHeaderItem
 
 class PlayerHeaderDelegateAdapter(

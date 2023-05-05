@@ -1,9 +1,9 @@
 package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
+import com.example.tinkofflab2023.core.utils.Converter
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.databinding.MatchHeaderBinding
-import com.example.tinkofflab2023.core.utils.Converter
 
 class MatchHeaderDelegateAdapter : ViewBindingDelegateAdapter<MatchResponse, MatchHeaderBinding>
     (MatchHeaderBinding::inflate) {

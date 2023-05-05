@@ -9,7 +9,6 @@ import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerMatchesBinding
 import com.example.tinkofflab2023.di.NavigationContainer
-import com.example.tinkofflab2023.ui.fragment.player.heroes.PlayerHeroesViewModel
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
 

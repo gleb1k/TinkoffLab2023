@@ -40,6 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main"
-        android:background="@color/purple_500"/>
+        android:background="@color/purple_500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ class MatchOverviewViewModel(
         get() = _viewList
 
 
-    fun loadData(matchId: String)  {
+    fun loadData(matchId: String) {
         viewModelScope.launch {
             generateView(matchId)
         }

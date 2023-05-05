@@ -5,6 +5,7 @@ import com.example.tinkofflab2023.data.local.entity.toModel
 import com.example.tinkofflab2023.domain.DotaRepository
 import com.example.tinkofflab2023.ui.fragment.match.model.MatchModel
 import com.example.tinkofflab2023.ui.fragment.player.model.PlayerModel
+import com.example.tinkofflab2023.ui.fragment.player.model.toEntity
 
 class DotaRepositoryLocal(
     private val db: AppDatabase
@@ -16,6 +17,10 @@ class DotaRepositoryLocal(
 
     private val matchDao by lazy {
         db.getMatchDao()
+    }
+
+    suspend fun savePlayer(player: PlayerModel) {
+        playerDao.save(player.toEntity())
     }
 
     override suspend fun getMatchModel(matchId: String): MatchModel {

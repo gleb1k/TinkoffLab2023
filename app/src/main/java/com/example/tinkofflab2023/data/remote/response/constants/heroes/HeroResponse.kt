@@ -1,9 +1,19 @@
 package com.example.tinkofflab2023.data.remote.response.constants.heroes
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.tinkofflab2023.data.local.converter.HeroConverter
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "heroes")
+@TypeConverters(HeroConverter::class)
 data class HeroResponse(
+    @SerializedName("id")
+    @PrimaryKey
+    val id: Int,
+
     @SerializedName("agi_gain")
     val agiGain: Double,
     @SerializedName("attack_point")
@@ -38,14 +48,10 @@ data class HeroResponse(
     val baseMr: Double,
     @SerializedName("base_str")
     val baseStr: Double,
-    @SerializedName("cm_enabled")
-    val cmEnabled: Boolean,
     @SerializedName("day_vision")
     val dayVision: Double,
     @SerializedName("icon")
     val icon: String,
-    @SerializedName("id")
-    val id: Int,
     @SerializedName("img")
     val img: String,
     @SerializedName("int_gain")
@@ -54,8 +60,6 @@ data class HeroResponse(
     val localizedName: String,
     @SerializedName("move_speed")
     val moveSpeed: Double,
-    @SerializedName("name")
-    val name: String,
     @SerializedName("night_vision")
     val nightVision: Double,
     @SerializedName("primary_attr")

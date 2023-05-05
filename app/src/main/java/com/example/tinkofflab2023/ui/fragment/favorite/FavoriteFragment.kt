@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
-import com.example.tinkofflab2023.databinding.FragmentFavoriteBinding
 import com.example.tinkofflab2023.core.utils.showSnackbar
+import com.example.tinkofflab2023.databinding.FragmentFavoriteBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
@@ -39,7 +39,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     private fun setUpToolBar() {
 
         val menuHost: MenuHost = requireActivity().also {
-            if (it is ActivityToolBar){
+            if (it is ActivityToolBar) {
                 it.changeToolBarTitle("Your favorites")
             }
         }

@@ -2,7 +2,6 @@ package com.example.tinkofflab2023.data.local.dao
 
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.MatchEntity
-import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 
 @Dao
 interface MatchDao {
@@ -13,7 +12,6 @@ interface MatchDao {
     @Delete
     suspend fun delete(match: MatchEntity)
 
-    //Если не находит возвращает NULL
     @Query("SELECT * FROM matches WHERE id=:id")
     suspend fun get(id: String): MatchEntity
 

@@ -21,7 +21,9 @@ class Repository(
         try {
             return repositoryLocal.getPlayerModel(accountId)
         } catch (ex: Throwable) {
-            return repositoryRemote.getPlayerModel(accountId)
+            return repositoryRemote.getPlayerModel(accountId).also {
+                repositoryLocal.savePlayer(it)
+            }
         }
     }
 

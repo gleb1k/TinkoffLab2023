@@ -8,11 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerHeroesBinding
-import com.example.tinkofflab2023.databinding.FragmentPlayerMatchesBinding
-import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
 
 class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
 

@@ -4,10 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.ui.fragment.player.matches.PlayerMatchesViewModel
 
 class PlayerHeroesViewModel : ViewModel() {
-
 
 
     companion object {
