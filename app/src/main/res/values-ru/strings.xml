@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Настройки</string>
+    <string name="favorite">Избранное</string>
+    <string name="search">Поиск</string>
+    <string name="hero">Герой</string>
+    <string name="player">Игрок</string>
+    <string name="kill_word">у</string>
+    <string name="death_word">с</string>
+    <string name="assist_word">п</string>
+    <string name="victory">Победа</string>
+    <string name="latest_matches">Последние матчи</string>
+    <string name="most_played_heroes">Любимые герои</string>
+    <string name="mathes">Матчи</string>
+    <string name="heroes">Герои</string>
+    <string name="main_search_hint">Ник игрока или ID матча</string>
+    <string name="test">Тест</string>
+    <string name="last_played">Последняя игра:</string>
+    <string name="win_slash_loss_big">Победы/Поражения</string>
+    <string name="win_rate">Процент побед</string>
+    <string name="overview">Обзор</string>
+</resources>
