@@ -1,19 +1,13 @@
 package com.example.tinkofflab2023.data.remote.response.constants.heroes
 
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.example.tinkofflab2023.data.local.converter.HeroConverter
+import com.example.tinkofflab2023.data.Constants
+import com.example.tinkofflab2023.data.local.entity.HeroEntity
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "heroes")
-@TypeConverters(HeroConverter::class)
 data class HeroResponse(
     @SerializedName("id")
-    @PrimaryKey
     val id: Int,
-
     @SerializedName("agi_gain")
     val agiGain: Double,
     @SerializedName("attack_point")
@@ -71,3 +65,11 @@ data class HeroResponse(
     @SerializedName("str_gain")
     val strGain: Double,
 )
+
+fun HeroResponse.toEntity() : HeroEntity =
+    HeroEntity(
+        id = id,
+        img = Constants.DOTA_API_IMAGE_URL + img,
+        icon = icon,
+        localizedName = localizedName
+    )

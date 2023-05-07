@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
-import com.example.tinkofflab2023.core.utils.Converter
+import com.example.tinkofflab2023.core.util.Converter
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
 

@@ -1,20 +1,21 @@
 package com.example.tinkofflab2023.di
 
-import android.app.Activity
+import androidx.room.Room
 import com.example.tinkofflab2023.core.App
-import com.example.tinkofflab2023.core.utils.jsonparser.GsonParser
+import com.example.tinkofflab2023.core.util.jsonparser.GsonParser
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.local.AppDatabase
+import com.example.tinkofflab2023.data.local.converter.MatchConverter
+import com.example.tinkofflab2023.data.local.converter.PlayerConverter
 import com.example.tinkofflab2023.data.remote.DotaApi
+import com.example.tinkofflab2023.data.repository.DotaRepositoryImpl
 import com.example.tinkofflab2023.data.repository.DotaRepositoryLocal
 import com.example.tinkofflab2023.data.repository.DotaRepositoryRemote
-import com.example.tinkofflab2023.data.repository.Repository
 import com.example.tinkofflab2023.data.repository.SearchRepositoryImpl
 import com.example.tinkofflab2023.domain.usecase.GetMatchModelUseCase
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
 import com.example.tinkofflab2023.domain.usecase.GetPlayerModelUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
-import com.example.tinkofflab2023.ui.MainActivity
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -39,33 +40,26 @@ object DataContainer {
     private val api = retrofit.create(DotaApi::class.java)
 
     private val gsonParser = GsonParser(Gson())
+    private val db by lazy {
+        Room.databaseBuilder(App.context(), AppDatabase::class.java, Constants.DOTA_DATABASE_NAME)
+            .addTypeConverter(PlayerConverter(gsonParser))
+            .addTypeConverter(MatchConverter(gsonParser))
+            .fallbackToDestructiveMigration()
+            //.addTypeConverter(BaseConverter(gsonParser))
+            .build()
+    }
 
-//    private val db by lazy {
-//        // todo context?
-//        Room.databaseBuilder(App.context(), AppDatabase::class.java, Constants.DOTA_DATABASE_NAME)
-//            .addTypeConverter(PlayerConverter(gsonParser))
-//            .addTypeConverter(MatchConverter(gsonParser))
-//            .addTypeConverter(HeroConverter(gsonParser))
-//            .build()
-//    }
-
-    //todo CONTEXT
-    private val repositoryLocal =
-        DotaRepositoryLocal(AppDatabase.getInstance(MainActivity.INSTANCE!!.applicationContext)!!)
-
+    private val repositoryLocal = DotaRepositoryLocal(db)
 
     private val repositoryRemote = DotaRepositoryRemote(api)
 
-    private val repository = Repository(
-        repositoryLocal,
-        repositoryRemote
-    )
+    val dotaRepositoryImpl = DotaRepositoryImpl(db, api)
 
     val getPlayerModelUseCase: GetPlayerModelUseCase
-        get() = GetPlayerModelUseCase(repository)
+        get() = GetPlayerModelUseCase(dotaRepositoryImpl)
 
     val getMatchModelUseCase: GetMatchModelUseCase
-        get() = GetMatchModelUseCase(repository)
+        get() = GetMatchModelUseCase(dotaRepositoryImpl)
 
     private val searchRepository = SearchRepositoryImpl(api)
 

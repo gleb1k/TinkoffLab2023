@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
+@Suppress("UNCHECKED_CAST")
 abstract class ViewBindingDelegateAdapter<T : Any, V : ViewBinding>(
     private val viewBindingInflater: (LayoutInflater, parent: ViewGroup, attachToParent: Boolean) -> V
 ) : DelegateAdapter {

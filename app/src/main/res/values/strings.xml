@@ -20,9 +20,31 @@
     <string name="heroes">Heroes</string>
     <string name="main_search_hint">Player nickname or Match ID</string>
     <string name="test">Test</string>
-    <string name="base_num" translatable="false">999</string>
+    <string name="base_number_big" translatable="false">999</string>
     <string name="last_played">Last played:</string>
     <string name="win_slash_loss_big">Win/Loss</string>
     <string name="win_rate">Win rate</string>
+    <string name="matches">Matches</string>
+    <string name="win_percent">Win %</string>
+    <string name="base_percent" translatable="false">50%</string>
+    <string name="match">Match</string>
+    <string name="base_team_victory" translatable="false">Dire victory</string>
+    <string name="base_number" translatable="false">99</string>
+    <string name="base_score" translatable="false">99:99</string>
+    <string name="ranked">Ranked</string>
+    <string name="all_pick" translatable="false">All pick</string>
+    <string name="lost_match">Lost match</string>
+    <string name="win_match">Win match</string>
+    <string name="kda">KDA</string>
+    <string name="duration">Duration</string>
+    <string name="base_kda" translatable="false">0/0/0</string>
+    <string name="base_id" translatable="false">99999999</string>
+    <string name="last_online">Last online</string>
+    <string name="nickname">Nickname</string>
+    <string name="the_radiant">The Radiant</string>
+    <string name="the_dire">The Dire</string>
+    <string name="net">NET</string>
+    <string name="outcome">Outcome:</string>
+    <string name="content">Content</string>
 
 </resources>

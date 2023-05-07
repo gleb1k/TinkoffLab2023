@@ -2,7 +2,7 @@ package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
-import com.example.tinkofflab2023.core.utils.Converter
+import com.example.tinkofflab2023.core.util.Converter
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
 import com.example.tinkofflab2023.databinding.HeroItemBinding
 

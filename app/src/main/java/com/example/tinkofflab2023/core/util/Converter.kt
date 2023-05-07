@@ -1,7 +1,8 @@
-package com.example.tinkofflab2023.core.utils
+package com.example.tinkofflab2023.core.util
 
 import android.icu.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import kotlin.math.roundToInt
 
 object Converter {

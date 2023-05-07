@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="The Radiant"
+        android:text="@string/the_dire"
         android:textColor="@color/green"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
-        android:text="Hero"
+        android:text="@string/hero"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_team" />
 
@@ -29,7 +29,7 @@
         android:id="@+id/tv_player_name_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player"
+        android:text="@string/player"
         android:layout_marginStart="66dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -38,7 +38,7 @@
         android:id="@+id/tv_net_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NET"
+        android:text="@string/net"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -47,7 +47,7 @@
         android:id="@+id/tv_assists_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A"
+        android:text="@string/assist_word"
         android:layout_marginEnd="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -56,7 +56,7 @@
         android:id="@+id/tv_deaths_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="D"
+        android:text="@string/death_word"
         android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_assists_const" />
@@ -65,7 +65,7 @@
         android:id="@+id/tv_kills_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="K"
+        android:text="@string/kill_word"
         android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_deaths_const" />

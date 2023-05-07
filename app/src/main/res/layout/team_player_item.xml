@@ -12,7 +12,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:contentDescription="Тинкер мой любимый герой"
         android:src="@drawable/tinker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +21,7 @@
         android:id="@+id/tv_player_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="player1337"
+        android:text="@string/player"
         android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_hero"
@@ -34,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="99.9k"
+        android:text="@string/base_number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="9"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_net"
         app:layout_constraintTop_toTopOf="@+id/tv_net" />
 
@@ -53,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="9"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_assists"
         app:layout_constraintTop_toTopOf="@+id/tv_assists" />
 
@@ -62,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="9"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_deaths"
         app:layout_constraintTop_toTopOf="@+id/tv_deaths" />
 

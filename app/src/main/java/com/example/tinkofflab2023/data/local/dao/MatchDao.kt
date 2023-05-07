@@ -13,7 +13,7 @@ interface MatchDao {
     suspend fun delete(match: MatchEntity)
 
     @Query("SELECT * FROM matches WHERE id=:id")
-    suspend fun get(id: String): MatchEntity
+    suspend fun get(id: String): MatchEntity?
 
     @Query("DELETE FROM matches")
     suspend fun deleteAll()

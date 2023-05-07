@@ -1,109 +1,72 @@
 package com.example.tinkofflab2023.data.repository
 
-//class DotaRepositoryImpl(
-//    private val api: DotaApi
-//) : DotaRepository {
-//
-//    override suspend fun getMatch(matchId: String): MatchResponse {
-//        return api.getMatch(matchId)
+import androidx.room.withTransaction
+import com.example.tinkofflab2023.core.util.Resource
+import com.example.tinkofflab2023.core.util.networkBoundResource
+import com.example.tinkofflab2023.data.local.AppDatabase
+import com.example.tinkofflab2023.data.local.entity.MatchEntity
+import com.example.tinkofflab2023.data.local.entity.PlayerEntity
+import com.example.tinkofflab2023.data.remote.DotaApi
+import com.example.tinkofflab2023.domain.DotaRepository
+import kotlinx.coroutines.flow.Flow
+
+class DotaRepositoryImpl(
+//    private val repositoryLocal: DotaRepositoryLocal,
+//    private val repositoryRemote: DotaRepositoryRemote
+    private val db: AppDatabase,
+    private val api: DotaApi
+) : DotaRepository {
+
+    private val playerDao = db.getPlayerDao()
+
+    private val matchDao = db.getMatchDao()
+
+    override suspend fun getMatchEntity(matchId: String): MatchEntity? {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getPlayerEntity(accountId: String): PlayerEntity? {
+        TODO("Not yet implemented")
+    }
+
+    fun getPlayer(accountId: String) : Flow<Resource<PlayerEntity>> = networkBoundResource(
+        accountId,
+        query = {
+            playerDao.get(accountId)
+        },
+        fetch = {
+            PlayerEntity(
+                playerData = api.getPlayerData(accountId),
+                heroes = api.getPlayerHeroes(accountId),
+                recentMatches = api.getPlayerRecentMatches(accountId),
+                wl = api.getPlayerWL(accountId),
+            )
+        },
+        saveFetchResult = { player ->
+            db.withTransaction {
+                playerDao.deleteById(accountId)
+                playerDao.save(player)
+            }
+        }
+    )
+
+//    override suspend fun getMatchEntity(matchId: String): MatchEntity? {
+////        try {
+////            return repositoryLocal.getMatchEntity(matchId)
+////        } catch (ex: Throwable) {
+////            return repositoryRemote.getMatchEntity(matchId)
+////        }
+//        if (repositoryLocal.getMatchEntity(matchId))
 //    }
 //
-//    override suspend fun searchPlayers(name: String): List<SearchPlayerResponse> =
-//        api.searchPlayers(name).subList(0, 24)
-//
-//    override suspend fun getPlayerData(accountId: String): PlayerDataResponse =
-//        api.getPlayerData(accountId)
-//
-//    override suspend fun getPlayerWL(accountId: String): PlayerWLResponse =
-//        api.getPlayerWL(accountId)
-//
-//    override suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse =
-//        api.getPlayerRecentMatches(accountId)
-//
-//    override suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse =
-//        api.getPlayerHeroes(accountId)
-//
-//    override suspend fun getHeroes(): HeroesResponse =
-//        api.getHeroes()
-//
-//    override suspend fun getItems(): ItemsResponse =
-//        api.getItems()
-//
-//    //region match
-//    override suspend fun getMatchModel(matchId: String): MatchModel {
-//        val heroes = getHeroes()
-//        val match = getMatch(matchId)
-//
-//        return MatchModel(
-//            matchResponse = match,
-//            players = getMatchPlayersWithHeroes(match, heroes),
-//            teamOutcomes = match.getTeamsOutcomes()
-//        )
-//    }
-//
-//    private fun getMatchPlayersWithHeroes(
-//        match: MatchResponse,
-//        heroes: HeroesResponse
-//    ): List<MatchPlayerHeroItem> {
-//        val matchPlayersHeroes = ArrayList<MatchPlayerHeroItem>()
-//
-//        match.players.forEach {
-//            matchPlayersHeroes += MatchPlayerHeroItem(
-//                player = it,
-//                heroResponse = heroes[it.heroId.toString()]!!,
-//            )
+//    override suspend fun getPlayerEntity(accountId: String): PlayerEntity? {
+//        try {
+//            return repositoryLocal.getPlayerEntity(accountId)
+//        } catch (ex: Throwable) {
+//            return repositoryRemote.getPlayerEntity(accountId).also {
+//                repositoryLocal.savePlayer(it)
+//            }
 //        }
-//        return matchPlayersHeroes
 //    }
-//    //endregion
-//
-//    override suspend fun getPlayerModel(accountId: String): PlayerModel {
-//        val heroes = getHeroes()
-//
-//        return PlayerModel(
-//            header = getPlayerHeaderItem(accountId),
-//            heroes = getPlayerHeroesItems(accountId, heroes),
-//            recentMatches = getPlayerRecentMatchesItems(accountId, heroes),
-//        )
-//    }
-//
-//    private suspend fun getPlayerHeaderItem(accountId: String): PlayerHeaderItem =
-//        PlayerHeaderItem(
-//            playerDataResponse = getPlayerData(accountId),
-//            playerWL = getPlayerWL(accountId)
-//        )
-//
-//    private suspend fun getPlayerHeroesItems(
-//        accountId: String,
-//        heroes: HeroesResponse
-//    ): List<PlayerHeroItem> {
-//        val playerHeroes = getPlayerHeroes(accountId)
-//
-//        val listHeroes = ArrayList<PlayerHeroItem>()
-//
-//        playerHeroes.forEach {
-//            listHeroes += PlayerHeroItem(
-//                it,
-//                heroes[it.heroId]!!
-//            )
-//        }
-//        return listHeroes
-//    }
-//
-//    private suspend fun getPlayerRecentMatchesItems(
-//        accountId: String,
-//        heroes: HeroesResponse
-//    ): List<PlayerRecentMatchItem> {
-//        val playerRecentMatchesResponse = getPlayerRecentMatches(accountId)
-//
-//        val listMatches = ArrayList<PlayerRecentMatchItem>()
-//
-//        playerRecentMatchesResponse.forEach {
-//            listMatches += PlayerRecentMatchItem(
-//                it,
-//                heroes[it.heroId]!!
-//            )
-//        }
-//        return listMatches
-//    }
-//}
+
+}

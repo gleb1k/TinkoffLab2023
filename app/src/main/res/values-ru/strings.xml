@@ -17,6 +17,21 @@
     <string name="test">Тест</string>
     <string name="last_played">Последняя игра:</string>
     <string name="win_slash_loss_big">Победы/Поражения</string>
-    <string name="win_rate">Процент побед</string>
+    <string name="win_rate">Доля побед</string>
     <string name="overview">Обзор</string>
+    <string name="matches">Матчи</string>
+    <string name="win_percent">Победы %</string>
+    <string name="match">Матч</string>
+    <string name="ranked">Рейтинг</string>
+    <string name="lost_match">Поражение</string>
+    <string name="win_match">Победа</string>
+    <string name="kda">УСП</string>
+    <string name="duration">Длительность</string>
+    <string name="last_online">Последний раз в сети</string>
+    <string name="nickname">Ник</string>
+    <string name="the_radiant">Силы Света</string>
+    <string name="the_dire">Силы Тьмы</string>
+    <string name="net">ОЦ</string>
+    <string name="outcome">Результат</string>
+    <string name="content">Контент</string>
 </resources>

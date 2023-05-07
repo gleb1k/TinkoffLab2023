@@ -1,23 +1,11 @@
 package com.example.tinkofflab2023.domain
 
-import com.example.tinkofflab2023.ui.fragment.match.model.MatchModel
-import com.example.tinkofflab2023.ui.fragment.player.model.PlayerModel
+import com.example.tinkofflab2023.data.local.entity.MatchEntity
+import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 
 interface DotaRepository {
 
-//    suspend fun getPlayerData(accountId: String): PlayerDataResponse
-//
-//    suspend fun getPlayerWL(accountId: String): PlayerWLResponse
-//
-//    suspend fun getPlayerRecentMatches(accountId: String): PlayerRecentMatchesResponse
-//
-//    suspend fun getPlayerHeroes(accountId: String): PlayerHeroesResponse
+    suspend fun getMatchEntity(matchId: String): MatchEntity
 
-//    suspend fun getHeroes(): HeroesResponse
-//
-//    suspend fun getItems(): ItemsResponse
-
-    suspend fun getMatchModel(matchId: String): MatchModel
-
-    suspend fun getPlayerModel(accountId: String): PlayerModel
+    suspend fun getPlayerEntity(accountId: String): PlayerEntity
 }

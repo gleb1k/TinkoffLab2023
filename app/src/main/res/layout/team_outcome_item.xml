@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="140dp"
-        android:text="Outcome:"
+        android:text="@string/outcome"
         android:layout_marginStart="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="999.9k"
+        android:text="@string/base_number_big"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="99"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_net"
         app:layout_constraintTop_toTopOf="@+id/tv_net" />
 
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="99"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_assists"
         app:layout_constraintTop_toTopOf="@+id/tv_assists" />
 
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="99"
+        android:text="@string/base_number"
         app:layout_constraintEnd_toStartOf="@+id/tv_deaths"
         app:layout_constraintTop_toTopOf="@+id/tv_deaths" />
 

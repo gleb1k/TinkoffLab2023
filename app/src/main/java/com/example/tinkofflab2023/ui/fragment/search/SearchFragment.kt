@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
-import com.example.tinkofflab2023.core.utils.showSnackbar
+import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter

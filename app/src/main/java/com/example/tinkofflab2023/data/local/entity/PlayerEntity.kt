@@ -8,8 +8,6 @@ import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataRe
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
-import com.example.tinkofflab2023.ui.fragment.player.model.PlayerHeaderItem
-import com.example.tinkofflab2023.ui.fragment.player.model.PlayerModel
 
 @Entity(tableName = "players")
 @TypeConverters(PlayerConverter::class)
@@ -18,13 +16,14 @@ data class PlayerEntity(
     val wl: PlayerWLResponse,
     val heroes: PlayerHeroesResponse,
     val recentMatches: PlayerMatchesResponse,
-    @PrimaryKey
-    val id: String = playerData.profile.accountId
-)
 
-fun PlayerEntity.toModel(): PlayerModel =
-    PlayerModel(
-        PlayerHeaderItem(playerData, wl),
-        heroes,
-        recentMatches
-    )
+    @PrimaryKey
+    val id: String = playerData.profile.accountId,
+)
+//
+//fun PlayerEntity.toModel(): PlayerModel =
+//    PlayerModel(
+//        PlayerHeaderItem(playerData, wl),
+//        heroes,
+//        recentMatches
+//    )

@@ -2,7 +2,7 @@ package com.example.tinkofflab2023.data.local.converter
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.example.tinkofflab2023.core.utils.jsonparser.JsonParser
+import com.example.tinkofflab2023.core.util.jsonparser.JsonParser
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.Profile
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse

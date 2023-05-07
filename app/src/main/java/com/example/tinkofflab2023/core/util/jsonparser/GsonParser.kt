@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.core.utils.jsonparser
+package com.example.tinkofflab2023.core.util.jsonparser
 
 import com.google.gson.Gson
 import java.lang.reflect.Type

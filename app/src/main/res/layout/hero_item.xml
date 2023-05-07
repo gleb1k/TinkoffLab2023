@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Last played:"
+        android:text="@string/last_played"
         app:layout_constraintStart_toStartOf="@+id/iv_hero"
         app:layout_constraintTop_toBottomOf="@id/iv_hero" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/tv_matches_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mathes"
+        android:text="@string/matches"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_hero"
         app:layout_constraintEnd_toStartOf="@+id/tv_wl_const"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
-        android:text="@string/base_number"
+        android:text="@string/base_number_big"
         app:layout_constraintBottom_toTopOf="@+id/tv_matches_const"
         app:layout_constraintStart_toStartOf="@+id/tv_matches_const" />
 
@@ -57,7 +57,7 @@
         android:id="@+id/tv_wl_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="W/L"
+        android:text="@string/win_slash_loss_big"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_matches_const"
         app:layout_constraintEnd_toStartOf="@+id/tv_winrate_const"
@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
-        android:text="200/200"
+        android:text="@string/base_number_big"
         app:layout_constraintBottom_toTopOf="@+id/tv_wl_const"
         app:layout_constraintStart_toStartOf="@+id/tv_wl_const" />
 
@@ -76,7 +76,7 @@
         android:id="@+id/tv_winrate_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Win %"
+        android:text="@string/win_percent"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_wl_const"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
-        android:text="50%"
+        android:text="@string/base_percent"
         app:layout_constraintBottom_toTopOf="@+id/tv_winrate_const"
         app:layout_constraintStart_toStartOf="@+id/tv_winrate_const" />
 

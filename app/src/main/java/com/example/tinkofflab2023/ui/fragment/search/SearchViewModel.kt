@@ -1,6 +1,10 @@
 package com.example.tinkofflab2023.ui.fragment.search
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
@@ -19,7 +23,7 @@ class SearchViewModel(
     val viewList: LiveData<ArrayList<Any>?>
         get() = _viewList
 
-    private val _error = MutableLiveData<Boolean>(false)
+    private val _error = MutableLiveData(false)
     val error: LiveData<Boolean>
         get() = _error
 
