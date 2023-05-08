@@ -1,10 +1,10 @@
 package com.example.tinkofflab2023.domain
 
-import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
+import com.example.tinkofflab2023.data.local.entity.HeroEntity
 
 interface ConstantsRepository {
 
-    suspend fun getHeroes(): HeroesResponse
+    suspend fun getHeroes(): List<HeroEntity>
 
 //    suspend fun getItems(): ItemsResponse
 

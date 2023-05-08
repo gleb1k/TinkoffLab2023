@@ -4,17 +4,17 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.core.util.Converter
 import com.example.tinkofflab2023.data.Constants
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.databinding.MatchItemBinding
+import com.example.tinkofflab2023.ui.model.PlayerMatchItem
 
 class MatchDelegateAdapter(
     private val glide: RequestManager,
     private val onMatchClick: (String) -> Unit
 ) :
-    ViewBindingDelegateAdapter<PlayerMatchResponse, MatchItemBinding>(MatchItemBinding::inflate) {
+    ViewBindingDelegateAdapter<PlayerMatchItem, MatchItemBinding>(MatchItemBinding::inflate) {
 
-    override fun MatchItemBinding.onBind(item: PlayerMatchResponse) {
-        with(item) {
+    override fun MatchItemBinding.onBind(item: PlayerMatchItem) {
+        with(item.matchResponse) {
             root.setOnClickListener {
                 onMatchClick(matchId)
             }
@@ -32,16 +32,16 @@ class MatchDelegateAdapter(
                 playerSlot,
                 radiantWin
             )
-
-
-//            tvHeroName.text = heroResponse.localizedName
-//            glide
-//                .load(Constants.DOTA_API_IMAGE_URL + heroResponse.img)
-//                .into(ivHero)
         }
+
+        tvHeroName.text = item.heroEntity.localizedName
+        glide
+            .load(item.heroEntity.img)
+            .into(ivHero)
+
     }
 
-    override fun isForViewType(item: Any): Boolean = item is PlayerMatchResponse
+    override fun isForViewType(item: Any): Boolean = item is PlayerMatchItem
 
-    override fun PlayerMatchResponse.getItemId(): Any = matchId
+    override fun PlayerMatchItem.getItemId(): Any = matchResponse.matchId
 }

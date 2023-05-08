@@ -29,8 +29,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Matches"
-                else -> tab.text = "Players"
+                0 -> tab.text = getString(R.string.matches)
+                else -> tab.text = getString(R.string.players)
             }
         }.attach()
         setUpToolBar()
@@ -40,7 +40,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
-                it.changeToolBarTitle("Your favorites")
+                it.changeToolBarTitle(getString(R.string.favorite))
             }
         }
 

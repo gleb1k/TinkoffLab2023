@@ -15,7 +15,7 @@ data class PlayerMatchResponse(
     @SerializedName("game_mode")
     val gameMode: Int,
     @SerializedName("hero_id")
-    val heroId: String,
+    val heroId: Int,
     @SerializedName("kills")
     val kills: Int,
     @SerializedName("lobby_type")
@@ -31,3 +31,4 @@ data class PlayerMatchResponse(
     @SerializedName("start_time")
     val startTime: String,
 )
+

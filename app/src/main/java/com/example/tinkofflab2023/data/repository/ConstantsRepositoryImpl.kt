@@ -1,18 +1,39 @@
 package com.example.tinkofflab2023.data.repository
 
-import androidx.room.Room
+import android.util.Log
 import com.example.tinkofflab2023.data.local.AppDatabase
+import com.example.tinkofflab2023.data.local.entity.HeroEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
-import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
+import com.example.tinkofflab2023.data.remote.response.constants.heroes.toEntity
 import com.example.tinkofflab2023.domain.ConstantsRepository
 
 class ConstantsRepositoryImpl(
     private val db: AppDatabase,
     private val api: DotaApi
-): ConstantsRepository {
+) : ConstantsRepository {
 
-    override suspend fun getHeroes(): HeroesResponse {
-        TODO("Not yet implemented")
+    private val heroDao = db.getHeroDao()
+
+    //todo nasral
+    override suspend fun getHeroes(): List<HeroEntity> {
+        val heroesFromDb = heroDao.getAll()
+        if (heroesFromDb.isNotEmpty())
+            return heroesFromDb
+        else {
+            try {
+                val list = arrayListOf<HeroEntity>()
+                api.getHeroes().forEach { entry ->
+                    list.add(entry.value.toEntity())
+                }
+                heroDao.insertAll(list)
+                return list
+            } catch (throwable: Throwable) {
+                Log.e("get Heroes error", throwable.message.toString())
+                return listOf()
+            }
+        }
     }
 
 }
+
+

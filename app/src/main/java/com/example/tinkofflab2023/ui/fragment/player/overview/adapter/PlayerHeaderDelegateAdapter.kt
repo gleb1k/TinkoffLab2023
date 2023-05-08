@@ -4,7 +4,7 @@ import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.core.util.Converter
 import com.example.tinkofflab2023.databinding.PlayerHeaderBinding
-import com.example.tinkofflab2023.ui.fragment.player.model.PlayerHeaderItem
+import com.example.tinkofflab2023.ui.model.PlayerHeaderItem
 
 class PlayerHeaderDelegateAdapter(
     private val glide: RequestManager,

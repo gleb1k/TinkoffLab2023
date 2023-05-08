@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
@@ -35,6 +36,7 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         arguments?.getString(PlayerOverviewFragment.ACCOUNT_ID_TAG)?.let {
             accountId = it
         }
+        viewModel.loadData(accountId)
     }
 
 
@@ -46,6 +48,27 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPlayerMatchesBinding.bind(view)
 
+        //setUpToolBar()
+        binding?.run {
+            rvMatches.layoutManager = LinearLayoutManager(context)
+            rvMatches.adapter = adapter
+
+            viewModel.error.observe(viewLifecycleOwner) {
+                tvError.text = it
+            }
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == true)
+                    progressBar.visibility = View.VISIBLE
+                else
+                    progressBar.visibility = View.GONE
+            }
+
+            viewModel.viewList.observe(viewLifecycleOwner) {
+                if (it == null) return@observe
+                adapter?.swapData(it)
+            }
+        }
+
     }
 
     override fun onDestroy() {
@@ -53,6 +76,17 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         binding = null
     }
 
+    companion object {
+
+        const val ACCOUNT_ID_TAG = "ACCOUNT_ID_TAG"
+
+        fun newInstance(message: String, tag: String = ACCOUNT_ID_TAG) =
+            PlayerMatchesFragment().apply {
+                arguments = Bundle().apply {
+                    putString(tag, message)
+                }
+            }
+    }
 
 }
 

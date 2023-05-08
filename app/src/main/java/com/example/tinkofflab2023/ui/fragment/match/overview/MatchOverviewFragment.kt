@@ -67,6 +67,17 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
         binding?.run {
             rvOverview.layoutManager = LinearLayoutManager(context)
             rvOverview.adapter = adapter
+
+            viewModel.error.observe(viewLifecycleOwner) {
+                tvError.text = it
+            }
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == true)
+                    progressBar.visibility = View.VISIBLE
+                else
+                    progressBar.visibility = View.GONE
+            }
+
             viewModel.viewList.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 adapter?.swapData(it)
@@ -76,7 +87,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
     private fun onPlayerClick(accountId: String?) {
         if (accountId == null) {
-            binding?.root?.showSnackbar("Profile Closed")
+            binding?.root?.showSnackbar(getString(R.string.anonym))
             return
         }
         NavigationContainer.router.navigateTo(NavigationContainer.Player(accountId))
@@ -86,7 +97,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
-                it.changeToolBarTitle("Match $matchId")
+                it.changeToolBarTitle("${getString(R.string.match)} $matchId")
             }
         }
 

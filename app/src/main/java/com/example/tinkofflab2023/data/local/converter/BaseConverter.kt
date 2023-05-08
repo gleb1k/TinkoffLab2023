@@ -11,18 +11,18 @@ class BaseConverter(
 ) {
 
     @TypeConverter
-    fun toListJson(roles: List<String>): String {
+    fun toListJson(list: ArrayList<String>): String {
         return jsonParser.toJson(
-            roles,
+            list,
             object : TypeToken<ArrayList<String>>() {}.type
         ) ?: "[]"
     }
 
     @TypeConverter
-    fun fromListJson(json: String): List<String> {
+    fun fromListJson(json: String): ArrayList<String> {
         return jsonParser.fromJson<ArrayList<String>>(
             json,
             object : TypeToken<ArrayList<String>>() {}.type
-        ) ?: emptyList()
+        ) ?: arrayListOf()
     }
 }

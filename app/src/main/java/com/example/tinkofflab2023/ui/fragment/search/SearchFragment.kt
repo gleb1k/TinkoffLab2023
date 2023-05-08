@@ -45,7 +45,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
-                it.changeToolBarTitle("Search")
+                it.changeToolBarTitle(getString(R.string.search))
             }
         }
 
@@ -83,24 +83,29 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
-
         binding = FragmentSearchBinding.bind(view)
-        viewModel.error.observe(viewLifecycleOwner) {
-            if (it) {
-                binding?.root?.showSnackbar("Ошибка поиска")
-            }
-        }
-
         binding?.run {
             rvSearch.layoutManager = LinearLayoutManager(context)
             rvSearch.adapter = adapter
+
+            viewModel.error.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    binding?.root?.showSnackbar(it)
+                }
+            }
+
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == true)
+                    progressBar.visibility = View.VISIBLE
+                else
+                    progressBar.visibility = View.GONE
+            }
 
             viewModel.viewList.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 rvSearch.scrollToPosition(0)
                 adapter?.swapData(it)
             }
-
         }
         setEditText()
     }

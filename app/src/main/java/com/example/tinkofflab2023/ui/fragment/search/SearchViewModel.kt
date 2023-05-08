@@ -23,9 +23,14 @@ class SearchViewModel(
     val viewList: LiveData<ArrayList<Any>?>
         get() = _viewList
 
-    private val _error = MutableLiveData(false)
-    val error: LiveData<Boolean>
+    private val _loading = MutableLiveData(false)
+    val loading: LiveData<Boolean>
+        get() = _loading
+
+    private val _error = MutableLiveData<String?>(null)
+    val error: LiveData<String?>
         get() = _error
+
 
 
     fun onSearchClick(query: String?) {
@@ -33,10 +38,12 @@ class SearchViewModel(
     }
 
     private fun generateList(query: String?) {
-        if (query == null)
+        if (query.isNullOrBlank()) {
+            _error.value = "Enter something"
             return
-
+        }
         viewModelScope.launch {
+            _loading.value = true
             val list = ArrayList<Any>().apply {
                 searchMatch(query)?.also {
                     add(it)
@@ -46,12 +53,13 @@ class SearchViewModel(
                 }
             }
             _viewList.value = list
+            _loading.value = false
         }
     }
 
     private suspend fun searchPlayers(name: String): List<SearchPlayerResponse> {
         if (name.length < 3) {
-            _error.value = true
+            _error.value = "Min query length = 3"
             return listOf()
         }
         return searchPlayersUseCase(name)

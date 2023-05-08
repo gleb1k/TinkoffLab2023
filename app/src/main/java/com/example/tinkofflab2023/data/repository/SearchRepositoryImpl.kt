@@ -14,5 +14,5 @@ class SearchRepositoryImpl(
     }
 
     override suspend fun searchPlayers(name: String): List<SearchPlayerResponse> =
-        api.searchPlayers(name).subList(0, 24)
+        api.searchPlayers(name)
 }

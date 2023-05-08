@@ -5,7 +5,9 @@ import androidx.room.TypeConverter
 import com.example.tinkofflab2023.core.util.jsonparser.JsonParser
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.Profile
+import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.google.gson.reflect.TypeToken
@@ -14,12 +16,6 @@ import com.google.gson.reflect.TypeToken
 class PlayerConverter(
     private val jsonParser: JsonParser
 ) {
-
-//    @TypeConverter
-//    fun fromMmrEstimate(mmr: MmrEstimate): Int = mmr.estimate
-//
-//    @TypeConverter
-//    fun toMmrEstimate(estimate: Int): MmrEstimate = MmrEstimate(estimate)
 
     @TypeConverter
     fun toDataResponseJson(data: PlayerDataResponse): String {
@@ -102,35 +98,35 @@ class PlayerConverter(
         )
     }
 
-//    @TypeConverter
-//    fun toMatchResponseJson(matches: List<PlayerMatchResponse>): String {
-//        return jsonParser.toJson(
-//            matches,
-//            object : TypeToken<ArrayList<PlayerMatchResponse>>() {}.type
-//        ) ?: "[]"
-//    }
-//
-//    @TypeConverter
-//    fun fromMatchResponseJson(json: String): List<PlayerMatchResponse> {
-//        return jsonParser.fromJson<ArrayList<PlayerMatchResponse>>(
-//            json,
-//            object : TypeToken<ArrayList<PlayerMatchResponse>>() {}.type
-//        ) ?: emptyList()
-//    }
-//
-//    @TypeConverter
-//    fun toHeroResponseJson(meaning: List<PlayerHeroResponse>): String {
-//        return jsonParser.toJson(
-//            meaning,
-//            object : TypeToken<ArrayList<PlayerHeroResponse>>() {}.type
-//        ) ?: "[]"
-//    }
-//
-//    @TypeConverter
-//    fun fromHeroResponseJson(json: String): List<PlayerHeroResponse> {
-//        return jsonParser.fromJson<ArrayList<PlayerHeroResponse>>(
-//            json,
-//            object : TypeToken<ArrayList<PlayerHeroResponse>>() {}.type
-//        ) ?: emptyList()
-//    }
+    @TypeConverter
+    fun toMatchResponseJson(matches: List<PlayerMatchResponse>): String {
+        return jsonParser.toJson(
+            matches,
+            object : TypeToken<ArrayList<PlayerMatchResponse>>() {}.type
+        ) ?: "[]"
+    }
+
+    @TypeConverter
+    fun fromMatchResponseJson(json: String): List<PlayerMatchResponse> {
+        return jsonParser.fromJson<ArrayList<PlayerMatchResponse>>(
+            json,
+            object : TypeToken<ArrayList<PlayerMatchResponse>>() {}.type
+        ) ?: emptyList()
+    }
+
+    @TypeConverter
+    fun toHeroResponseJson(meaning: List<PlayerHeroResponse>): String {
+        return jsonParser.toJson(
+            meaning,
+            object : TypeToken<ArrayList<PlayerHeroResponse>>() {}.type
+        ) ?: "[]"
+    }
+
+    @TypeConverter
+    fun fromHeroResponseJson(json: String): List<PlayerHeroResponse> {
+        return jsonParser.fromJson<ArrayList<PlayerHeroResponse>>(
+            json,
+            object : TypeToken<ArrayList<PlayerHeroResponse>>() {}.type
+        ) ?: emptyList()
+    }
 }

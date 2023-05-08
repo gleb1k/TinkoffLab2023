@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
-import com.example.tinkofflab2023.core.util.Resource
 import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
@@ -58,16 +57,18 @@ class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
         binding?.run {
             rvOverview.layoutManager = LinearLayoutManager(context)
             rvOverview.adapter = adapter
+            viewModel.error.observe(viewLifecycleOwner) {
+                tvError.text = it
+            }
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == true)
+                    progressBar.visibility = View.VISIBLE
+                else
+                    progressBar.visibility = View.GONE
+            }
             viewModel.viewList.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 adapter?.swapData(it)
-            }
-
-            viewModel.player.observe(viewLifecycleOwner) { result ->
-
-                progressBar.isVisible = result is Resource.Loading && result.data == null
-                tvError.isVisible = result is Resource.Error && result.data == null
-                tvError.text = result.error?.localizedMessage
             }
         }
 

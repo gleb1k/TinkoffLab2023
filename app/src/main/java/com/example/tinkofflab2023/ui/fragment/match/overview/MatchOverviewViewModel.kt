@@ -9,6 +9,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.GetMatchModelUseCase
+import com.example.tinkofflab2023.ui.generateMatchOverview
 import kotlinx.coroutines.launch
 
 class MatchOverviewViewModel(
@@ -19,6 +20,14 @@ class MatchOverviewViewModel(
     val viewList: LiveData<ArrayList<Any>?>
         get() = _viewList
 
+    private val _loading = MutableLiveData(true)
+    val loading: LiveData<Boolean>
+        get() = _loading
+
+    private val _error = MutableLiveData<String?>(null)
+    val error: LiveData<String?>
+        get() = _error
+
 
     fun loadData(matchId: String) {
         viewModelScope.launch {
@@ -28,20 +37,16 @@ class MatchOverviewViewModel(
 
     private fun generateView(matchId: String) {
         viewModelScope.launch {
-            val model = getMatchModelUseCase(matchId)
-
-            _viewList.value = ArrayList<Any>().apply {
-                add(model.matchResponse)
-                add("The Radiant")
-                //todo nullpointer
-                for (i in 0..4)
-                    add(model.matchResponse.players[i])
-                add(model.teamOutcomes[0])
-                add("The Dire")
-                for (i in 5..9)
-                    add(model.matchResponse.players[i])
-                add(model.teamOutcomes[0])
+            _loading.value = true
+            getMatchModelUseCase(matchId).also {
+                if (it == null) {
+                    _error.value = "Error"
+                    _viewList.value = null
+                    return@also
+                }
+                _viewList.value = generateMatchOverview(it)
             }
+            _loading.value = false
         }
     }
 

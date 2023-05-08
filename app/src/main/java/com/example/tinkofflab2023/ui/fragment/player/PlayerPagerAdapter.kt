@@ -19,8 +19,8 @@ class PlayerPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> PlayerOverviewFragment.newInstance(accountId)
-            1 -> PlayerMatchesFragment()
-            else -> PlayerHeroesFragment()
+            1 -> PlayerMatchesFragment.newInstance(accountId)
+            else -> PlayerHeroesFragment.newInstance(accountId)
         }
     }
 }

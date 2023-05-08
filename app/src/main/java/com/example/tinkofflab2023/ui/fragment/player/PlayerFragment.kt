@@ -40,9 +40,9 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Overview"
-                1 -> tab.text = "Matches"
-                else -> tab.text = "Heroes"
+                0 -> tab.text = getString(R.string.overview)
+                1 -> tab.text = getString(R.string.matches)
+                else -> tab.text = getString(R.string.heroes)
             }
         }.attach()
     }
@@ -50,7 +50,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     private fun setUpToolBar() {
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
-                it.changeToolBarTitle("Player $accountId")
+                it.changeToolBarTitle("${getString(R.string.player)} $accountId")
             }
         }
         menuHost.addMenuProvider(object : MenuProvider {

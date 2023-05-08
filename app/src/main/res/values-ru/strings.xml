@@ -34,4 +34,7 @@
     <string name="net">ОЦ</string>
     <string name="outcome">Результат</string>
     <string name="content">Контент</string>
+    <string name="account">Аккаунт</string>
+    <string name="anonym">Аноним</string>
+    <string name="players">Игроки</string>
 </resources>

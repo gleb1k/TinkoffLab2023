@@ -2,12 +2,12 @@ package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.core.util.Converter
-import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.databinding.MatchHeaderBinding
+import com.example.tinkofflab2023.ui.model.MatchItem
 
-class MatchHeaderDelegateAdapter : ViewBindingDelegateAdapter<MatchResponse, MatchHeaderBinding>
+class MatchHeaderDelegateAdapter : ViewBindingDelegateAdapter<MatchItem, MatchHeaderBinding>
     (MatchHeaderBinding::inflate) {
-    override fun MatchHeaderBinding.onBind(item: MatchResponse) {
+    override fun MatchHeaderBinding.onBind(item: MatchItem) {
         with(item) {
             tvMatchId.text = "$matchId"
             tvMatchTime.text = "${Converter.matchDuration(duration)}"
@@ -17,7 +17,7 @@ class MatchHeaderDelegateAdapter : ViewBindingDelegateAdapter<MatchResponse, Mat
         }
     }
 
-    override fun isForViewType(item: Any): Boolean = item is MatchResponse
+    override fun isForViewType(item: Any): Boolean = item is MatchItem
 
-    override fun MatchResponse.getItemId(): Any = matchId
+    override fun MatchItem.getItemId(): Any = matchId
 }

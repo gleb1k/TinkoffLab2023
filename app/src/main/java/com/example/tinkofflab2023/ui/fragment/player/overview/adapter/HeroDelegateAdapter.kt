@@ -3,28 +3,27 @@ package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.core.util.Converter
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
 import com.example.tinkofflab2023.databinding.HeroItemBinding
+import com.example.tinkofflab2023.ui.model.PlayerHeroItem
 
 class HeroDelegateAdapter(
     private val glide: RequestManager,
 ) :
-    ViewBindingDelegateAdapter<PlayerHeroResponse, HeroItemBinding>(HeroItemBinding::inflate) {
-    override fun HeroItemBinding.onBind(item: PlayerHeroResponse) {
-        with(item) {
+    ViewBindingDelegateAdapter<PlayerHeroItem, HeroItemBinding>(HeroItemBinding::inflate) {
+    override fun HeroItemBinding.onBind(item: PlayerHeroItem) {
+        with(item.heroResponse) {
             tvMatches.text = "$games"
             tvLastPlayed.text = "${Converter.epochToDate(lastPlayed)}"
             tvWl.text = "${Converter.wl(win, games - win)}"
             tvWinrate.text = "${Converter.winrate(win, games - win)}"
-
-//            glide
-//                .load(Constants.DOTA_API_IMAGE_URL + heroResponse.img)
-//                .into(ivHero)
         }
+        glide
+            .load(item.heroEntity.img)
+            .into(ivHero)
     }
 
-    override fun isForViewType(item: Any): Boolean = item is PlayerHeroResponse
+    override fun isForViewType(item: Any): Boolean = item is PlayerHeroItem
 
-    override fun PlayerHeroResponse.getItemId(): Any = heroId
+    override fun PlayerHeroItem.getItemId(): Any = heroEntity.id
 
 }

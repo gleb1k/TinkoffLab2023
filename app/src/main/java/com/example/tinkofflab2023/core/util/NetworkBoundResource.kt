@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-inline fun <ResultType, RequestType> networkBoundResource  (
-    queryString : String ,
+inline fun <ResultType, RequestType> networkBoundResource(
+    queryString: String,
     crossinline query: (String) -> Flow<ResultType>,
     crossinline fetch: suspend () -> RequestType,
     crossinline saveFetchResult: suspend (RequestType) -> Unit,

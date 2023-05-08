@@ -66,7 +66,7 @@ data class HeroResponse(
     val strGain: Double,
 )
 
-fun HeroResponse.toEntity() : HeroEntity =
+fun HeroResponse.toEntity(): HeroEntity =
     HeroEntity(
         id = id,
         img = Constants.DOTA_API_IMAGE_URL + img,

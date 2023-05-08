@@ -11,10 +11,14 @@ object Converter {
      *  wins: 598; losses: 569 returns -> winrate: 51.2 %
      */
     fun winrate(wins: Int?, losses: Int?): String {
-        if (wins == null || losses == null)
+        try {
+            if (wins == null || losses == null)
+                return "-"
+            val resultDouble = wins.toDouble() / (wins.toDouble() + losses.toDouble())
+            return "${((resultDouble * 1000.0).roundToInt().toDouble() / 10.0)} %"
+        } catch (thr: Throwable) {
             return "-"
-        val resultDouble = wins.toDouble() / (wins.toDouble() + losses.toDouble())
-        return "${((resultDouble * 1000.0).roundToInt().toDouble() / 10.0)} %"
+        }
     }
 
     fun wl(wins: Int?, losses: Int?): String {

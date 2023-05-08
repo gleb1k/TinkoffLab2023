@@ -7,9 +7,10 @@ data class PlayerHeroResponse(
     @SerializedName("games")
     val games: Int,
     @SerializedName("hero_id")
-    val heroId: String,
+    val heroId: Int,
     @SerializedName("last_played")
     val lastPlayed: String,
     @SerializedName("win")
     val win: Int,
 )
+
