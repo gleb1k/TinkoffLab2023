@@ -21,16 +21,17 @@ class PlayerViewModel(
     val isFavorite: LiveData<Boolean?>
         get() = _isFavorite
 
-    fun favorite(id: String,isFavorite:Boolean) {
+    fun favorite(id: String, isFavorite: Boolean) {
         viewModelScope.launch {
-            playerFavoriteAdderUseCase(id,isFavorite)
+            playerFavoriteAdderUseCase(id, isFavorite)
             _isFavorite.value = !isFavorite
         }
     }
+
     fun getFavoriteState(id: String) {
         viewModelScope.launch {
             _isFavorite.value = isPlayerFavoriteUseCase(id)
-            val temp =  _isFavorite.value
+            val temp = _isFavorite.value
         }
     }
 

@@ -32,7 +32,6 @@ class SearchViewModel(
         get() = _error
 
 
-
     fun onSearchClick(query: String?) {
         generateList(query)
     }

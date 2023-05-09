@@ -12,12 +12,12 @@ interface PlayerRepository {
 
     suspend fun getMatches(id: String): PlayerMatchesResponse?
 
-    suspend fun addToFavorite(id:String)
+    suspend fun addToFavorite(id: String)
 
-    suspend fun removeFromFavorite(id:String)
+    suspend fun removeFromFavorite(id: String)
 
-    suspend fun isFavorite(id:String) : Boolean
+    suspend fun isFavorite(id: String): Boolean
 
-    suspend fun getFavorites() : List<PlayerEntity>?
+    suspend fun getFavorites(): List<PlayerEntity>?
 
 }

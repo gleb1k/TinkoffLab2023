@@ -77,8 +77,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                         R.drawable.favorite_fill_40,
                         null
                     )
-                }else
-                {
+                } else {
                     heartItem.icon = ResourcesCompat.getDrawable(
                         requireActivity().resources,
                         R.drawable.favorite_40,
@@ -86,6 +85,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                     )
                 }
             }
+
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
@@ -106,7 +106,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                 R.drawable.favorite_fill_40,
                 null
             )
-            viewModel.favorite(accountId, isFavorite?:false)
+            viewModel.favorite(accountId, isFavorite ?: false)
             binding?.root?.showSnackbar(getString(R.string.added_to_favorites))
         } else {
             menuItem.icon = ResourcesCompat.getDrawable(

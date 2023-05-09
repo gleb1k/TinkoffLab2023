@@ -2,7 +2,6 @@ package com.example.tinkofflab2023.data.local.dao
 
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.MatchEntity
-import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 
 @Dao
 interface MatchDao {
@@ -14,7 +13,7 @@ interface MatchDao {
     suspend fun get(id: String): MatchEntity?
 
     @Query("SELECT COUNT(id) from matches where isFavorite=${false}")
-    suspend fun countCache() : Int
+    suspend fun countCache(): Int
 
     @Query("DELETE FROM matches WHERE isFavorite=${false}")
     suspend fun clearCache()

@@ -4,12 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.tinkofflab2023.data.local.converter.PlayerConverter
-import com.example.tinkofflab2023.data.remote.response.matches.Player
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.addHeroes
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.addHeroes
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
@@ -38,7 +35,7 @@ fun PlayerEntity.toModel(heroesEntityList: List<HeroEntity>): PlayerModel =
         isFavorite
     )
 
-fun PlayerEntity.toSearchResponse() : SearchPlayerResponse =
+fun PlayerEntity.toSearchResponse(): SearchPlayerResponse =
     SearchPlayerResponse(
         accountId = playerData.profile.accountId,
         avatarfull = playerData.profile.avatarfull,

@@ -6,11 +6,11 @@ interface MatchRepository {
 
     suspend fun getEntity(matchId: String): MatchEntity?
 
-    suspend fun addToFavorite(id:String)
+    suspend fun addToFavorite(id: String)
 
-    suspend fun removeFromFavorite(id:String)
+    suspend fun removeFromFavorite(id: String)
 
-    suspend fun isFavorite(id:String) : Boolean
+    suspend fun isFavorite(id: String): Boolean
 
-    suspend fun getFavorites() : List<MatchEntity>?
+    suspend fun getFavorites(): List<MatchEntity>?
 }

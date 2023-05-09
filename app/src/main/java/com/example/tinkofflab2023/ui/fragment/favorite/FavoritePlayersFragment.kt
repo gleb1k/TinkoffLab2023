@@ -1,20 +1,13 @@
 package com.example.tinkofflab2023.ui.fragment.favorite
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
-import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.data.local.entity.toSearchResponse
 import com.example.tinkofflab2023.databinding.FragmentFavoritePlayersBinding
 import com.example.tinkofflab2023.di.DataContainer

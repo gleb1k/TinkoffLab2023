@@ -43,7 +43,7 @@ class PlayerRepositoryImpl(
                 playerDao.clearCache()
                 playerDao.insert(player)
             }
-        }else{
+        } else {
             playerDao.insert(player)
         }
     }
@@ -81,7 +81,7 @@ class PlayerRepositoryImpl(
         playerDao.removeFromFavorite(id)
     }
 
-    override suspend fun isFavorite(id: String) : Boolean = playerDao.isFavorite(id)
+    override suspend fun isFavorite(id: String): Boolean = playerDao.isFavorite(id)
 
     override suspend fun getFavorites(): List<PlayerEntity>? = playerDao.getFavorites()
 }

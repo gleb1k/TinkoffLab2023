@@ -14,7 +14,7 @@ class GetPlayerHeroesUseCase(
         accountId: String
     ): List<PlayerHeroItem>? {
         playerRepository.getHeroes(accountId).also {
-             return it?.addHeroes(constantsRepository.getHeroes())
+            return it?.addHeroes(constantsRepository.getHeroes())
         }
     }
 }

@@ -3,7 +3,6 @@ package com.example.tinkofflab2023.data.repository
 import androidx.room.withTransaction
 import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.local.entity.MatchEntity
-import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.repository.MatchRepository
 
@@ -38,7 +37,7 @@ class MatchRepositoryImpl(
                 matchDao.clearCache()
                 matchDao.insert(match)
             }
-        }else{
+        } else {
             matchDao.insert(match)
         }
     }
@@ -51,7 +50,7 @@ class MatchRepositoryImpl(
         matchDao.removeFromFavorite(id)
     }
 
-    override suspend fun isFavorite(id: String) : Boolean = matchDao.isFavorite(id)
+    override suspend fun isFavorite(id: String): Boolean = matchDao.isFavorite(id)
 
     override suspend fun getFavorites(): List<MatchEntity>? = matchDao.getFavorites()
 

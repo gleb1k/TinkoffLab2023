@@ -68,6 +68,7 @@ class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
         super.onDestroy()
         binding = null
     }
+
     companion object {
 
         const val ACCOUNT_ID_TAG = "ACCOUNT_ID_TAG"

@@ -16,7 +16,7 @@ interface PlayerDao {
     suspend fun getAll(): List<PlayerEntity>?
 
     @Query("SELECT COUNT(id) from players where isFavorite=${false}")
-    suspend fun countCache() : Int
+    suspend fun countCache(): Int
 
     @Query("DELETE FROM players WHERE isFavorite=${false}")
     suspend fun clearCache()
