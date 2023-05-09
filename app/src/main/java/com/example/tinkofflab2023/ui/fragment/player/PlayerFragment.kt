@@ -5,9 +5,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
@@ -15,11 +17,18 @@ import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
+
 class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     private var binding: FragmentPlayerBinding? = null
 
     private var accountId: String = ""
+
+    private var isFavorite: Boolean? = null
+
+    private val viewModel: PlayerViewModel by viewModels {
+        PlayerViewModel.Factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +41,12 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
+        viewModel.getFavoriteState(accountId)
         binding = FragmentPlayerBinding.bind(view)
 
+        viewModel.isFavorite.observe(viewLifecycleOwner) {
+            isFavorite = it
+        }
         val tabLayout = binding!!.tabLayout
         val viewPager = binding!!.viewPager
         viewPager.adapter = PlayerPagerAdapter(requireActivity(), accountId)
@@ -47,6 +60,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
         }.attach()
     }
 
+    //todo как красиво сделать? я не успеваю получить ответ от бд, а менюшка уже создалась, поэтому не отображается иконка
     private fun setUpToolBar() {
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
@@ -55,29 +69,54 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
         }
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar, menu)
+                menuInflater.inflate(R.menu.top_app_bar_heart, menu)
+                val heartItem = menu.findItem(R.id.action_heart)
+                if (isFavorite == true) {
+                    heartItem.icon = ResourcesCompat.getDrawable(
+                        requireActivity().resources,
+                        R.drawable.favorite_fill_40,
+                        null
+                    )
+                }else
+                {
+                    heartItem.icon = ResourcesCompat.getDrawable(
+                        requireActivity().resources,
+                        R.drawable.favorite_40,
+                        null
+                    )
+                }
             }
-
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
-                    R.id.action_heart -> addToFavorite()
+                    R.id.action_heart -> {
+                        onFavoriteClick(menuItem)
+                    }
                 }
                 return true
             }
-
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
     }
 
-    //todo nasral
-    private fun addToFavorite() {
-        binding?.root?.showSnackbar("added to favorite")
-//
-//        lifecycleScope.launch {
-//            DataContainer.getPlayerOverviewModelUseCase(accountId).also {
-//                Constants.favoritePLayers.add(it.)
-//            }
-//        }
+    private fun onFavoriteClick(menuItem: MenuItem) {
+        if (isFavorite == false) {
+            menuItem.icon = ResourcesCompat.getDrawable(
+                requireActivity().resources,
+                R.drawable.favorite_fill_40,
+                null
+            )
+            viewModel.favorite(accountId, isFavorite?:false)
+            binding?.root?.showSnackbar(getString(R.string.added_to_favorites))
+        } else {
+            menuItem.icon = ResourcesCompat.getDrawable(
+                requireActivity().resources,
+                R.drawable.favorite_40,
+                null
+            )
+            viewModel.favorite(accountId, isFavorite ?: true)
+            binding?.root?.showSnackbar(getString(R.string.removed_from_favorites))
+        }
     }
 
     override fun onDestroy() {

@@ -103,7 +103,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar, menu)
+                menuInflater.inflate(R.menu.top_app_bar_heart, menu)
 
             }
 

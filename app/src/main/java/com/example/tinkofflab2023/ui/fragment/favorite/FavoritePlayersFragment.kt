@@ -9,19 +9,23 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.core.util.showSnackbar
-import com.example.tinkofflab2023.data.Constants
+import com.example.tinkofflab2023.data.local.entity.toSearchResponse
 import com.example.tinkofflab2023.databinding.FragmentFavoritePlayersBinding
+import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegateAdapter
+import kotlinx.coroutines.launch
 
 class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
 
     private var binding: FragmentFavoritePlayersBinding? = null
+
     private var adapter: CompositeDelegateAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,14 +42,17 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpToolBar()
         binding = FragmentFavoritePlayersBinding.bind(view)
 
         binding?.run {
             rvPlayers.layoutManager = LinearLayoutManager(context)
             rvPlayers.adapter = adapter
 
-            adapter?.swapData(Constants.favoritePLayers)
+            lifecycleScope.launch {
+                adapter?.swapData(
+                    DataContainer.getFavoritePlayersUseCase()?.map { it.toSearchResponse() }
+                        ?: listOf())
+            }
         }
     }
 
@@ -53,23 +60,6 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
         NavigationContainer.router.navigateTo(NavigationContainer.Player(accountId))
     }
 
-    private fun setUpToolBar() {
-        val menuHost: MenuHost = requireActivity()
-
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-                    R.id.action_more -> binding?.root?.showSnackbar("favortie players")
-                }
-                return true
-            }
-
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
 
     override fun onDestroy() {
         super.onDestroy()

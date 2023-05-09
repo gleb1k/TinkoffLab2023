@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/top_app_bar"
+        app:menu="@menu/top_app_bar_base"
+        app:title=""
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 

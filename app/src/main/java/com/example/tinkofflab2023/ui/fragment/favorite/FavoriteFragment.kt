@@ -40,13 +40,13 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
         val menuHost: MenuHost = requireActivity().also {
             if (it is ActivityToolBar) {
-                it.changeToolBarTitle(getString(R.string.favorite))
+                it.changeToolBarTitle(getString(R.string.favorites))
             }
         }
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar, menu)
+                menuInflater.inflate(R.menu.top_app_bar_base, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

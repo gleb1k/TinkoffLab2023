@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.local.entity.HeroEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.toEntity
-import com.example.tinkofflab2023.domain.ConstantsRepository
+import com.example.tinkofflab2023.domain.repository.ConstantsRepository
 
 class ConstantsRepositoryImpl(
     private val db: AppDatabase,
@@ -28,7 +28,7 @@ class ConstantsRepositoryImpl(
                 heroDao.insertAll(list)
                 return list
             } catch (throwable: Throwable) {
-                Log.e("get Heroes error", throwable.message.toString())
+                Log.e("getHeroes error", throwable.message.toString())
                 return listOf()
             }
         }

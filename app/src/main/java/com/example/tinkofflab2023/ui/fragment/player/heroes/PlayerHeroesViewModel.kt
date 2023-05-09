@@ -8,9 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.di.DataContainer.getPlayerModelUseCase
-import com.example.tinkofflab2023.domain.usecase.GetPlayerHeroesUseCase
-import com.example.tinkofflab2023.domain.usecase.GetPlayerModelUseCase
+import com.example.tinkofflab2023.domain.usecase.player.GetPlayerHeroesUseCase
 import com.example.tinkofflab2023.ui.model.PlayerHeroItem
 import kotlinx.coroutines.launch
 

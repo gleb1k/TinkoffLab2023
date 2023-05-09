@@ -51,8 +51,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar, menu)
-                menu.findItem(R.id.action_heart).isVisible = false
+                menuInflater.inflate(R.menu.top_app_bar_base, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

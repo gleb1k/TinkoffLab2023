@@ -14,6 +14,7 @@ import com.example.tinkofflab2023.ui.model.addHeroes
 @TypeConverters(MatchConverter::class)
 data class MatchEntity(
     val matchResponse: MatchResponse,
+    val isFavorite: Boolean = false,
     @PrimaryKey
     val id: String = matchResponse.matchId
 )

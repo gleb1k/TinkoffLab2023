@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Настройки</string>
-    <string name="favorite">Избранное</string>
+    <string name="favorites">Избранное</string>
     <string name="search">Поиск</string>
     <string name="hero">Герой</string>
     <string name="player">Игрок</string>
@@ -37,4 +37,8 @@
     <string name="account">Аккаунт</string>
     <string name="anonym">Аноним</string>
     <string name="players">Игроки</string>
+    <string name="more">Больше</string>
+    <string name="add_to_favorites">Добавить в избранные</string>
+    <string name="added_to_favorites">Добавленно в избранные</string>
+    <string name="removed_from_favorites">Удалено из избранных</string>
 </resources>

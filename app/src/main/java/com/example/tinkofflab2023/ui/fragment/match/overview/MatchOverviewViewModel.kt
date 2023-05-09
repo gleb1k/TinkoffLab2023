@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.domain.usecase.GetMatchModelUseCase
+import com.example.tinkofflab2023.domain.usecase.match.GetMatchModelUseCase
 import com.example.tinkofflab2023.ui.generateMatchOverview
 import kotlinx.coroutines.launch
 

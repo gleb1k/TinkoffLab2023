@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">DotaStats</string>
     <string name="settings">Settings</string>
-    <string name="favorite">Favorites</string>
+    <string name="favorites">Favorites</string>
     <string name="search">Search</string>
     <string name="overview">Overview</string>
 
@@ -49,5 +49,9 @@
     <string name="account">Account</string>
     <string name="anonym">Anonymous</string>
     <string name="players">Players</string>
+    <string name="more">More</string>
+    <string name="add_to_favorites">Add to favorite</string>
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
 
 </resources>

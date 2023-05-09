@@ -12,7 +12,7 @@ import com.example.tinkofflab2023.data.local.entity.MatchEntity
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 
 @Database(
-    version = 3,
+    version = 4,
     entities = [MatchEntity::class, PlayerEntity::class, HeroEntity::class],
 )
 @TypeConverters(BaseConverter::class)

@@ -5,7 +5,6 @@ import com.example.tinkofflab2023.core.App
 import com.example.tinkofflab2023.core.util.jsonparser.GsonParser
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.local.AppDatabase
-import com.example.tinkofflab2023.data.local.converter.BaseConverter
 import com.example.tinkofflab2023.data.local.converter.MatchConverter
 import com.example.tinkofflab2023.data.local.converter.PlayerConverter
 import com.example.tinkofflab2023.data.remote.DotaApi
@@ -13,11 +12,15 @@ import com.example.tinkofflab2023.data.repository.ConstantsRepositoryImpl
 import com.example.tinkofflab2023.data.repository.MatchRepositoryImpl
 import com.example.tinkofflab2023.data.repository.PlayerRepositoryImpl
 import com.example.tinkofflab2023.data.repository.SearchRepositoryImpl
-import com.example.tinkofflab2023.domain.usecase.GetMatchModelUseCase
+import com.example.tinkofflab2023.domain.usecase.match.GetFavoriteMatchesUseCase
+import com.example.tinkofflab2023.domain.usecase.player.GetFavoritePlayersUseCase
+import com.example.tinkofflab2023.domain.usecase.match.GetMatchModelUseCase
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
-import com.example.tinkofflab2023.domain.usecase.GetPlayerHeroesUseCase
-import com.example.tinkofflab2023.domain.usecase.GetPlayerMatchesUseCase
-import com.example.tinkofflab2023.domain.usecase.GetPlayerModelUseCase
+import com.example.tinkofflab2023.domain.usecase.player.GetPlayerHeroesUseCase
+import com.example.tinkofflab2023.domain.usecase.player.GetPlayerMatchesUseCase
+import com.example.tinkofflab2023.domain.usecase.player.GetPlayerModelUseCase
+import com.example.tinkofflab2023.domain.usecase.player.IsPlayerFavoriteUseCase
+import com.example.tinkofflab2023.domain.usecase.player.PlayerFavoriteAdderUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
@@ -69,6 +72,18 @@ object DataContainer {
 
     val getPlayerMatchesUseCase: GetPlayerMatchesUseCase
         get() = GetPlayerMatchesUseCase(playerRepositoryImpl, constantsRepository)
+
+    val playerFavoriteAdderUseCase : PlayerFavoriteAdderUseCase
+        get() = PlayerFavoriteAdderUseCase(playerRepositoryImpl)
+
+    val isPlayerFavoriteUseCase: IsPlayerFavoriteUseCase
+        get() = IsPlayerFavoriteUseCase(playerRepositoryImpl)
+
+    val getFavoritePlayersUseCase : GetFavoritePlayersUseCase
+        get() = GetFavoritePlayersUseCase(playerRepositoryImpl)
+
+    val getFavoriteMatchesUseCase : GetFavoriteMatchesUseCase
+        get() = GetFavoriteMatchesUseCase(matchRepositoryImpl)
 
     private val searchRepository = SearchRepositoryImpl(api)
 
