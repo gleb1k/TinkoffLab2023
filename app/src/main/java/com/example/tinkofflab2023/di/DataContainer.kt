@@ -46,6 +46,7 @@ object DataContainer {
     private val api = retrofit.create(DotaApi::class.java)
 
     private val gsonParser = GsonParser(Gson())
+
     private val db =
         Room.databaseBuilder(App.context(), AppDatabase::class.java, Constants.DOTA_DATABASE_NAME)
             .addTypeConverter(PlayerConverter(gsonParser))

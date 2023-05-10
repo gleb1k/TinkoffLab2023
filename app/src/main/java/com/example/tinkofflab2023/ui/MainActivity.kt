@@ -8,7 +8,9 @@ import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
 import com.example.tinkofflab2023.di.NavigationContainer
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ActivityToolBar {
 
     private var binding: ActivityMainBinding? = null

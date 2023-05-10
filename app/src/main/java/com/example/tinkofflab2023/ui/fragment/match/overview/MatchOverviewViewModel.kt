@@ -10,8 +10,10 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.match.GetMatchModelUseCase
 import com.example.tinkofflab2023.ui.generateMatchOverview
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class MatchOverviewViewModel(
     private val getMatchModelUseCase: GetMatchModelUseCase
 ) : ViewModel() {

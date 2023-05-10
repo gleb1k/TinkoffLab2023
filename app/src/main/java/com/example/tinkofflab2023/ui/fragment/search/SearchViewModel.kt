@@ -12,8 +12,10 @@ import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerRespon
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class SearchViewModel(
     private val searchPlayersUseCase: SearchPlayersUseCase,
     private val getMatchUseCase: GetMatchUseCase

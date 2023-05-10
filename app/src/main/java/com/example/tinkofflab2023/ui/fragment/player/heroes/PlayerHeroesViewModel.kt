@@ -10,8 +10,10 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.GetPlayerHeroesUseCase
 import com.example.tinkofflab2023.ui.model.PlayerHeroItem
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class PlayerHeroesViewModel(
     private val getPlayerHeroesUseCase: GetPlayerHeroesUseCase,
 ) : ViewModel() {

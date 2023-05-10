@@ -10,8 +10,10 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.GetPlayerModelUseCase
 import com.example.tinkofflab2023.ui.generatePlayerOverview
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class PlayerOverviewViewModel(
     private val getPlayerModelUseCase: GetPlayerModelUseCase,
 ) : ViewModel() {

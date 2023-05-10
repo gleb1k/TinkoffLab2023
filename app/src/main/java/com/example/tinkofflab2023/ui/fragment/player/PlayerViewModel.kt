@@ -10,8 +10,10 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.IsPlayerFavoriteUseCase
 import com.example.tinkofflab2023.domain.usecase.player.PlayerFavoriteAdderUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class PlayerViewModel(
     private val playerFavoriteAdderUseCase: PlayerFavoriteAdderUseCase,
     private val isPlayerFavoriteUseCase: IsPlayerFavoriteUseCase,
