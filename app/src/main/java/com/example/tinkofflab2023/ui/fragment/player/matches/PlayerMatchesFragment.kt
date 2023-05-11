@@ -9,19 +9,28 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerMatchesBinding
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
 
     private var binding: FragmentPlayerMatchesBinding? = null
 
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
+
     private var adapter: CompositeDelegateAdapter? = null
 
-    private val viewModel: PlayerMatchesViewModel by viewModels {
-        PlayerMatchesViewModel.Factory
-    }
+    private val viewModel: PlayerMatchesViewModel by viewModels()
 
     private var accountId: String = ""
 
@@ -30,7 +39,7 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         val glide = Glide.with(this)
 
         adapter = CompositeDelegateAdapter(
-            MatchDelegateAdapter(glide, ::onMatchClick),
+            MatchDelegateAdapter(viewModifier, glide, ::onMatchClick),
         )
 
         arguments?.getString(PlayerOverviewFragment.ACCOUNT_ID_TAG)?.let {
@@ -41,7 +50,7 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
 
 
     private fun onMatchClick(matchId: String) {
-        NavigationContainer.router.navigateTo(NavigationContainer.Match(matchId))
+        router.navigateTo(Screens.Match(matchId))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

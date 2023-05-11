@@ -24,10 +24,10 @@
     <string name="match">Матч</string>
     <string name="ranked">Рейтинг</string>
     <string name="lost_match">Поражение</string>
-    <string name="win_match">Победа</string>
+    <string name="won_match">Победа</string>
     <string name="kda">УСП</string>
     <string name="duration">Длительность</string>
-    <string name="last_online">Последний раз в сети</string>
+    <string name="last_online">Был в сети</string>
     <string name="nickname">Ник</string>
     <string name="the_radiant">Силы Света</string>
     <string name="the_dire">Силы Тьмы</string>
@@ -41,4 +41,8 @@
     <string name="add_to_favorites">Добавить в избранные</string>
     <string name="added_to_favorites">Добавленно в избранные</string>
     <string name="removed_from_favorites">Удалено из избранных</string>
+    <string name="doesnt_found">Не найдено :с</string>
+    <string name="an_error_has_occurred">Произошла ошибка</string>
+    <string name="radiant_victory">Победа сил Света</string>
+    <string name="dire_victory">Победа сил Тьмы</string>
 </resources>

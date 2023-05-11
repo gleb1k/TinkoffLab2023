@@ -1,35 +1,31 @@
 package com.example.tinkofflab2023.ui.fragment.search.adapter
 
-import android.content.Context
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.RequestManager
+import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
-import com.example.tinkofflab2023.core.util.Converter
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import javax.inject.Inject
 
 class SearchPlayerDelegateAdapter(
+    private val viewModifier: ViewModifier,
     private val glide: RequestManager,
     private val onItemClick: (String) -> Unit,
-    private val context: Context
 ) : ViewBindingDelegateAdapter<SearchPlayerResponse, SearchPlayerItemBinding>(
     SearchPlayerItemBinding::inflate
 ) {
+
+
     override fun SearchPlayerItemBinding.onBind(item: SearchPlayerResponse) {
+        val context = this.root.context
 
-        //todo context
-        this.root.context
-
-        val circularProgressDrawable = CircularProgressDrawable(context)
-        circularProgressDrawable.strokeWidth = 5f
-        circularProgressDrawable.centerRadius = 30f
-        circularProgressDrawable.start()
-
-        tvLastMatch.text = "Last match: ${Converter.toDate(item.lastMatchTime)}"
+        tvLastMatch.text =
+            "${context.getString(R.string.last_played)} ${viewModifier.toDate(item.lastMatchTime)}"
         tvNickname.text = item.personaname
         glide
             .load(item.avatarfull)
-            .placeholder(circularProgressDrawable)
+            .placeholder(viewModifier.getCircularProgressDrawable())
             .into(ivIcon)
 
         cardView.setOnClickListener {

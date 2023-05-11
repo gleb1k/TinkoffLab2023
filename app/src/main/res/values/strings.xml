@@ -34,7 +34,7 @@
     <string name="ranked">Ranked</string>
     <string name="all_pick" translatable="false">All pick</string>
     <string name="lost_match">Lost match</string>
-    <string name="win_match">Win match</string>
+    <string name="won_match">Won match</string>
     <string name="kda">KDA</string>
     <string name="duration">Duration</string>
     <string name="base_kda" translatable="false">0/0/0</string>
@@ -53,5 +53,9 @@
     <string name="add_to_favorites">Add to favorite</string>
     <string name="added_to_favorites">Added to favorites</string>
     <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="doesnt_found">Doesn\'t found :c</string>
+    <string name="an_error_has_occurred">An error has occurred</string>
+    <string name="radiant_victory">Radiant victory</string>
+    <string name="dire_victory">Dire victory</string>
 
 </resources>

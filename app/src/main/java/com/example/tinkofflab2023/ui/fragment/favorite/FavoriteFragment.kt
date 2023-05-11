@@ -11,13 +11,21 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
-import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentFavoriteBinding
+import com.example.tinkofflab2023.di.Screens
+import com.github.terrakok.cicerone.Router
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private var binding: FragmentFavoriteBinding? = null
+
+    @Inject
+    lateinit var router: Router
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +59,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
-                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
+                    R.id.action_more -> router.replaceScreen(Screens.Settings())
                 }
                 return true
             }

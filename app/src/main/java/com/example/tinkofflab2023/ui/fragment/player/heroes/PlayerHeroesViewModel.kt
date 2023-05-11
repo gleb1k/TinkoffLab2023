@@ -3,18 +3,15 @@ package com.example.tinkofflab2023.ui.fragment.player.heroes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.GetPlayerHeroesUseCase
 import com.example.tinkofflab2023.ui.model.PlayerHeroItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class PlayerHeroesViewModel(
+class PlayerHeroesViewModel @Inject constructor(
     private val getPlayerHeroesUseCase: GetPlayerHeroesUseCase,
 ) : ViewModel() {
 
@@ -52,12 +49,4 @@ class PlayerHeroesViewModel(
         }
     }
 
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val getPlayerHeroesUseCase = DataContainer.getPlayerHeroesUseCase
-                PlayerHeroesViewModel(getPlayerHeroesUseCase)
-            }
-        }
-    }
 }

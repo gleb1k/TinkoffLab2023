@@ -16,8 +16,9 @@ import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     private var binding: FragmentPlayerBinding? = null
@@ -26,9 +27,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     private var isFavorite: Boolean? = null
 
-    private val viewModel: PlayerViewModel by viewModels {
-        PlayerViewModel.Factory
-    }
+    private val viewModel: PlayerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

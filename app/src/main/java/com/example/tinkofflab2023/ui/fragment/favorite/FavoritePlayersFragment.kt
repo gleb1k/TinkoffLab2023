@@ -10,25 +10,39 @@ import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.data.local.entity.toSearchResponse
 import com.example.tinkofflab2023.databinding.FragmentFavoritePlayersBinding
-import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
+import com.example.tinkofflab2023.domain.usecase.player.GetFavoritePlayersUseCase
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
 
     private var binding: FragmentFavoritePlayersBinding? = null
 
     private var adapter: CompositeDelegateAdapter? = null
 
+    @Inject
+    lateinit var getFavoritePlayersUseCase: GetFavoritePlayersUseCase
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val glide = Glide.with(this)
         adapter = CompositeDelegateAdapter(
             SearchPlayerDelegateAdapter(
+                viewModifier,
                 glide,
-                ::onPlayerClick,
-                requireContext()
+                ::onPlayerClick
             )
         )
     }
@@ -43,14 +57,14 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
 
             lifecycleScope.launch {
                 adapter?.swapData(
-                    DataContainer.getFavoritePlayersUseCase()?.map { it.toSearchResponse() }
+                    getFavoritePlayersUseCase()?.map { it.toSearchResponse() }
                         ?: listOf())
             }
         }
     }
 
     private fun onPlayerClick(accountId: String) {
-        NavigationContainer.router.navigateTo(NavigationContainer.Player(accountId))
+        router.navigateTo(Screens.Player(accountId))
     }
 
 

@@ -18,3 +18,8 @@ fun PlayerHeroesResponse.addHeroes(heroesEntityList: List<HeroEntity>): List<Pla
     }
     return playerList
 }
+
+fun PlayerHeroesResponse.clearNeverPlayedHeroes(): PlayerHeroesResponse {
+    removeAll { it.lastPlayed == "0" }
+    return this
+}

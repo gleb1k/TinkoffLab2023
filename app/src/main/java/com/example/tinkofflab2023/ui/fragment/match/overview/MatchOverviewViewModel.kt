@@ -3,19 +3,17 @@ package com.example.tinkofflab2023.ui.fragment.match.overview
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.match.GetMatchModelUseCase
-import com.example.tinkofflab2023.ui.generateMatchOverview
+import com.example.tinkofflab2023.ui.util.ViewGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class MatchOverviewViewModel(
-    private val getMatchModelUseCase: GetMatchModelUseCase
+class MatchOverviewViewModel @Inject constructor(
+    private val getMatchModelUseCase: GetMatchModelUseCase,
+    private val viewGenerator: ViewGenerator,
 ) : ViewModel() {
 
     private val _viewList = MutableLiveData<ArrayList<Any>?>(null)
@@ -46,18 +44,9 @@ class MatchOverviewViewModel(
                     _viewList.value = null
                     return@also
                 }
-                _viewList.value = generateMatchOverview(it)
+                _viewList.value = viewGenerator.generateMatchOverview(it)
             }
             _loading.value = false
-        }
-    }
-
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val getMatchOverviewModelUseCase = DataContainer.getMatchModelUseCase
-                MatchOverviewViewModel(getMatchOverviewModelUseCase)
-            }
         }
     }
 }

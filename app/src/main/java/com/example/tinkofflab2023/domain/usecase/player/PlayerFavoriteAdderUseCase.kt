@@ -2,8 +2,9 @@ package com.example.tinkofflab2023.domain.usecase.player
 
 import com.example.tinkofflab2023.domain.repository.PlayerRepository
 import com.example.tinkofflab2023.domain.usecase.UseCase
+import javax.inject.Inject
 
-class PlayerFavoriteAdderUseCase(
+class PlayerFavoriteAdderUseCase @Inject constructor(
     private val playerRepository: PlayerRepository,
 ) : UseCase {
 
@@ -17,4 +18,3 @@ class PlayerFavoriteAdderUseCase(
             playerRepository.addToFavorite(accountId)
     }
 }
-

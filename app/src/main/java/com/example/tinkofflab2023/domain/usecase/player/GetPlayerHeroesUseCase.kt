@@ -5,8 +5,9 @@ import com.example.tinkofflab2023.domain.repository.ConstantsRepository
 import com.example.tinkofflab2023.domain.repository.PlayerRepository
 import com.example.tinkofflab2023.domain.usecase.UseCase
 import com.example.tinkofflab2023.ui.model.PlayerHeroItem
+import javax.inject.Inject
 
-class GetPlayerHeroesUseCase(
+class GetPlayerHeroesUseCase @Inject constructor(
     private val playerRepository: PlayerRepository,
     private val constantsRepository: ConstantsRepository
 ) : UseCase {

@@ -3,20 +3,17 @@ package com.example.tinkofflab2023.ui.fragment.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
-import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel(
+class SearchViewModel @Inject constructor(
     private val searchPlayersUseCase: SearchPlayersUseCase,
     private val getMatchUseCase: GetMatchUseCase
 ) : ViewModel() {
@@ -74,14 +71,5 @@ class SearchViewModel(
         }
     }
 
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val searchPlayersUseCase = DataContainer.searchPlayersUseCase
-                val getMatchUseCase = DataContainer.getMatchUseCase
-                SearchViewModel(searchPlayersUseCase, getMatchUseCase)
-            }
-        }
-    }
 
 }

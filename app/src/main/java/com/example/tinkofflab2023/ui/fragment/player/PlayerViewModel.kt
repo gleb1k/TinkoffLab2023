@@ -3,18 +3,15 @@ package com.example.tinkofflab2023.ui.fragment.player
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.IsPlayerFavoriteUseCase
 import com.example.tinkofflab2023.domain.usecase.player.PlayerFavoriteAdderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class PlayerViewModel(
+class PlayerViewModel @Inject constructor(
     private val playerFavoriteAdderUseCase: PlayerFavoriteAdderUseCase,
     private val isPlayerFavoriteUseCase: IsPlayerFavoriteUseCase,
 ) : ViewModel() {
@@ -37,16 +34,4 @@ class PlayerViewModel(
         }
     }
 
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val playerFavoriteUseCase = DataContainer.playerFavoriteAdderUseCase
-                val isPlayerFavoriteUseCase = DataContainer.isPlayerFavoriteUseCase
-                PlayerViewModel(
-                    playerFavoriteUseCase,
-                    isPlayerFavoriteUseCase
-                )
-            }
-        }
-    }
 }

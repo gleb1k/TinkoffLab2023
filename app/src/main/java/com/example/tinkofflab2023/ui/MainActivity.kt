@@ -2,13 +2,17 @@ package com.example.tinkofflab2023.ui
 
 
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ActivityToolBar {
@@ -19,10 +23,19 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
         this,
         R.id.fragment_container
     )
-    private val router = NavigationContainer.router
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        onBackPressedDispatcher.addCallback(this) {
+            router.exit()
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
@@ -33,17 +46,17 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
             bnvMain.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_settings -> {
-                        router.navigateTo(NavigationContainer.Settings())
+                        router.navigateTo(Screens.Settings())
                         true
                     }
 
                     R.id.action_search -> {
-                        router.navigateTo(NavigationContainer.Search())
+                        router.navigateTo(Screens.Search())
                         true
                     }
 
                     R.id.action_favorite -> {
-                        router.navigateTo(NavigationContainer.Favorite())
+                        router.navigateTo(Screens.Favorite())
                         true
                     }
 
@@ -52,7 +65,7 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
             }
             bnvMain.selectedItemId = R.id.action_search
         }
-        router.navigateTo(NavigationContainer.Search())
+        router.navigateTo(Screens.Search())
     }
 
     override fun changeToolBarTitle(title: String) {
@@ -61,11 +74,11 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
 
     override fun onResumeFragments() {
         super.onResumeFragments()
-        NavigationContainer.navigatorHolder.setNavigator(navigator)
+        navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
-        NavigationContainer.navigatorHolder.removeNavigator()
+        navigatorHolder.removeNavigator()
         super.onPause()
     }
 

@@ -9,21 +9,30 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.PlayerHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.TextCenterDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
 
     private var binding: FragmentPlayerOverviewBinding? = null
 
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
+
     private var adapter: CompositeDelegateAdapter? = null
 
-    private val viewModel: PlayerOverviewViewModel by viewModels {
-        PlayerOverviewViewModel.Factory
-    }
+    private val viewModel: PlayerOverviewViewModel by viewModels()
 
     private var accountId: String = ""
 
@@ -33,9 +42,9 @@ class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
 
         adapter = CompositeDelegateAdapter(
             TextCenterDelegateAdapter(),
-            PlayerHeaderDelegateAdapter(glide),
-            MatchDelegateAdapter(glide, ::onMatchClick),
-            HeroDelegateAdapter(glide)
+            PlayerHeaderDelegateAdapter(viewModifier, glide),
+            MatchDelegateAdapter(viewModifier, glide, ::onMatchClick),
+            HeroDelegateAdapter(viewModifier, glide)
         )
 
         arguments?.getString(ACCOUNT_ID_TAG)?.let {
@@ -46,7 +55,7 @@ class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
 
 
     private fun onMatchClick(matchId: String) {
-        NavigationContainer.router.navigateTo(NavigationContainer.Match(matchId))
+        router.navigateTo(Screens.Match(matchId))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

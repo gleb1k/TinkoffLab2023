@@ -10,32 +10,37 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.core.util.showSnackbar
-import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
-import com.example.tinkofflab2023.di.DataContainer
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.MatchHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamHeaderDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamOutcomeDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamPlayerDelegateAdapter
-import kotlinx.coroutines.launch
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
     private var binding: FragmentMatchBinding? = null
 
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
+
     private var adapter: CompositeDelegateAdapter? = null
 
-    private val viewModel: MatchOverviewViewModel by viewModels {
-        MatchOverviewViewModel.Factory
-    }
+    private val viewModel: MatchOverviewViewModel by viewModels()
 
     private var matchId: String = ""
 
@@ -44,13 +49,13 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
         val glide = Glide.with(this)
 
         adapter = CompositeDelegateAdapter(
-            MatchHeaderDelegateAdapter(),
+            MatchHeaderDelegateAdapter(viewModifier),
             TeamHeaderDelegateAdapter(),
             TeamOutcomeDelegateAdapter(),
             TeamPlayerDelegateAdapter(
+                viewModifier,
                 glide,
                 ::onPlayerClick,
-                requireContext()
             )
         )
 
@@ -90,7 +95,7 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
             binding?.root?.showSnackbar(getString(R.string.anonym))
             return
         }
-        NavigationContainer.router.navigateTo(NavigationContainer.Player(accountId))
+        router.navigateTo(Screens.Player(accountId))
     }
 
     private fun setUpToolBar() {
@@ -115,23 +120,12 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
                 return true
             }
 
-            override fun onMenuClosed(menu: Menu) {
-                super.onMenuClosed(menu)
-
-            }
-
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     //todo nasral
     private fun addToFavorite() {
         binding?.root?.showSnackbar("added to favorite")
-
-        lifecycleScope.launch {
-            DataContainer.getMatchUseCase(matchId).also {
-                Constants.favoriteMatches.add(it)
-            }
-        }
     }
 
     override fun onDestroy() {

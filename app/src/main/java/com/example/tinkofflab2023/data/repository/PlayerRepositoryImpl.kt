@@ -5,10 +5,12 @@ import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
+import com.example.tinkofflab2023.data.remote.response.players.heroes.clearNeverPlayedHeroes
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.domain.repository.PlayerRepository
+import javax.inject.Inject
 
-class PlayerRepositoryImpl(
+class PlayerRepositoryImpl @Inject constructor(
     private val db: AppDatabase,
     private val api: DotaApi
 ) : PlayerRepository {
@@ -23,7 +25,7 @@ class PlayerRepositoryImpl(
         try {
             return PlayerEntity(
                 playerData = api.getPlayerData(accountId),
-                heroes = api.getPlayerHeroes(accountId),
+                heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
                 recentMatches = api.getPlayerRecentMatches(accountId),
                 wl = api.getPlayerWL(accountId),
             ).also {

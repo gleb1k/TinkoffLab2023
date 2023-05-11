@@ -3,18 +3,15 @@ package com.example.tinkofflab2023.ui.fragment.player.matches
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.tinkofflab2023.di.DataContainer
 import com.example.tinkofflab2023.domain.usecase.player.GetPlayerMatchesUseCase
 import com.example.tinkofflab2023.ui.model.PlayerMatchItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class PlayerMatchesViewModel(
+class PlayerMatchesViewModel @Inject constructor(
     private val getPlayerMatchesUseCase: GetPlayerMatchesUseCase
 ) : ViewModel() {
 
@@ -52,12 +49,4 @@ class PlayerMatchesViewModel(
         }
     }
 
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val getPlayerMatchesUseCase = DataContainer.getPlayerMatchesUseCase
-                PlayerMatchesViewModel(getPlayerMatchesUseCase)
-            }
-        }
-    }
 }

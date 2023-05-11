@@ -6,14 +6,9 @@ import com.example.tinkofflab2023.ui.fragment.match.overview.MatchOverviewFragme
 import com.example.tinkofflab2023.ui.fragment.player.PlayerFragment
 import com.example.tinkofflab2023.ui.fragment.search.SearchFragment
 import com.example.tinkofflab2023.ui.fragment.settings.SettingsFragment
-import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-object NavigationContainer {
-
-    private val cicerone = Cicerone.create()
-    val router get() = cicerone.router
-    val navigatorHolder get() = cicerone.getNavigatorHolder()
+object Screens {
 
     fun Main() = FragmentScreen { TestFragment() }
     fun Search() = FragmentScreen { SearchFragment() }

@@ -11,25 +11,33 @@ import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerHeroesBinding
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
 
     private var binding: FragmentPlayerHeroesBinding? = null
 
     private var adapter: CompositeDelegateAdapter? = null
 
-    private val viewModel: PlayerHeroesViewModel by viewModels {
-        PlayerHeroesViewModel.Factory
-    }
+    private val viewModel: PlayerHeroesViewModel by viewModels()
 
     private var accountId: String = ""
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val glide = Glide.with(this)
 
         adapter = CompositeDelegateAdapter(
-            HeroDelegateAdapter(glide),
+            HeroDelegateAdapter(
+                viewModifier,
+                glide
+            ),
         )
         arguments?.getString(PlayerOverviewFragment.ACCOUNT_ID_TAG)?.let {
             accountId = it
@@ -41,7 +49,6 @@ class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPlayerHeroesBinding.bind(view)
 
-//        setUpToolBar()
         binding?.run {
             rvHeroes.layoutManager = LinearLayoutManager(context)
             rvHeroes.adapter = adapter

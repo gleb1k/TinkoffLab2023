@@ -1,11 +1,17 @@
-package com.example.tinkofflab2023.core.util
+package com.example.tinkofflab2023.ui.util
 
+import android.content.Context
 import android.icu.text.SimpleDateFormat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.example.tinkofflab2023.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Date
 import java.util.Locale
 import kotlin.math.roundToInt
 
-object Converter {
+class ViewModifier(
+    @ApplicationContext private val context: Context
+) {
 
     /**
      *  wins: 598; losses: 569 returns -> winrate: 51.2 %
@@ -40,15 +46,15 @@ object Converter {
             val day = time.substring(8, 10)
             "$day.$month.$year"
         } catch (ex: Throwable) {
-            "Ex"
+            "-"
         }
     }
 
     fun winSide(radiantWin: Boolean): String {
         return if (radiantWin)
-            "Radiant Victory"
+            context.getString(R.string.radiant_victory)
         else
-            "Dire Victory"
+            context.getString(R.string.dire_victory)
     }
 
     /**
@@ -79,17 +85,27 @@ object Converter {
         return sdf.format(netDate)
     }
 
+    //todo
     fun lostOrWonMatch(playerSlot: Int, radiantWin: Boolean): String {
         //0-127 are Radiant, 128-255 are Dire
         if (playerSlot in 0..127 && radiantWin)
-            return "Won Match"
+            return context.getString(R.string.won_match)
         if (playerSlot in 0..127 && !radiantWin)
-            return "Lost Match"
+            return context.getString(R.string.lost_match)
         if (playerSlot in 128..255 && radiantWin)
-            return "Lost Match"
+            return context.getString(R.string.lost_match)
         if (playerSlot in 128..255 && !radiantWin)
-            return "Won Match"
-        return ""
+            return context.getString(R.string.won_match)
+        return "-"
+    }
+
+    //todo плохо?
+    fun getCircularProgressDrawable(): CircularProgressDrawable {
+        val circularProgressDrawable = CircularProgressDrawable(context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        return circularProgressDrawable
     }
 
 }

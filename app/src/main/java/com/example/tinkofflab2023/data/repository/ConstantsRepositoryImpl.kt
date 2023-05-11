@@ -6,8 +6,9 @@ import com.example.tinkofflab2023.data.local.entity.HeroEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.toEntity
 import com.example.tinkofflab2023.domain.repository.ConstantsRepository
+import javax.inject.Inject
 
-class ConstantsRepositoryImpl(
+class ConstantsRepositoryImpl @Inject constructor(
     private val db: AppDatabase,
     private val api: DotaApi
 ) : ConstantsRepository {

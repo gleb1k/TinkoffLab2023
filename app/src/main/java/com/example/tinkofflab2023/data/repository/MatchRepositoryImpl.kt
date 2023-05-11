@@ -5,8 +5,9 @@ import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.local.entity.MatchEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
 import com.example.tinkofflab2023.domain.repository.MatchRepository
+import javax.inject.Inject
 
-class MatchRepositoryImpl(
+class MatchRepositoryImpl @Inject constructor(
     private val db: AppDatabase,
     private val api: DotaApi
 ) : MatchRepository {

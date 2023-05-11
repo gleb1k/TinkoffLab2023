@@ -18,28 +18,28 @@ import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentSearchBinding
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private var binding: FragmentSearchBinding? = null
 
-    private val router: Router = NavigationContainer.router
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
 
     private var adapter: CompositeDelegateAdapter? = null
 
-    private val viewModel: SearchViewModel by viewModels {
-        SearchViewModel.Factory
-    }
-
-    //todo ?
-    fun onBackPressed() {
-        router.exit()
-    }
+    private val viewModel: SearchViewModel by viewModels()
 
     private fun setUpToolBar() {
 
@@ -70,11 +70,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         val glide = Glide.with(this)
 
         adapter = CompositeDelegateAdapter(
-            SearchMatchDelegateAdapter(onItemClick = ::onMatchClick),
+            SearchMatchDelegateAdapter(viewModifier, onItemClick = ::onMatchClick),
             SearchPlayerDelegateAdapter(
+                viewModifier,
                 onItemClick = ::onPlayerClick,
                 glide = glide,
-                context = requireContext()
             )
         )
     }
@@ -110,16 +110,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun onMatchClick(matchId: String) {
-        NavigationContainer.router.navigateTo(NavigationContainer.Match(matchId))
+        router.navigateTo(Screens.Match(matchId))
     }
 
     private fun onPlayerClick(accountId: String) {
-        router.navigateTo(NavigationContainer.Player(accountId))
+        router.navigateTo(Screens.Player(accountId))
     }
 
     private fun setEditText() {
         binding?.run {
-            etSearch.setOnEditorActionListener { v, actionId, event ->
+            etSearch.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     viewModel.onSearchClick(etSearch.text.toString())
                     true

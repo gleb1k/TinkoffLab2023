@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
-import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.FragmentFavoriteMatchesBinding
-import com.example.tinkofflab2023.di.NavigationContainer
+import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter
+import com.example.tinkofflab2023.ui.util.ViewModifier
+import com.github.terrakok.cicerone.Router
+import javax.inject.Inject
 
 class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
 
@@ -17,10 +19,17 @@ class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
 
     private var adapter: CompositeDelegateAdapter? = null
 
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var viewModifier: ViewModifier
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = CompositeDelegateAdapter(
             SearchMatchDelegateAdapter(
+                viewModifier,
                 ::onMatchClick
             )
         )
@@ -35,14 +44,13 @@ class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
             rvMatches.layoutManager = LinearLayoutManager(context)
             rvMatches.adapter = adapter
 
-            adapter?.swapData(Constants.favoriteMatches)
-
+//            adapter?.swapData(null)
 
         }
     }
 
     private fun onMatchClick(matchId: String) {
-        NavigationContainer.router.navigateTo(NavigationContainer.Match(matchId))
+        router.navigateTo(Screens.Match(matchId))
     }
 
     override fun onDestroy() {

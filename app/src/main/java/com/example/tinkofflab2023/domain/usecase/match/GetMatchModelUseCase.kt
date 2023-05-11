@@ -5,8 +5,9 @@ import com.example.tinkofflab2023.domain.repository.ConstantsRepository
 import com.example.tinkofflab2023.domain.repository.MatchRepository
 import com.example.tinkofflab2023.domain.usecase.UseCase
 import com.example.tinkofflab2023.ui.model.MatchModel
+import javax.inject.Inject
 
-class GetMatchModelUseCase(
+class GetMatchModelUseCase @Inject constructor(
     private val matchRepository: MatchRepository,
     private val constantsRepository: ConstantsRepository
 ) : UseCase {
