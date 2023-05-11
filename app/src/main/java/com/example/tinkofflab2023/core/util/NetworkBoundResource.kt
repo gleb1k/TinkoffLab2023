@@ -30,7 +30,6 @@ inline fun <ResultType, RequestType> networkBoundResource(
     } else {
         query(queryString).map { Resource.Success(it) }
     }
-
     emitAll(flow)
 }
 

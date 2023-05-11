@@ -15,7 +15,6 @@ class ConstantsRepositoryImpl @Inject constructor(
 
     private val heroDao = db.getHeroDao()
 
-    //todo nasral
     override suspend fun getHeroes(): List<HeroEntity> {
         val heroesFromDb = heroDao.getAll()
         if (heroesFromDb.isNotEmpty())

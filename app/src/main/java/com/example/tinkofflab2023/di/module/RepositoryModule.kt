@@ -41,5 +41,4 @@ abstract class RepositoryModule {
     abstract fun bindSearchRepository(
         searchRepositoryImpl: SearchRepositoryImpl
     ): SearchRepository
-    //todo singleton usecases?
 }

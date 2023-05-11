@@ -15,13 +15,11 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    @Singleton
     fun provideViewGenerator(
         @ApplicationContext context: Context
     ): ViewGenerator = ViewGenerator(context)
 
     @Provides
-    @Singleton
     fun provideViewModifier(
         @ApplicationContext context: Context
     ): ViewModifier = ViewModifier(context)

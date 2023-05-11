@@ -9,7 +9,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-//todo how to provide screens?
 @Module
 @InstallIn(SingletonComponent::class)
 object NavigationModule {
@@ -30,14 +29,4 @@ object NavigationModule {
         cicerone: Cicerone<Router>
     ): NavigatorHolder = cicerone.getNavigatorHolder()
 
-//    fun Search() = FragmentScreen { SearchFragment() }
-//    fun Match(matchId: String) =
-//        FragmentScreen(matchId) { MatchOverviewFragment.newInstance(matchId) }
-//
-//    //fragmentScreen key == accountId
-//    fun Player(accountId: String) =
-//        FragmentScreen(accountId) { PlayerFragment.newInstance(accountId) }
-//
-//    fun Settings() = FragmentScreen { SettingsFragment() }
-//    fun Favorite() = FragmentScreen { FavoriteFragment() }
 }

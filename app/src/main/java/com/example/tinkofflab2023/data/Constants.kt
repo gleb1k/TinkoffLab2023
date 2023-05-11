@@ -7,10 +7,6 @@ object Constants {
 
     const val DOTA_DATABASE_NAME = "dota_db"
 
-    const val RADIANT = "RADIANT"
-    const val DIRE = "DIRE"
-
-    //todo nasral?
     val lobbyTypes = mapOf(
         0 to "Normal",
         1 to "Practice",

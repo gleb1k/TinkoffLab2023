@@ -11,8 +11,10 @@ import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
 
     private var binding: FragmentFavoriteMatchesBinding? = null

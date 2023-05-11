@@ -17,12 +17,14 @@ class PlayerRepositoryImpl @Inject constructor(
 
     private val playerDao = db.getPlayerDao()
 
+    //todo nasral!!!!!!!!!!
     // Если в бд нет, иду в сеть, если в сети нет -> возвращаю null
     override suspend fun getEntity(accountId: String): PlayerEntity? {
         playerDao.get(accountId)?.let {
             return it
         }
         try {
+            //в отдельную сущность (Метод в апи)
             return PlayerEntity(
                 playerData = api.getPlayerData(accountId),
                 heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
@@ -31,6 +33,8 @@ class PlayerRepositoryImpl @Inject constructor(
             ).also {
                 addToCache(it)
             }
+                //runCatching {}
+//            val result = Result<PlayerEntity>
         } catch (throwable: Throwable) {
             return null
         }
@@ -87,25 +91,3 @@ class PlayerRepositoryImpl @Inject constructor(
 
     override suspend fun getFavorites(): List<PlayerEntity>? = playerDao.getFavorites()
 }
-
-//    override fun getPlayerEntity(accountId: String): Flow<Resource<PlayerEntity>> =
-//        networkBoundResource(
-//            accountId,
-//            query = {
-//                playerDao.get(accountId)
-//            },
-//            fetch = {
-//                PlayerEntity(
-//                    playerData = api.getPlayerData(accountId),
-//                    heroes = api.getPlayerHeroes(accountId),
-//                    recentMatches = api.getPlayerRecentMatches(accountId),
-//                    wl = api.getPlayerWL(accountId),
-//                )
-//            },
-//            saveFetchResult = { player ->
-//                db.withTransaction {
-//                    playerDao.deleteById(accountId)
-//                    playerDao.save(player)
-//                }
-//            }
-//        )

@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.tinkofflab2023.core.util.jsonparser.GsonParser
 import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.local.AppDatabase
+import com.example.tinkofflab2023.data.local.converter.BaseConverter
 import com.example.tinkofflab2023.data.local.converter.MatchConverter
 import com.example.tinkofflab2023.data.local.converter.PlayerConverter
 import com.google.gson.Gson
@@ -19,7 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object LocalModule {
 
-    //todo Singleton?
     @Provides
     @Singleton
     fun provideGsonParser(
@@ -41,22 +41,27 @@ object LocalModule {
     ): MatchConverter = MatchConverter(gsonParser)
 
     @Provides
+    fun provideBaseConverter(
+        gsonParser: GsonParser
+    ): BaseConverter = BaseConverter(gsonParser)
+
+    @Provides
     @Singleton
     fun provideAppDataBase(
         @ApplicationContext context: Context,
         playerConverter: PlayerConverter,
-        matchConverter: MatchConverter
+        matchConverter: MatchConverter,
+        baseConverter: BaseConverter
     ): AppDatabase =
         Room.databaseBuilder(
             context,
             AppDatabase::class.java,
-            //todo constants?
             Constants.DOTA_DATABASE_NAME
         )
             .addTypeConverter(playerConverter)
             .addTypeConverter(matchConverter)
-            //TODO почему когда добавляю его сюда то выкидываает ошибку? ну сделать через хилт если еще
-            //.addTypeConverter(BaseConverter(gsonParser))
+            //TODO почему когда добавляю его сюда то выкидываает ошибку?
+            //.addTypeConverter(baseConverter)
             .fallbackToDestructiveMigration()
             .build()
 }

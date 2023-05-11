@@ -36,7 +36,6 @@ class ViewModifier(
     /**
      *  2023-03-13T14:24:58.892Z returns -> 13.03.2023
      */
-    //todo непонятно какой часовой пояс, дата может отставать
     fun toDate(time: String?): String {
         if (time == null)
             return "-"
@@ -99,7 +98,6 @@ class ViewModifier(
         return "-"
     }
 
-    //todo плохо?
     fun getCircularProgressDrawable(): CircularProgressDrawable {
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
