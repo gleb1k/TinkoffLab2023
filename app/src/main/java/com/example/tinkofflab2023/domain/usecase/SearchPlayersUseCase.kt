@@ -1,12 +1,13 @@
 package com.example.tinkofflab2023.domain.usecase
 
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
-import com.example.tinkofflab2023.domain.DotaRepository
+import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
+import com.example.tinkofflab2023.domain.repository.SearchRepository
+import javax.inject.Inject
 
-class SearchPlayersUseCase(
-    private val dotaRepository: DotaRepository
-) {
+class SearchPlayersUseCase @Inject constructor(
+    private val searchRepository: SearchRepository
+) : UseCase {
     suspend operator fun invoke(
         name: String
-    ): List<SearchResponse> = dotaRepository.searchPlayers(name)
+    ): List<SearchPlayerResponse> = searchRepository.searchPlayers(name)
 }

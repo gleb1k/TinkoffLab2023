@@ -12,7 +12,6 @@
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="Тинкер мой любимый герой"
         android:src="@drawable/tinker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,8 +20,7 @@
         android:id="@+id/tv_ranked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="Ranked"
+        android:text="@string/ranked"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/iv_hero"
         app:layout_constraintTop_toBottomOf="@+id/iv_hero" />
@@ -32,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-2dp"
-        android:text="All pick"
+        android:text="@string/all_pick"
         app:layout_constraintStart_toStartOf="@+id/tv_ranked"
         app:layout_constraintTop_toBottomOf="@+id/tv_ranked" />
 
@@ -42,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="2dp"
-        android:text="Tinker"
+        android:text="@string/hero"
         android:textColor="@color/green"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/iv_hero"
@@ -53,7 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-2dp"
-        android:text="Immortal"
         app:layout_constraintStart_toStartOf="@+id/tv_hero_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_hero_name" />
 
@@ -65,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Lost Match"
+        android:text=""
         android:textColor="@color/red"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="KDA"
+        android:text="@string/kda"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -96,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
-        android:text="0/0/7"
+        android:text="@string/base_kda"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_kda_const"
         app:layout_constraintEnd_toEndOf="@+id/tv_kda_const" />
@@ -107,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="8dp"
-        android:text="Duration"
+        android:text="@string/duration"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_kda_const" />
@@ -117,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-2dp"
-        android:text="66:99"
+        android:text="@string/base_score"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_duration_const"
         app:layout_constraintEnd_toEndOf="@+id/tv_duration_const" />

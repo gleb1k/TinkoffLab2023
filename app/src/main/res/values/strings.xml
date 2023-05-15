@@ -1,6 +1,61 @@
 <resources>
-    <string name="app_name">TinkoffLab2023</string>
-    <string name="settings">Настройки</string>
+    <string name="app_name" translatable="false">DotaStats</string>
+    <string name="settings">Settings</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+    <string name="overview">Overview</string>
 
-    <string name="base_date">99.99.9999</string>
+    <string name="base_date" translatable="false">99.99.9999</string>
+    <string name="hero">Hero</string>
+    <string name="player">Player</string>
+    <string name="kill_word">k</string>
+    <string name="death_word">d</string>
+    <string name="assist_word">a</string>
+    <string name="victory">Victory</string>
+    <string name="dire" translatable="false">Dire</string>
+    <string name="radiant" translatable="false">Radiant</string>
+    <string name="latest_matches">Latest matches</string>
+    <string name="most_played_heroes">Most played heroes</string>
+    <string name="mathes">Matches</string>
+    <string name="heroes">Heroes</string>
+    <string name="main_search_hint">Player nickname or Match ID</string>
+    <string name="test">Test</string>
+    <string name="base_number_big" translatable="false">999</string>
+    <string name="last_played">Last played:</string>
+    <string name="win_slash_loss_big">Win/Loss</string>
+    <string name="win_rate">Win rate</string>
+    <string name="matches">Matches</string>
+    <string name="win_percent">Win %</string>
+    <string name="base_percent" translatable="false">50%</string>
+    <string name="match">Match</string>
+    <string name="base_team_victory" translatable="false">Dire victory</string>
+    <string name="base_number" translatable="false">99</string>
+    <string name="base_score" translatable="false">99:99</string>
+    <string name="ranked">Ranked</string>
+    <string name="all_pick" translatable="false">All pick</string>
+    <string name="lost_match">Lost match</string>
+    <string name="won_match">Won match</string>
+    <string name="kda">KDA</string>
+    <string name="duration">Duration</string>
+    <string name="base_kda" translatable="false">0/0/0</string>
+    <string name="base_id" translatable="false">99999999</string>
+    <string name="last_online">Last online</string>
+    <string name="nickname">Nickname</string>
+    <string name="the_radiant">The Radiant</string>
+    <string name="the_dire">The Dire</string>
+    <string name="net">NET</string>
+    <string name="outcome">Outcome:</string>
+    <string name="content">Content</string>
+    <string name="account">Account</string>
+    <string name="anonym">Anonymous</string>
+    <string name="players">Players</string>
+    <string name="more">More</string>
+    <string name="add_to_favorites">Add to favorite</string>
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="doesnt_found">Doesn\'t found :c</string>
+    <string name="an_error_has_occurred">An error has occurred</string>
+    <string name="radiant_victory">Radiant victory</string>
+    <string name="dire_victory">Dire victory</string>
+
 </resources>

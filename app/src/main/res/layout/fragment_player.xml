@@ -10,7 +10,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="fixed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/content" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"

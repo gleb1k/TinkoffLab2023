@@ -5,9 +5,9 @@ import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResp
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.recentmatches.PlayerRecentMatchesResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
-import com.example.tinkofflab2023.data.remote.response.search.SearchResponse
+import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,7 +17,7 @@ interface DotaApi {
     @GET("search")
     suspend fun searchPlayers(
         @Query("q") name: String
-    ): List<SearchResponse>
+    ): List<SearchPlayerResponse>
 
     @GET("matches/{match_id}")
     suspend fun getMatch(
@@ -38,7 +38,12 @@ interface DotaApi {
     @GET("players/{account_id}/recentMatches")
     suspend fun getPlayerRecentMatches(
         @Path("account_id") accountId: String
-    ): PlayerRecentMatchesResponse
+    ): PlayerMatchesResponse
+
+    @GET("players/{account_id}/matches")
+    suspend fun getPlayerMatches(
+        @Path("account_id") accountId: String
+    ): PlayerMatchesResponse
 
     @GET("players/{account_id}/heroes")
     suspend fun getPlayerHeroes(
@@ -51,9 +56,5 @@ interface DotaApi {
 
     @GET("constants/heroes")
     suspend fun getHeroes(): HeroesResponse
-//
-//    @GET("constants/{resource}")
-//    suspend fun getConstants(
-//        @Path("resource") resource: String
-//    ): String
+
 }
