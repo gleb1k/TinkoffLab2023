@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.data.remote.response.constants.heroes
+package com.example.tinkofflab2023.data.remote.response.constants
 
 
 import com.example.tinkofflab2023.data.Constants

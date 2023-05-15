@@ -6,7 +6,6 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
 import com.example.tinkofflab2023.ui.model.MatchPlayerItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class TeamPlayerDelegateAdapter(
     private val viewModifier: ViewModifier,

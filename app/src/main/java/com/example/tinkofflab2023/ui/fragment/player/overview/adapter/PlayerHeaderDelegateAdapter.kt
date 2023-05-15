@@ -5,7 +5,6 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.databinding.PlayerHeaderBinding
 import com.example.tinkofflab2023.ui.model.PlayerHeaderItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class PlayerHeaderDelegateAdapter(
     private val viewModifier: ViewModifier,

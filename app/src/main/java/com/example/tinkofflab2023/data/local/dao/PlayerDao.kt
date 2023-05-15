@@ -3,9 +3,7 @@ package com.example.tinkofflab2023.data.local.dao
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 
 @Dao
 interface PlayerDao {
@@ -37,11 +35,11 @@ interface PlayerDao {
     @Query("SELECT * FROM players WHERE isFavorite=${true}")
     suspend fun getFavorites(): List<PlayerEntity>?
 
-//    @Query("SELECT players.heroes FROM players WHERE id=:id")
-//    suspend fun getHeroes(id: String): PlayerHeroesResponse
-//
-//    @Query("SELECT players.recentMatches FROM players WHERE id=:id")
-//    suspend fun getRecentMatches(id: String): List<PlayerMatchResponse>
+    @Query("SELECT * FROM player_heroes WHERE id=:id")
+    suspend fun getHeroes(id: String): List<PlayerHeroResponse>
+
+    @Query("SELECT * FROM player_matches WHERE id=:id")
+    suspend fun getRecentMatches(id: String): List<PlayerMatchResponse>
 
     @Delete
     suspend fun delete(player: PlayerEntity)

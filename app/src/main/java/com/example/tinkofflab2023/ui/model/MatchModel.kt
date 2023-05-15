@@ -19,7 +19,7 @@ data class MatchTeamOutcomeItem(
 )
 
 /*
-    Player in match, with benchmarks and stats
+ *   Player in match, with benchmarks and stats
  */
 data class MatchPlayerItem(
     val player: Player,

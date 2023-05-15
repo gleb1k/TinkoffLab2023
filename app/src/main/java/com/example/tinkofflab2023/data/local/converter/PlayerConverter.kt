@@ -6,9 +6,7 @@ import com.example.tinkofflab2023.core.util.jsonparser.JsonParser
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.Profile
 import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
 import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.google.gson.reflect.TypeToken
 
@@ -66,37 +64,37 @@ class PlayerConverter(
     }
 
 
-    @TypeConverter
-    fun toHeroesResponseJson(heroes: PlayerHeroesResponse): String {
-        return jsonParser.toJson(
-            heroes,
-            object : TypeToken<PlayerHeroesResponse>() {}.type
-        ) ?: ""
-    }
-
-    @TypeConverter
-    fun fromHeroesResponseJson(json: String): PlayerHeroesResponse? {
-        return jsonParser.fromJson<PlayerHeroesResponse>(
-            json,
-            object : TypeToken<PlayerHeroesResponse>() {}.type
-        )
-    }
-
-    @TypeConverter
-    fun toMatchesResponseJson(matches: PlayerMatchesResponse): String {
-        return jsonParser.toJson(
-            matches,
-            object : TypeToken<PlayerMatchesResponse>() {}.type
-        ) ?: ""
-    }
-
-    @TypeConverter
-    fun fromMatchesResponseJson(json: String): PlayerMatchesResponse? {
-        return jsonParser.fromJson<PlayerMatchesResponse>(
-            json,
-            object : TypeToken<PlayerMatchesResponse>() {}.type
-        )
-    }
+//    @TypeConverter
+//    fun toHeroesResponseJson(heroes: PlayerHeroesResponse): String {
+//        return jsonParser.toJson(
+//            heroes,
+//            object : TypeToken<PlayerHeroesResponse>() {}.type
+//        ) ?: ""
+//    }
+//
+//    @TypeConverter
+//    fun fromHeroesResponseJson(json: String): PlayerHeroesResponse? {
+//        return jsonParser.fromJson<PlayerHeroesResponse>(
+//            json,
+//            object : TypeToken<PlayerHeroesResponse>() {}.type
+//        )
+//    }
+//
+//    @TypeConverter
+//    fun toMatchesResponseJson(matches: PlayerMatchesResponse): String {
+//        return jsonParser.toJson(
+//            matches,
+//            object : TypeToken<PlayerMatchesResponse>() {}.type
+//        ) ?: ""
+//    }
+//
+//    @TypeConverter
+//    fun fromMatchesResponseJson(json: String): PlayerMatchesResponse? {
+//        return jsonParser.fromJson<PlayerMatchesResponse>(
+//            json,
+//            object : TypeToken<PlayerMatchesResponse>() {}.type
+//        )
+//    }
 
     @TypeConverter
     fun toMatchResponseJson(matches: List<PlayerMatchResponse>): String {

@@ -1,11 +1,11 @@
 package com.example.tinkofflab2023.data.remote
 
-import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
-import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
+import com.example.tinkofflab2023.data.remote.response.constants.HeroResponse
+import com.example.tinkofflab2023.data.remote.response.constants.ItemResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.data.PlayerDataResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
+import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.data.remote.response.players.wl.PlayerWLResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import retrofit2.http.GET
@@ -38,23 +38,23 @@ interface DotaApi {
     @GET("players/{account_id}/recentMatches")
     suspend fun getPlayerRecentMatches(
         @Path("account_id") accountId: String
-    ): PlayerMatchesResponse
+    ): List<PlayerMatchResponse>
 
     @GET("players/{account_id}/matches")
     suspend fun getPlayerMatches(
         @Path("account_id") accountId: String
-    ): PlayerMatchesResponse
+    ): List<PlayerMatchResponse>
 
     @GET("players/{account_id}/heroes")
     suspend fun getPlayerHeroes(
         @Path("account_id") accountId: String
-    ): PlayerHeroesResponse
+    ): List<PlayerHeroResponse>
     //endregion
 
     @GET("constants/items")
-    suspend fun getItems(): ItemsResponse
+    suspend fun getItems(): HashMap<String, ItemResponse>
 
     @GET("constants/heroes")
-    suspend fun getHeroes(): HeroesResponse
+    suspend fun getHeroes(): HashMap<String, HeroResponse>
 
 }

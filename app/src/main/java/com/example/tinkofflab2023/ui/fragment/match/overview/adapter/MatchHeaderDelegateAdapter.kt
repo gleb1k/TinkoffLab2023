@@ -4,7 +4,6 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.databinding.MatchHeaderBinding
 import com.example.tinkofflab2023.ui.model.MatchItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class MatchHeaderDelegateAdapter(
     private val viewModifier: ViewModifier

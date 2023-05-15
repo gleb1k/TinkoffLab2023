@@ -4,9 +4,9 @@ import androidx.room.withTransaction
 import com.example.tinkofflab2023.data.local.AppDatabase
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 import com.example.tinkofflab2023.data.remote.DotaApi
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
+import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
 import com.example.tinkofflab2023.data.remote.response.players.heroes.clearNeverPlayedHeroes
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
+import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
 import com.example.tinkofflab2023.domain.repository.PlayerRepository
 import javax.inject.Inject
 
@@ -33,7 +33,7 @@ class PlayerRepositoryImpl @Inject constructor(
             ).also {
                 addToCache(it)
             }
-                //runCatching {}
+            //runCatching {}
 //            val result = Result<PlayerEntity>
         } catch (throwable: Throwable) {
             return null
@@ -58,7 +58,7 @@ class PlayerRepositoryImpl @Inject constructor(
      *  If there is no Network connection returns only recent matches
      */
     //todo get() -> getMatches()
-    override suspend fun getMatches(id: String): PlayerMatchesResponse? {
+    override suspend fun getMatches(id: String): List<PlayerMatchResponse>? {
         return try {
             api.getPlayerMatches(id)
         } catch (throwable: Throwable) {
@@ -68,7 +68,7 @@ class PlayerRepositoryImpl @Inject constructor(
 
 
     //todo get() -> getHeroes()
-    override suspend fun getHeroes(id: String): PlayerHeroesResponse? {
+    override suspend fun getHeroes(id: String): List<PlayerHeroResponse>? {
         playerDao.get(id)?.let {
             return it.heroes
         }

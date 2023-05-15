@@ -6,7 +6,6 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.databinding.MatchItemBinding
 import com.example.tinkofflab2023.ui.model.PlayerMatchItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class MatchDelegateAdapter(
     private val viewModifier: ViewModifier,

@@ -5,7 +5,6 @@ import com.example.tinkofflab2023.data.Constants
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.databinding.SearchMatchItemBinding
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class SearchMatchDelegateAdapter(
     private val viewModifier: ViewModifier,

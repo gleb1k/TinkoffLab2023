@@ -57,7 +57,6 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPlayerMatchesBinding.bind(view)
 
-        //setUpToolBar()
         binding?.run {
             rvMatches.layoutManager = LinearLayoutManager(context)
             rvMatches.adapter = adapter
