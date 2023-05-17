@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.match.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TeamHeaderItemBinding

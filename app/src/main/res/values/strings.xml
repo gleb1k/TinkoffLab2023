@@ -57,5 +57,6 @@
     <string name="an_error_has_occurred">An error has occurred</string>
     <string name="radiant_victory">Radiant victory</string>
     <string name="dire_victory">Dire victory</string>
+    <string name="details">Details</string>
 
 </resources>

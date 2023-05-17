@@ -1,36 +1,30 @@
 package com.example.tinkofflab2023.ui.fragment.match.overview
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
-import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
+import com.example.tinkofflab2023.databinding.FragmentMatchOverviewBinding
 import com.example.tinkofflab2023.di.Screens
-import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.MatchHeaderDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamHeaderDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamOutcomeDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.match.overview.adapter.TeamPlayerDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.match.adapter.MatchHeaderDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamHeaderDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamOutcomeDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamPlayerDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
+class MatchOverviewFragment : Fragment(R.layout.fragment_match_overview) {
 
-    private var binding: FragmentMatchBinding? = null
+    private var binding: FragmentMatchOverviewBinding? = null
 
     @Inject
     lateinit var router: Router
@@ -67,9 +61,10 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMatchBinding.bind(view)
-        setUpToolBar()
+        binding = FragmentMatchOverviewBinding.bind(view)
         binding?.run {
+
+
             rvOverview.layoutManager = LinearLayoutManager(context)
             rvOverview.adapter = adapter
 
@@ -98,35 +93,6 @@ class MatchOverviewFragment : Fragment(R.layout.fragment_match) {
         router.navigateTo(Screens.Player(accountId))
     }
 
-    private fun setUpToolBar() {
-
-        val menuHost: MenuHost = requireActivity().also {
-            if (it is ActivityToolBar) {
-                it.changeToolBarTitle("${getString(R.string.match)} $matchId")
-            }
-        }
-
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.top_app_bar_heart, menu)
-
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
-                    R.id.action_heart -> addToFavorite()
-                }
-                return true
-            }
-
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
-
-    //todo nasral
-    private fun addToFavorite() {
-        binding?.root?.showSnackbar("added to favorite")
-    }
 
     override fun onDestroy() {
         super.onDestroy()

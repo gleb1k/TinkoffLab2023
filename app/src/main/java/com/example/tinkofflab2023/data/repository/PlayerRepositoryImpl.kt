@@ -33,7 +33,7 @@ class PlayerRepositoryImpl @Inject constructor(
             ).also {
                 addToCache(it)
             }
-                //runCatching {}
+            //runCatching {}
 //            val result = Result<PlayerEntity>
         } catch (throwable: Throwable) {
             return null
@@ -87,7 +87,7 @@ class PlayerRepositoryImpl @Inject constructor(
         playerDao.removeFromFavorite(id)
     }
 
-    override suspend fun isFavorite(id: String): Boolean = playerDao.isFavorite(id)
+    override suspend fun isFavorite(id: String): Boolean = playerDao.isFavorite(id) ?: false
 
     override suspend fun getFavorites(): List<PlayerEntity>? = playerDao.getFavorites()
 }

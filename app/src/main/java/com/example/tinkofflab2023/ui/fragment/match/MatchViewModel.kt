@@ -1,9 +1,11 @@
-package com.example.tinkofflab2023.ui.fragment.player
+package com.example.tinkofflab2023.ui.fragment.match
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tinkofflab2023.domain.usecase.match.IsMatchFavoriteUseCase
+import com.example.tinkofflab2023.domain.usecase.match.MatchFavoriteAdderUseCase
 import com.example.tinkofflab2023.domain.usecase.player.IsPlayerFavoriteUseCase
 import com.example.tinkofflab2023.domain.usecase.player.PlayerFavoriteAdderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,9 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PlayerViewModel @Inject constructor(
-    private val playerFavoriteAdderUseCase: PlayerFavoriteAdderUseCase,
-    private val isPlayerFavoriteUseCase: IsPlayerFavoriteUseCase,
+class MatchViewModel @Inject constructor(
+    private val matchFavoriteAdderUseCase: MatchFavoriteAdderUseCase,
+    private val isMatchFavoriteUseCase: IsMatchFavoriteUseCase,
 ) : ViewModel() {
 
     private val _isFavorite = MutableLiveData<Boolean?>(null)
@@ -22,13 +24,13 @@ class PlayerViewModel @Inject constructor(
 
     fun favorite(id: String, isFavorite: Boolean) {
         viewModelScope.launch {
-            playerFavoriteAdderUseCase(id, isFavorite)
+            matchFavoriteAdderUseCase(id, isFavorite)
             _isFavorite.value = !isFavorite
         }
     }
 
     suspend fun getFavoriteState(id: String) {
-        val temp = isPlayerFavoriteUseCase(id)
+        val temp = isMatchFavoriteUseCase(id)
         _isFavorite.value = temp
     }
 

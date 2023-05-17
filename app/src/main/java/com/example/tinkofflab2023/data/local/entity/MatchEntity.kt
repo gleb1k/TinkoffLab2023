@@ -1,5 +1,6 @@
 package com.example.tinkofflab2023.data.local.entity
 
+import android.service.autofill.FieldClassification.Match
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -26,3 +27,4 @@ fun MatchEntity.toModel(heroesEntityList: List<HeroEntity>): MatchModel =
         matchResponse.getTeamsOutcomes()
     )
 
+fun MatchEntity.toResponse() : MatchResponse = matchResponse

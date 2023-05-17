@@ -45,4 +45,5 @@
     <string name="an_error_has_occurred">Произошла ошибка</string>
     <string name="radiant_victory">Победа сил Света</string>
     <string name="dire_victory">Победа сил Тьмы</string>
+    <string name="details">Подробности</string>
 </resources>

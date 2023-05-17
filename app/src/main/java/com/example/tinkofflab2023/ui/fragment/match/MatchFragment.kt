@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.fragment.player
+package com.example.tinkofflab2023.ui.fragment.match
 
 import android.os.Bundle
 import android.view.Menu
@@ -15,8 +15,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.util.showSnackbar
+import com.example.tinkofflab2023.databinding.FragmentMatchBinding
 import com.example.tinkofflab2023.databinding.FragmentPlayerBinding
 import com.example.tinkofflab2023.di.Screens
+import com.example.tinkofflab2023.ui.fragment.player.PlayerPagerAdapter
 import com.github.terrakok.cicerone.Router
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,15 +26,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class PlayerFragment : Fragment(R.layout.fragment_player) {
+class MatchFragment: Fragment(R.layout.fragment_match) {
 
-    private var binding: FragmentPlayerBinding? = null
+    private var binding: FragmentMatchBinding? = null
 
-    private var accountId: String = ""
+    private var matchId: String = ""
 
     private var isFavorite: Boolean? = null
 
-    private val viewModel: PlayerViewModel by viewModels()
+    private val viewModel: MatchViewModel by viewModels()
 
     @Inject
     lateinit var router: Router
@@ -40,8 +42,8 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.getString(ACCOUNT_ID_TAG)?.let {
-            accountId = it
+        arguments?.getString(MATCH_ID_TAG)?.let {
+            matchId = it
         }
     }
 
@@ -49,7 +51,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
 
-        binding = FragmentPlayerBinding.bind(view)
+        binding = FragmentMatchBinding.bind(view)
 
         viewModel.isFavorite.observe(viewLifecycleOwner) {
             isFavorite = it
@@ -57,24 +59,23 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
         val tabLayout = binding!!.tabLayout
         val viewPager = binding!!.viewPager
-        viewPager.adapter = PlayerPagerAdapter(requireActivity(), accountId)
+        viewPager.adapter = MatchPagerAdapter(requireActivity(), matchId)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.overview)
-                1 -> tab.text = getString(R.string.matches)
-                else -> tab.text = getString(R.string.heroes)
+                else -> tab.text = getString(R.string.details)
             }
         }.attach()
     }
 
     private fun setUpToolBar() {
         lifecycleScope.launch {
-            viewModel.getFavoriteState(accountId)
+            viewModel.getFavoriteState(matchId)
 
             val menuHost: MenuHost = requireActivity().also {
                 if (it is ActivityToolBar) {
-                    it.changeToolBarTitle("${getString(R.string.player)} $accountId")
+                    it.changeToolBarTitle("${getString(R.string.match)} $matchId")
                 }
             }
             menuHost.addMenuProvider(object : MenuProvider {
@@ -117,7 +118,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                     R.drawable.favorite_fill_40,
                     null
                 )
-                viewModel.favorite(accountId, isFavorite ?: false)
+                viewModel.favorite(matchId, isFavorite ?: false)
                 binding?.root?.showSnackbar(getString(R.string.added_to_favorites))
             }
             true-> {
@@ -126,7 +127,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                     R.drawable.favorite_40,
                     null
                 )
-                viewModel.favorite(accountId, isFavorite ?: true)
+                viewModel.favorite(matchId, isFavorite ?: true)
                 binding?.root?.showSnackbar(getString(R.string.removed_from_favorites))
             }
             null -> {
@@ -143,9 +144,9 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
 
     companion object {
 
-        const val ACCOUNT_ID_TAG = "ACCOUNT_ID_TAG"
+        const val MATCH_ID_TAG = "MATCH_ID_TAG"
 
-        fun newInstance(message: String, tag: String = ACCOUNT_ID_TAG) = PlayerFragment().apply {
+        fun newInstance(message: String, tag: String = MATCH_ID_TAG) = MatchFragment().apply {
             arguments = Bundle().apply {
                 putString(tag, message)
             }

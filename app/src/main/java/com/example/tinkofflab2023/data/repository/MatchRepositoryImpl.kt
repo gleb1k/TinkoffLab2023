@@ -51,7 +51,7 @@ class MatchRepositoryImpl @Inject constructor(
         matchDao.removeFromFavorite(id)
     }
 
-    override suspend fun isFavorite(id: String): Boolean = matchDao.isFavorite(id)
+    override suspend fun isFavorite(id: String): Boolean = matchDao.isFavorite(id) ?: false
 
     override suspend fun getFavorites(): List<MatchEntity>? = matchDao.getFavorites()
 

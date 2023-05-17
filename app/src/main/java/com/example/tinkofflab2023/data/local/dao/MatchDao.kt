@@ -25,7 +25,7 @@ interface MatchDao {
     suspend fun removeFromFavorite(id: String)
 
     @Query("SELECT isFavorite FROM matches WHERE id=:id")
-    suspend fun isFavorite(id: String): Boolean
+    suspend fun isFavorite(id: String): Boolean?
 
     @Query("SELECT * FROM matches WHERE isFavorite=${true}")
     suspend fun getFavorites(): List<MatchEntity>?

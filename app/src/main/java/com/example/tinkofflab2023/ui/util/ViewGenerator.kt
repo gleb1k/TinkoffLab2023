@@ -52,7 +52,6 @@ class ViewGenerator @Inject constructor(
                     add(context.getString(R.string.the_radiant))
                     for (i in 0..4)
                         add(players[i])
-                    addFiveElementsIfPossible(players.subList(0, 4))
                     add(teamOutcomes[0])
                     add(context.getString(R.string.the_dire))
                     for (i in 5..9)

@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.match.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.MatchHeaderBinding
@@ -14,7 +14,6 @@ class MatchHeaderDelegateAdapter(
 
     override fun MatchHeaderBinding.onBind(item: MatchItem) {
         with(item) {
-            tvMatchId.text = matchId
             tvMatchTime.text = viewModifier.matchDuration(duration)
             tvDireKills.text = "$direScore"
             tvRadiantKills.text = "$radiantScore"
