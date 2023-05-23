@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tinkofflab2023.domain.usecase.match.IsMatchFavoriteUseCase
 import com.example.tinkofflab2023.domain.usecase.match.MatchFavoriteAdderUseCase
-import com.example.tinkofflab2023.domain.usecase.player.IsPlayerFavoriteUseCase
-import com.example.tinkofflab2023.domain.usecase.player.PlayerFavoriteAdderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

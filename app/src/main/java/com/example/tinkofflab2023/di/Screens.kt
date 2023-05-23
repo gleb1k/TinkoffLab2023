@@ -1,9 +1,7 @@
 package com.example.tinkofflab2023.di
 
-import com.example.tinkofflab2023.ui.fragment.TestFragment
 import com.example.tinkofflab2023.ui.fragment.favorite.FavoriteFragment
 import com.example.tinkofflab2023.ui.fragment.match.MatchFragment
-import com.example.tinkofflab2023.ui.fragment.match.overview.MatchOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.PlayerFragment
 import com.example.tinkofflab2023.ui.fragment.search.SearchFragment
 import com.example.tinkofflab2023.ui.fragment.settings.SettingsFragment

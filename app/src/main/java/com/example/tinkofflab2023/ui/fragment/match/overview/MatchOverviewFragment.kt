@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.core.util.showSnackbar
-import com.example.tinkofflab2023.databinding.FragmentMatchBinding
 import com.example.tinkofflab2023.databinding.FragmentMatchOverviewBinding
 import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.match.adapter.MatchHeaderDelegateAdapter

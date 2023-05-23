@@ -63,4 +63,22 @@ class ViewGenerator @Inject constructor(
             return arrayListOf(context.getString(R.string.an_error_has_occurred))
         }
     }
+
+    fun generateMatchDetail(matchModel: MatchModel): ArrayList<Any> {
+        return try {
+            ArrayList<Any>().apply {
+                with(matchModel) {
+                    add(matchItem)
+                    add(context.getString(R.string.the_radiant))
+                    for (i in 0..4)
+                        add(players[i])
+                    add(context.getString(R.string.the_dire))
+                    for (i in 5..9)
+                        add(players[i])
+                }
+            }
+        } catch (throwable: Throwable) {
+            arrayListOf(context.getString(R.string.an_error_has_occurred))
+        }
+    }
 }

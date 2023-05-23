@@ -6,7 +6,6 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
 import com.example.tinkofflab2023.ui.model.MatchPlayerItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class TeamPlayerDelegateAdapter(
     private val viewModifier: ViewModifier,
@@ -16,8 +15,23 @@ class TeamPlayerDelegateAdapter(
     (TeamPlayerItemBinding::inflate) {
 
     override fun TeamPlayerItemBinding.onBind(item: MatchPlayerItem) {
-
         val context = root.context
+
+        if(item.player.playerSlot % 2 == 0 && item.player.playerSlot<128){
+            root.setBackgroundColor(viewModifier.getRadiantPlayerLightColor())
+        }
+        if(item.player.playerSlot % 2 == 1 && item.player.playerSlot<128){
+            root.setBackgroundColor(viewModifier.getRadiantPlayerDarkColor())
+        }
+
+
+        if(item.player.playerSlot % 2 == 0 && item.player.playerSlot>=128){
+            root.setBackgroundColor(viewModifier.getDirePlayerLightColor())
+        }
+        if(item.player.playerSlot % 2 == 1 && item.player.playerSlot>=128){
+            root.setBackgroundColor(viewModifier.getDirePlayerDarkColor())
+        }
+
         with(item.player) {
             tvPlayerName.text = personaname ?: context.getString(R.string.anonym)
             tvKills.text = "$kills"

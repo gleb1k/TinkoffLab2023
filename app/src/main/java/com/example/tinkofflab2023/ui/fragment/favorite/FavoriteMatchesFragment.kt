@@ -8,11 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.data.local.entity.toResponse
-import com.example.tinkofflab2023.data.local.entity.toSearchResponse
 import com.example.tinkofflab2023.databinding.FragmentFavoriteMatchesBinding
 import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.domain.usecase.match.GetFavoriteMatchesUseCase
-import com.example.tinkofflab2023.domain.usecase.player.GetFavoritePlayersUseCase
 import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchMatchDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
@@ -28,7 +26,7 @@ class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
     private var adapter: CompositeDelegateAdapter? = null
 
     @Inject
-    lateinit var getFavoriteMatchesUseCase : GetFavoriteMatchesUseCase
+    lateinit var getFavoriteMatchesUseCase: GetFavoriteMatchesUseCase
 
     @Inject
     lateinit var router: Router
@@ -45,12 +43,6 @@ class FavoriteMatchesFragment : Fragment(R.layout.fragment_favorite_matches) {
             )
         )
     }
-
-    override fun onResume() {
-        super.onResume()
-        swapAdapterData()
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

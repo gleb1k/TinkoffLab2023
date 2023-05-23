@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
-import com.example.tinkofflab2023.domain.usecase.GetMatchUseCase
+import com.example.tinkofflab2023.domain.usecase.SearchMatchUseCase
 import com.example.tinkofflab2023.domain.usecase.SearchPlayersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val searchPlayersUseCase: SearchPlayersUseCase,
-    private val getMatchUseCase: GetMatchUseCase
+    private val searchMatchUseCase: SearchMatchUseCase
 ) : ViewModel() {
 
     private val _viewList = MutableLiveData<ArrayList<Any>?>(null)
@@ -65,7 +65,7 @@ class SearchViewModel @Inject constructor(
 
     private suspend fun searchMatch(matchId: String): MatchResponse? {
         return try {
-            getMatchUseCase(matchId)
+            searchMatchUseCase(matchId)
         } catch (ex: Throwable) {
             null
         }

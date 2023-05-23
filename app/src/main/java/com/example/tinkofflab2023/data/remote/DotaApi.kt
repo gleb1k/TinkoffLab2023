@@ -1,5 +1,6 @@
 package com.example.tinkofflab2023.data.remote
 
+import com.example.tinkofflab2023.data.local.entity.PlayerEntity
 import com.example.tinkofflab2023.data.remote.response.constants.heroes.HeroesResponse
 import com.example.tinkofflab2023.data.remote.response.constants.items.ItemsResponse
 import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
@@ -56,5 +57,6 @@ interface DotaApi {
 
     @GET("constants/heroes")
     suspend fun getHeroes(): HeroesResponse
+
 
 }

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TinkoffLab2023" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.TinkoffLab2023" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,4 +13,21 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Theme.TinkoffLab2023" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/bright_orange</item>-->
+<!--        <item name="colorPrimaryVariant">@color/deep_purple</item>-->
+<!--        <item name="colorOnPrimary">@color/dark_gray_text</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/dark_gray</item>-->
+<!--        <item name="colorSecondaryVariant">@color/bright_orange</item>-->
+<!--        <item name="colorOnSecondary">@color/dark_gray_text</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--    </style>-->
 </resources>

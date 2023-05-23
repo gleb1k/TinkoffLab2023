@@ -1,11 +1,10 @@
-package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.player.adapter
 
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.HeroItemBinding
 import com.example.tinkofflab2023.ui.model.PlayerHeroItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class HeroDelegateAdapter(
     private val viewModifier: ViewModifier,

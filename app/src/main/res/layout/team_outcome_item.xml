@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:background="@color/background_test">
+    android:layout_height="40dp">
 
     <TextView
         android:id="@+id/tv_outcome_const"
@@ -30,27 +29,46 @@
         android:id="@+id/tv_assists"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
         android:text="@string/base_number"
-        app:layout_constraintEnd_toStartOf="@+id/tv_net"
+        app:layout_constraintEnd_toStartOf="@+id/gl_1"
         app:layout_constraintTop_toTopOf="@+id/tv_net" />
 
     <TextView
         android:id="@+id/tv_deaths"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
         android:text="@string/base_number"
-        app:layout_constraintEnd_toStartOf="@+id/tv_assists"
+        app:layout_constraintEnd_toStartOf="@+id/gl_2"
         app:layout_constraintTop_toTopOf="@+id/tv_assists" />
 
     <TextView
         android:id="@+id/tv_kills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
         android:text="@string/base_number"
-        app:layout_constraintEnd_toStartOf="@+id/tv_deaths"
+        app:layout_constraintEnd_toStartOf="@+id/gl_3"
         app:layout_constraintTop_toTopOf="@+id/tv_deaths" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="70dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="130dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

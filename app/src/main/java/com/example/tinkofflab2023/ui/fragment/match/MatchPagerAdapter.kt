@@ -5,11 +5,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.details.MatchDetailsFragment
 import com.example.tinkofflab2023.ui.fragment.match.overview.MatchOverviewFragment
-import com.example.tinkofflab2023.ui.fragment.player.heroes.PlayerHeroesFragment
-import com.example.tinkofflab2023.ui.fragment.player.matches.PlayerMatchesFragment
-import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 
-class MatchPagerAdapter (
+class MatchPagerAdapter(
     fragmentActivity: FragmentActivity,
     private val matchId: String
 ) :

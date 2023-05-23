@@ -6,7 +6,6 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.data.remote.response.search.SearchPlayerResponse
 import com.example.tinkofflab2023.databinding.SearchPlayerItemBinding
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class SearchPlayerDelegateAdapter(
     private val viewModifier: ViewModifier,

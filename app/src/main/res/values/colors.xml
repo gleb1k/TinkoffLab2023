@@ -8,10 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="red">#9F0303</color>
-    <color name="green">#026C0D</color>
 
-    <color name="background_test">#700B3B3C</color>
+    <color name="radiant_green">#8FA13D</color>
+    <color name="dire_red">#9F0303</color>
+
+    <color name="radiant_player_green_light">#323D35</color>
+    <color name="radiant_player_green_dark">#2B3638</color>
+
+    <color name="dire_player_red_light">#373037</color>
+    <color name="dire_player_red_dark">#2D3039</color>
+
+    <color name="background">#252F39</color>
+
+    <color name="item_background">#18191A</color>
 
     <!--    Light Mode:-->
     <!-- Primary color: #FF6633 (bright orange) -->

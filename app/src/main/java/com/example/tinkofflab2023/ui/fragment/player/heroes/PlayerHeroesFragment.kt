@@ -10,7 +10,7 @@ import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerHeroesBinding
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.HeroDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,11 +50,19 @@ class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
         binding = FragmentPlayerHeroesBinding.bind(view)
 
         binding?.run {
+            //todo из-за swipeRefreshLayout не сразу прогружается список
+            swipeRefreshLayout.setOnRefreshListener {
+                viewModel.refreshData(accountId)
+            }
+
             rvHeroes.layoutManager = LinearLayoutManager(context)
             rvHeroes.adapter = adapter
 
             viewModel.error.observe(viewLifecycleOwner) {
                 tvError.text = it
+            }
+            viewModel.refreshing.observe(viewLifecycleOwner) {
+                swipeRefreshLayout.isRefreshing = it
             }
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == true)

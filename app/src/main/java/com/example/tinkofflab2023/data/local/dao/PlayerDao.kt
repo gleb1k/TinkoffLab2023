@@ -2,10 +2,6 @@ package com.example.tinkofflab2023.data.local.dao
 
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 
 @Dao
 interface PlayerDao {

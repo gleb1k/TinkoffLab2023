@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background_test">
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/iv_hero"
-        android:layout_width="113dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
         android:src="@drawable/antimage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/matches"
-        android:textSize="16sp"
+
         app:layout_constraintBottom_toBottomOf="@+id/iv_hero"
         app:layout_constraintEnd_toStartOf="@+id/tv_wl_const"
         app:layout_constraintStart_toEndOf="@+id/iv_hero"
@@ -58,7 +58,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/win_slash_loss_big"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_matches_const"
         app:layout_constraintEnd_toStartOf="@+id/tv_winrate_const"
         app:layout_constraintStart_toEndOf="@id/tv_matches_const" />
@@ -77,7 +76,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/win_percent"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_wl_const"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_wl_const" />

@@ -110,8 +110,8 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     }
 
     private fun onFavoriteClick(menuItem: MenuItem) {
-        when (isFavorite){
-            false-> {
+        when (isFavorite) {
+            false -> {
                 menuItem.icon = ResourcesCompat.getDrawable(
                     requireActivity().resources,
                     R.drawable.favorite_fill_40,
@@ -120,7 +120,8 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                 viewModel.favorite(accountId, isFavorite ?: false)
                 binding?.root?.showSnackbar(getString(R.string.added_to_favorites))
             }
-            true-> {
+
+            true -> {
                 menuItem.icon = ResourcesCompat.getDrawable(
                     requireActivity().resources,
                     R.drawable.favorite_40,
@@ -129,6 +130,7 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                 viewModel.favorite(accountId, isFavorite ?: true)
                 binding?.root?.showSnackbar(getString(R.string.removed_from_favorites))
             }
+
             null -> {
                 binding?.root?.showSnackbar("null")
             }

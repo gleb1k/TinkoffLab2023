@@ -60,7 +60,6 @@ object LocalModule {
         )
             .addTypeConverter(playerConverter)
             .addTypeConverter(matchConverter)
-            //TODO почему когда добавляю его сюда то выкидываает ошибку?
             //.addTypeConverter(baseConverter)
             .fallbackToDestructiveMigration()
             .build()

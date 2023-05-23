@@ -1,11 +1,10 @@
-package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.player.adapter
 
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.PlayerHeaderBinding
 import com.example.tinkofflab2023.ui.model.PlayerHeaderItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
 
 class PlayerHeaderDelegateAdapter(
     private val viewModifier: ViewModifier,
@@ -14,18 +13,27 @@ class PlayerHeaderDelegateAdapter(
     (PlayerHeaderBinding::inflate) {
 
     override fun PlayerHeaderBinding.onBind(item: PlayerHeaderItem) {
+        val rank = viewModifier.getRank(item.playerDataResponse.rankTier)
         with(item) {
             tvNickname.text = playerDataResponse.profile.personaname
             tvAccountId.text = playerDataResponse.profile.accountId
-            tvRating.text = playerDataResponse.rankTier.toString()
+            if (rank.tier == -1)
+                tvRating.text = rank.name
+            else
+                tvRating.text = "${rank.name} ${rank.tier}"
             tvWinrate.text = viewModifier.winrate(playerWL.win, playerWL.lose)
             tvWl.text = viewModifier.wl(playerWL.win, playerWL.lose)
-            tvLastOnline.text = viewModifier.toDate(playerDataResponse.profile.lastLogin)
+            tvEstimate.text = playerDataResponse.mmrEstimate.estimate.toString()
 
             glide
                 .load(playerDataResponse.profile.avatarfull)
                 .placeholder(viewModifier.getCircularProgressDrawable())
                 .into(ivAvatar)
+
+            glide
+                .load(rank.img)
+                .placeholder(viewModifier.getCircularProgressDrawable())
+                .into(ivRating)
         }
     }
 

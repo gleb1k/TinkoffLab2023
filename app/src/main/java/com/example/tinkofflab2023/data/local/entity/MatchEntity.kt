@@ -1,6 +1,5 @@
 package com.example.tinkofflab2023.data.local.entity
 
-import android.service.autofill.FieldClassification.Match
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -9,7 +8,7 @@ import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.data.remote.response.matches.getTeamsOutcomes
 import com.example.tinkofflab2023.data.remote.response.matches.toItem
 import com.example.tinkofflab2023.ui.model.MatchModel
-import com.example.tinkofflab2023.ui.model.addHeroes
+import com.example.tinkofflab2023.ui.model.addHeroesAndItems
 
 @Entity(tableName = "matches")
 @TypeConverters(MatchConverter::class)
@@ -20,11 +19,11 @@ data class MatchEntity(
     val id: String = matchResponse.matchId
 )
 
-fun MatchEntity.toModel(heroesEntityList: List<HeroEntity>): MatchModel =
+fun MatchEntity.toModel(heroesEntityList: List<HeroEntity>, items: List<ItemEntity>): MatchModel =
     MatchModel(
         matchResponse.toItem(),
-        matchResponse.players.addHeroes(heroesEntityList),
+        matchResponse.players.addHeroesAndItems(heroesEntityList, items),
         matchResponse.getTeamsOutcomes()
     )
 
-fun MatchEntity.toResponse() : MatchResponse = matchResponse
+fun MatchEntity.toResponse(): MatchResponse = matchResponse

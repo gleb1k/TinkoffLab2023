@@ -1,6 +1,7 @@
 package com.example.tinkofflab2023.ui.model
 
 import com.example.tinkofflab2023.data.local.entity.HeroEntity
+import com.example.tinkofflab2023.data.local.entity.ItemEntity
 import com.example.tinkofflab2023.data.remote.response.matches.PicksBan
 import com.example.tinkofflab2023.data.remote.response.matches.Player
 
@@ -19,11 +20,14 @@ data class MatchTeamOutcomeItem(
 )
 
 /*
-    Player in match, with benchmarks and stats
+ *   Player in match, with benchmarks and stats
  */
 data class MatchPlayerItem(
     val player: Player,
     val heroEntity: HeroEntity,
+    val items: List<ItemEntity>,
+    val backpackItems: List<ItemEntity>,
+    val itemNeutral: ItemEntity,
 )
 
 data class MatchItem(
@@ -51,15 +55,52 @@ data class MatchItem(
 )
 
 //todo null safety
-fun List<Player>.addHeroes(heroesEntityList: List<HeroEntity>): List<MatchPlayerItem> {
+fun List<Player>.addHeroesAndItems(
+    heroes: List<HeroEntity>,
+    items: List<ItemEntity>
+): List<MatchPlayerItem> {
     val playerList = arrayListOf<MatchPlayerItem>()
     forEach { player ->
         playerList.add(
             MatchPlayerItem(
                 player,
-                heroesEntityList.find { player.heroId == it.id }!!
+                heroes.find { player.heroId == it.id }!!,
+                player.getItems(items),
+                player.getBackpackItems(items),
+                player.getItemNeutral(items)
             )
         )
     }
     return playerList
+}
+
+
+
+private fun Player.getItems(items: List<ItemEntity>): List<ItemEntity> {
+    val emptyItem = ItemEntity(0, "", 0, "")
+    val result = arrayListOf<ItemEntity>()
+
+    result.add(items.find { item0 == it.id } ?: emptyItem)
+    result.add(items.find { item1 == it.id } ?: emptyItem)
+    result.add(items.find { item2 == it.id } ?: emptyItem)
+    result.add(items.find { item3 == it.id } ?: emptyItem)
+    result.add(items.find { item4 == it.id } ?: emptyItem)
+    result.add(items.find { item5 == it.id } ?: emptyItem)
+
+    return result
+}
+
+private fun Player.getBackpackItems(items: List<ItemEntity>) : List<ItemEntity> {
+    val emptyItem = ItemEntity(0, "", 0, "")
+    val result = arrayListOf<ItemEntity>()
+
+    result.add(items.find { backpack0 == it.id } ?: emptyItem)
+    result.add(items.find { backpack1 == it.id } ?: emptyItem)
+    result.add(items.find { backpack2 == it.id } ?: emptyItem)
+
+    return result
+}
+
+private fun Player.getItemNeutral(items: List<ItemEntity>) : ItemEntity {
+    return items.find{ itemNeutral == it.id} ?:ItemEntity(0, "", 0, "")
 }

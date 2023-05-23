@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
+import com.example.tinkofflab2023.data.local.entity.toResponse
 import com.example.tinkofflab2023.data.local.entity.toSearchResponse
 import com.example.tinkofflab2023.databinding.FragmentFavoritePlayersBinding
 import com.example.tinkofflab2023.di.Screens
@@ -52,9 +53,20 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
         binding = FragmentFavoritePlayersBinding.bind(view)
 
         binding?.run {
+            swipeRefreshLayout.setOnRefreshListener {
+                swapAdapterData()
+                swipeRefreshLayout.isRefreshing = false
+            }
+
             rvPlayers.layoutManager = LinearLayoutManager(context)
             rvPlayers.adapter = adapter
 
+            swapAdapterData()
+        }
+    }
+
+    private fun swapAdapterData() {
+        lifecycleScope.launch {
             lifecycleScope.launch {
                 adapter?.swapData(
                     getFavoritePlayersUseCase()?.map { it.toSearchResponse() }

@@ -11,7 +11,7 @@ import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerMatchesBinding
 import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.MatchDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,11 +57,17 @@ class PlayerMatchesFragment : Fragment(R.layout.fragment_player_matches) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPlayerMatchesBinding.bind(view)
 
-        //setUpToolBar()
         binding?.run {
+            swipeRefreshLayout.setOnRefreshListener {
+                viewModel.refreshData(accountId)
+            }
+
             rvMatches.layoutManager = LinearLayoutManager(context)
             rvMatches.adapter = adapter
 
+            viewModel.refreshing.observe(viewLifecycleOwner) {
+                swipeRefreshLayout.isRefreshing = it
+            }
             viewModel.error.observe(viewLifecycleOwner) {
                 tvError.text = it
             }

@@ -16,7 +16,6 @@
     <string name="main_search_hint">Ник игрока или ID матча</string>
     <string name="test">Тест</string>
     <string name="last_played">Последняя игра:</string>
-    <string name="win_slash_loss_big">Победы/Поражения</string>
     <string name="win_rate">Доля побед</string>
     <string name="overview">Обзор</string>
     <string name="matches">Матчи</string>
@@ -46,4 +45,15 @@
     <string name="radiant_victory">Победа сил Света</string>
     <string name="dire_victory">Победа сил Тьмы</string>
     <string name="details">Подробности</string>
+    <string name="gold">Зол.:</string>
+    <string name="estimate">Оценочный</string>
+    <string name="herald">Рекрут</string>
+    <string name="guardian">Страж</string>
+    <string name="crusader">Рыцарь</string>
+    <string name="archon">Герой</string>
+    <string name="legend">Легенда</string>
+    <string name="ancient">Властелин</string>
+    <string name="divine">Божество</string>
+    <string name="immortal">Титан</string>
+    <string name="calibration">Калибровка</string>
 </resources>

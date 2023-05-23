@@ -6,7 +6,7 @@ import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMat
 
 interface PlayerRepository {
 
-    suspend fun getEntity(accountId: String): PlayerEntity?
+    suspend fun getEntity(id: String): PlayerEntity?
 
     suspend fun getHeroes(id: String): PlayerHeroesResponse?
 
@@ -19,5 +19,7 @@ interface PlayerRepository {
     suspend fun isFavorite(id: String): Boolean
 
     suspend fun getFavorites(): List<PlayerEntity>?
+
+    suspend fun refresh(id: String)
 
 }

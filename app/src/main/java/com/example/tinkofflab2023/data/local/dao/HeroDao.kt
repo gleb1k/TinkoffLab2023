@@ -16,7 +16,7 @@ interface HeroDao {
     suspend fun insertAll(hero: List<HeroEntity>)
 
     @Query("SELECT * FROM heroes WHERE id=:id")
-    suspend fun get(id: String): HeroEntity?
+    suspend fun get(id: Int): HeroEntity?
 
     @Query("SELECT * FROM heroes")
     suspend fun getAll(): List<HeroEntity>
