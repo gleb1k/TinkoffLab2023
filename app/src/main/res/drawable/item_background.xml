@@ -4,11 +4,12 @@
     android:shape="rectangle">
 
     <corners android:radius="1dp" />
-<!--    <solid android:color="@color/item_background" />-->
+    <!--    <solid android:color="@color/item_background" />-->
     <gradient
         android:startColor="@color/dark_gray_dm"
         android:endColor="@color/item_background"
-        android:angle="300">
-    </gradient>
+        android:angle="45"/>
+
+    <stroke android:width="0.5dp" android:color="@color/black"/>
 </shape>
 

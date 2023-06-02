@@ -56,4 +56,21 @@
     <string name="divine">Божество</string>
     <string name="immortal">Титан</string>
     <string name="calibration">Калибровка</string>
+    <string name="gold_per_minute">звм:</string>
+    <string name="exp_per_minute">овм:</string>
+    <string name="damage_small">Урон:</string>
+    <string name="heal_small">Леч.:</string>
+    <string name="last_hits">лх:</string>
+    <string name="denays">дк:</string>
+    <string name="statistic">Статистика</string>
+    <string name="match_num">Матч №</string>
+    <string name="match_result">Результат матча</string>
+    <string name="game_mode">Режим игры</string>
+    <string name="lobby_type">Тип игры</string>
+    <string name="region">Регион</string>
+    <string name="data">Дата</string>
+    <string name="first_blood">Первая кровь</string>
+    <string name="mvp">Лучший игрок</string>
+    <string name="dark_theme">Темная Тема</string>
+    <string name="towers_and_barracks">Башни и казармы</string>
 </resources>

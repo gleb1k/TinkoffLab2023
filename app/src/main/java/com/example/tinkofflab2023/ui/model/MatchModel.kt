@@ -49,9 +49,9 @@ data class MatchItem(
     val radiantWin: Boolean,
     val region: Int?,
     val replayUrl: String?,
-    val startTime: String?,
-    val towerStatusDire: Int?,
-    val towerStatusRadiant: Int?,
+    val startTime: String,
+    val towerStatusDire: Int,
+    val towerStatusRadiant: Int,
 )
 
 //todo null safety
@@ -75,7 +75,6 @@ fun List<Player>.addHeroesAndItems(
 }
 
 
-
 private fun Player.getItems(items: List<ItemEntity>): List<ItemEntity> {
     val emptyItem = ItemEntity(0, "", 0, "")
     val result = arrayListOf<ItemEntity>()
@@ -90,7 +89,7 @@ private fun Player.getItems(items: List<ItemEntity>): List<ItemEntity> {
     return result
 }
 
-private fun Player.getBackpackItems(items: List<ItemEntity>) : List<ItemEntity> {
+private fun Player.getBackpackItems(items: List<ItemEntity>): List<ItemEntity> {
     val emptyItem = ItemEntity(0, "", 0, "")
     val result = arrayListOf<ItemEntity>()
 
@@ -101,6 +100,6 @@ private fun Player.getBackpackItems(items: List<ItemEntity>) : List<ItemEntity> 
     return result
 }
 
-private fun Player.getItemNeutral(items: List<ItemEntity>) : ItemEntity {
-    return items.find{ itemNeutral == it.id} ?:ItemEntity(0, "", 0, "")
+private fun Player.getItemNeutral(items: List<ItemEntity>): ItemEntity {
+    return items.find { itemNeutral == it.id } ?: ItemEntity(0, "", 0, "")
 }

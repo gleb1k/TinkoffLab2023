@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="radiant_bg_1" format="reference" />
+    <attr name="radiant_bg_2" format="reference" />
+    <attr name="dire_bg_1" format="reference" />
+    <attr name="dire_bg_2" format="reference" />
+    <attr name="main_bg" format="reference" />
+    <attr name="main_bg2" format="reference" />
+
+    <attr name="bottom_nav_color" format="reference" />
+    <attr name="tool_bar_color" format="reference" />
+
+</resources>

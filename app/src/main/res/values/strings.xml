@@ -70,5 +70,22 @@
     <string name="divine">Divine</string>
     <string name="immortal">Immortal</string>
     <string name="calibration">Calibration</string>
+    <string name="gold_per_minute">gpm:</string>
+    <string name="exp_per_minute">xpm:</string>
+    <string name="damage_small">dmg:</string>
+    <string name="heal_small">heal:</string>
+    <string name="last_hits">lh</string>
+    <string name="denays">dn:</string>
+    <string name="statistic">Statistic</string>
+    <string name="match_num">Match №</string>
+    <string name="match_result">Match result</string>
+    <string name="game_mode">Game mode</string>
+    <string name="lobby_type">Game type</string>
+    <string name="region">Region</string>
+    <string name="data">Data</string>
+    <string name="first_blood">First blood</string>
+    <string name="mvp">MVP</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="towers_and_barracks">Towers and barracks</string>
 
 </resources>

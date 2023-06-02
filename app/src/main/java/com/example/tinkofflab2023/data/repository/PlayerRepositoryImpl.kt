@@ -17,13 +17,14 @@ class PlayerRepositoryImpl @Inject constructor(
 
     private val playerDao = db.getPlayerDao()
 
-    private suspend fun getApiEntity(accountId: String, isFavorite : Boolean = false): PlayerEntity = PlayerEntity(
-        playerData = api.getPlayerData(accountId),
-        heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
-        recentMatches = api.getPlayerRecentMatches(accountId),
-        wl = api.getPlayerWL(accountId),
-        isFavorite = isFavorite
-    )
+    private suspend fun getApiEntity(accountId: String, isFavorite: Boolean = false): PlayerEntity =
+        PlayerEntity(
+            playerData = api.getPlayerData(accountId),
+            heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
+            recentMatches = api.getPlayerRecentMatches(accountId),
+            wl = api.getPlayerWL(accountId),
+            isFavorite = isFavorite
+        )
 
     //todo nasral!!!!!!!!!!
     // Если в бд нет, иду в сеть, если в сети нет -> возвращаю null
@@ -95,7 +96,7 @@ class PlayerRepositoryImpl @Inject constructor(
     override suspend fun getFavorites(): List<PlayerEntity>? = playerDao.getFavorites()
 
     // Иду в сразу в сеть -> потом перезаписываю в бд
-    override suspend fun refresh(id: String)  {
+    override suspend fun refresh(id: String) {
         try {
             val isFavorite = isFavorite(id)
             getApiEntity(id, isFavorite).also {

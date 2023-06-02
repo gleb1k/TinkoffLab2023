@@ -3,10 +3,10 @@ package com.example.tinkofflab2023.ui.fragment.match.adapter
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TeamHeaderDetailItemBinding
-import com.example.tinkofflab2023.databinding.TeamHeaderItemBinding
 
-class TeamHeaderDetailDelegateAdapter : ViewBindingDelegateAdapter<String, TeamHeaderDetailItemBinding>
-    (TeamHeaderDetailItemBinding::inflate) {
+class TeamHeaderDetailDelegateAdapter :
+    ViewBindingDelegateAdapter<String, TeamHeaderDetailItemBinding>
+        (TeamHeaderDetailItemBinding::inflate) {
     override fun TeamHeaderDetailItemBinding.onBind(item: String) {
         val context = root.context
 

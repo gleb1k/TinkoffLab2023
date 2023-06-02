@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/base_team_victory"
+        android:textStyle="bold"
         android:textAllCaps="true"
         android:layout_marginTop="4dp"
         android:textSize="20sp"

@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.details.MatchDetailsFragment
 import com.example.tinkofflab2023.ui.fragment.match.overview.MatchOverviewFragment
+import com.example.tinkofflab2023.ui.fragment.match.stat.MatchStatFragment
 
 class MatchPagerAdapter(
     fragmentActivity: FragmentActivity,
@@ -12,13 +13,14 @@ class MatchPagerAdapter(
 ) :
     FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> MatchOverviewFragment.newInstance(matchId)
-            else -> MatchDetailsFragment.newInstance(matchId)
+            1 -> MatchDetailsFragment.newInstance(matchId)
+            else -> MatchStatFragment.newInstance(matchId)
         }
     }
 }

@@ -18,6 +18,7 @@ import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentMatchBinding
 import com.example.tinkofflab2023.di.Screens
 import com.github.terrakok.cicerone.Router
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -58,10 +59,12 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
         val tabLayout = binding!!.tabLayout
         val viewPager = binding!!.viewPager
         viewPager.adapter = MatchPagerAdapter(requireActivity(), matchId)
+        tabLayout.setSelectedTabIndicatorColor(MaterialColors.getColor(tabLayout, androidx.appcompat.R.attr.colorPrimary))
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.overview)
+                1 -> tab.text = getString(R.string.statistic)
                 else -> tab.text = getString(R.string.details)
             }
         }.attach()
@@ -97,7 +100,7 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     when (menuItem.itemId) {
-                        R.id.action_more -> router.navigateTo(Screens.Settings())
+//                        R.id.action_more -> router.navigateTo(Screens.Settings())
                         R.id.action_heart -> {
                             onFavoriteClick(menuItem)
                         }

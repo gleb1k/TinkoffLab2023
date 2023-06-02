@@ -12,6 +12,9 @@
     <color name="radiant_green">#8FA13D</color>
     <color name="dire_red">#9F0303</color>
 
+    <color name="radiant_green_minimap">#62FF00</color>
+    <color name="dire_red_minimap">#9F0303</color>
+
     <color name="radiant_player_green_light">#323D35</color>
     <color name="radiant_player_green_dark">#2B3638</color>
 
@@ -21,6 +24,44 @@
     <color name="background">#252F39</color>
 
     <color name="item_background">#18191A</color>
+
+    <!--    dark-->
+    <color name="dark_primary">#CE2D05</color>
+    <color name="dark_primary_variant">#A52801</color>
+    <color name="dark_on_primary">#000000</color>
+    <color name="dark_secondary">#FF6633</color>
+    <color name="dark_secondary_variant">#A52801</color>
+    <color name="dark_on_secondary">#000000</color>
+
+    <color name="dark_main_bg">#373737</color>
+    <color name="dark_main_bg2">#222929</color>
+    <color name="dark_radiant_bg_1">#353E36</color>
+    <color name="dark_radiant_bg_2">#2D3030</color>
+    <color name="dark_dire_bg_1">#3C3235</color>
+    <color name="dark_dire_bg_2">#2C2D30</color>
+
+    <color name="dark_tool_bar">#282828</color>
+    <color name="dark_bottom_nav">@color/dark_dire_bg_2</color>
+    <!--    dark-->
+
+    <!--    light-->
+    <color name="light_main_bg">#CDCDCD</color>
+    <color name="light_main_bg2">#FFFFFF</color>
+    <color name="light_radiant_bg_1">#ACACAC</color>
+    <color name="light_radiant_bg_2">#FFFFFF</color>
+    <color name="light_dire_bg_1">#ACACAC</color>
+    <color name="light_dire_bg_2">#FFFFFF</color>
+
+    <color name="light_primary">#CE2D05</color>
+    <color name="light_primary_variant">#08786F</color>
+    <color name="light_on_primary">#000000</color>
+    <color name="light_secondary">#004D50</color>
+    <color name="light_secondary_variant">#005280</color>
+    <color name="light_on_secondary">#000000</color>
+
+    <color name="light_tool_bar">#FFFFFF</color>
+    <color name="light_bottom_nav">@color/white</color>
+    <!--    light-->
 
     <!--    Light Mode:-->
     <!-- Primary color: #FF6633 (bright orange) -->

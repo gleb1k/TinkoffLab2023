@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.R
 
 data class Rank(
     val name: String,
-    val tier : Int,
+    val tier: Int,
     @DrawableRes
-    val img : Int = R.drawable.not_calibrated,
+    val img: Int = R.drawable.not_calibrated,
 )

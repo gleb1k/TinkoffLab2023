@@ -1,12 +1,16 @@
 package com.example.tinkofflab2023.ui
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.FragmentManager
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.databinding.ActivityMainBinding
+import com.example.tinkofflab2023.di.Screen
 import com.example.tinkofflab2023.di.Screens
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -70,6 +74,27 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
 
     override fun changeToolBarTitle(title: String) {
         binding?.toolbar?.title = title
+    }
+
+    override fun changeToolBar(Screen: Screen) {
+
+    }
+
+    override fun changeTheme(isChecked: Boolean) {
+        if (isChecked) {
+            // Change to dark theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            // Change to light theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        val sharedPref = getSharedPreferences("theme", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
+        editor.putBoolean("is_dark_theme", isChecked)
+
+        editor.apply()
+        recreate()
     }
 
     override fun onResumeFragments() {

@@ -21,3 +21,7 @@ object Screens {
     fun Favorite() = FragmentScreen { FavoriteFragment() }
 
 }
+
+enum class Screen {
+    Settings, Match, Player, Favorites
+}

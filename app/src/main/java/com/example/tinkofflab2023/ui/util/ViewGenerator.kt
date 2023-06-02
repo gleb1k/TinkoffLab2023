@@ -2,6 +2,7 @@ package com.example.tinkofflab2023.ui.util
 
 import android.content.Context
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.ui.model.MatchBuildingsState
 import com.example.tinkofflab2023.ui.model.MatchModel
 import com.example.tinkofflab2023.ui.model.PlayerModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -57,6 +58,15 @@ class ViewGenerator @Inject constructor(
                     for (i in 5..9)
                         add(players[i])
                     add(teamOutcomes[1])
+                    add(
+                        MatchBuildingsState(
+                            barracksStatusDireNum = matchItem.barracksStatusDire,
+                            barracksStatusRadiantNum = matchItem.barracksStatusRadiant,
+                            towerStatusDireNum = matchItem.towerStatusDire,
+                            towerStatusRadiantNum = matchItem.towerStatusRadiant,
+                            radiantWin = matchItem.radiantWin,
+                        )
+                    )
                 }
             }
         } catch (throwable: Throwable) {

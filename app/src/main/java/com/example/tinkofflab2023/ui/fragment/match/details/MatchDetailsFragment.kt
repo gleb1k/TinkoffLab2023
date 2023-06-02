@@ -12,7 +12,7 @@ import com.example.tinkofflab2023.core.util.showSnackbar
 import com.example.tinkofflab2023.databinding.FragmentMatchDetailBinding
 import com.example.tinkofflab2023.di.Screens
 import com.example.tinkofflab2023.ui.fragment.match.adapter.MatchHeaderDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamHeaderDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.match.adapter.MinimapDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamHeaderDetailDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.adapter.TeamPlayerDetailDelegateAdapter
 import com.example.tinkofflab2023.ui.fragment.match.overview.MatchOverviewFragment
@@ -45,7 +45,7 @@ class MatchDetailsFragment : Fragment(R.layout.fragment_match_detail) {
         adapter = CompositeDelegateAdapter(
             MatchHeaderDelegateAdapter(viewModifier),
             TeamHeaderDetailDelegateAdapter(),
-            TeamPlayerDetailDelegateAdapter(viewModifier, glide, ::onPlayerClick)
+            TeamPlayerDetailDelegateAdapter(viewModifier, glide, ::onPlayerClick),
         )
 
         arguments?.getString(MatchOverviewFragment.MATCH_ID_TAG)?.let {

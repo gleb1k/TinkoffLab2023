@@ -1,16 +1,49 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TinkoffLab2023" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--    <style name="Theme.TinkoffLab2023" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/purple_200</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/black</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--    </style>-->
+
+    <style name="Theme.TinkoffLab2023" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorPrimaryVariant">@color/dark_primary_variant</item>
+        <item name="colorOnPrimary">@color/dark_on_primary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/dark_secondary</item>
+        <item name="colorSecondaryVariant">@color/dark_secondary_variant</item>
+        <item name="colorOnSecondary">@color/dark_on_secondary</item>
+
+        <item name="tabStyle">@color/dark_primary</item>
+        <item name="colorControlHighlight">#6E6E6E</item>
+        <item name="android:colorControlNormal">@color/white</item>
+        <item name="android:colorControlActivated">@color/dark_primary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >@color/dark_tool_bar</item>
+
+
+        <item name="main_bg">@color/dark_main_bg</item>
+        <item name="main_bg2">@color/dark_main_bg2</item>
+        <item name="radiant_bg_1">@color/dark_radiant_bg_1</item>
+        <item name="radiant_bg_2">@color/dark_radiant_bg_2</item>
+        <item name="dire_bg_1">@color/dark_dire_bg_1</item>
+        <item name="dire_bg_2">@color/dark_dire_bg_2</item>
+
+        <item name="tool_bar_color">@color/dark_tool_bar</item>
+        <item name="bottom_nav_color">@color/dark_bottom_nav</item>
+
         <!-- Customize your theme here. -->
     </style>
 </resources>

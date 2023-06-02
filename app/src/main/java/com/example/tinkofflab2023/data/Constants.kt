@@ -55,4 +55,29 @@ object Constants {
         24 to "Mutation",
         25 to "Coaches Challenge"
     )
+
+    val regions = mapOf(
+        1 to "US WEST",
+        2 to "US EAST",
+        3 to "EUROPE",
+        5 to "SINGAPORE",
+        6 to "DUBAI",
+        7 to "AUSTRALIA",
+        8 to "STOCKHOLM",
+        9 to "AUSTRIA",
+        10 to "BRAZIL",
+        11 to "SOUTHAFRICA",
+        12 to "PW TELECOM SHANGHAI",
+        13 to "PW UNICOM",
+        14 to "CHILE",
+        15 to "PERU",
+        16 to "INDIA",
+        17 to "PW TELECOM GUANGDONG",
+        18 to "PW TELECOM ZHEJIANG",
+        19 to "JAPAN",
+        20 to "PW TELECOM WUHAN",
+        25 to "PW UNICOM TIANJIN",
+        37 to "TAIWAN",
+        38 to "ARGENTINA"
+    )
 }

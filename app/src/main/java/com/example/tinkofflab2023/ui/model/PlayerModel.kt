@@ -25,11 +25,13 @@ data class PlayerHeaderItem(
 data class PlayerHeroItem(
     var heroResponse: PlayerHeroResponse,
     val heroEntity: HeroEntity,
+    val index: Int = 0
 )
 
 data class PlayerMatchItem(
     val matchResponse: PlayerMatchResponse,
     val heroEntity: HeroEntity,
+    val index: Int = 0
 )
 
 

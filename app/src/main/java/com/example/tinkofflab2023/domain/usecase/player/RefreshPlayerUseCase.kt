@@ -1,6 +1,5 @@
 package com.example.tinkofflab2023.domain.usecase.player
 
-import com.example.tinkofflab2023.domain.repository.ConstantsRepository
 import com.example.tinkofflab2023.domain.repository.PlayerRepository
 import com.example.tinkofflab2023.domain.usecase.UseCase
 import javax.inject.Inject

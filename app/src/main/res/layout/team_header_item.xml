@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:text="@string/the_dire"
+        android:textStyle="bold"
         android:layout_marginTop="6dp"
         android:textColor="@color/radiant_green"
         android:textSize="18sp"

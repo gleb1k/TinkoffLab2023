@@ -8,11 +8,12 @@ class PlayerHeroesResponse : ArrayList<PlayerHeroResponse>()
 
 fun PlayerHeroesResponse.addHeroes(heroesEntityList: List<HeroEntity>): List<PlayerHeroItem> {
     val playerList = arrayListOf<PlayerHeroItem>()
-    forEach { response ->
+    forEachIndexed { index,response ->
         playerList.add(
             PlayerHeroItem(
                 response,
-                heroesEntityList.find { response.heroId == it.id }!!
+                heroesEntityList.find { response.heroId == it.id }!!,
+                index
             )
         )
     }

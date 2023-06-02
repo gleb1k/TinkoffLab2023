@@ -10,9 +10,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/tool_bar_color"
         android:elevation="4dp"
-        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:theme="@style/Theme.TinkoffLab2023"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main"
-        android:background="@color/purple_500" />
+        android:background="?attr/bottom_nav_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

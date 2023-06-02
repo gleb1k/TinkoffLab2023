@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerHeroesBinding
-import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.fragment.player.adapter.HeroDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.overview.PlayerOverviewFragment
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -51,9 +51,9 @@ class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
 
         binding?.run {
             //todo из-за swipeRefreshLayout не сразу прогружается список
-            swipeRefreshLayout.setOnRefreshListener {
-                viewModel.refreshData(accountId)
-            }
+//            swipeRefreshLayout.setOnRefreshListener {
+//                viewModel.refreshData(accountId)
+//            }
 
             rvHeroes.layoutManager = LinearLayoutManager(context)
             rvHeroes.adapter = adapter
@@ -61,9 +61,9 @@ class PlayerHeroesFragment : Fragment(R.layout.fragment_player_heroes) {
             viewModel.error.observe(viewLifecycleOwner) {
                 tvError.text = it
             }
-            viewModel.refreshing.observe(viewLifecycleOwner) {
-                swipeRefreshLayout.isRefreshing = it
-            }
+//            viewModel.refreshing.observe(viewLifecycleOwner) {
+//                swipeRefreshLayout.isRefreshing = it
+//            }
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == true)
                     progressBar.visibility = View.VISIBLE
