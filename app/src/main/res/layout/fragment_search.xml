@@ -14,8 +14,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:trackColor="@color/bright_orange"
         tools:visibility="visible" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_bg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="center"-->
+<!--        android:src="@drawable/dota2art"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText
         android:id="@+id/et_search"
@@ -28,9 +38,20 @@
         android:imeOptions="actionSearch"
         android:inputType="textPersonName"
         android:singleLine="true"
+        android:outlineAmbientShadowColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_dota_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/dota2_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search"
@@ -41,7 +62,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_search"
-        tools:itemCount="20"
+        tools:itemCount="6"
         tools:listitem="@layout/search_player_item" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

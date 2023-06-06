@@ -3,15 +3,14 @@
 
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/antimage_icon"
-        android:title="Настройки" />
+        android:icon="@drawable/baseline_settings_40"
+        android:title="@string/settings" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/search_40"
-        android:title="Поиск" />
+        android:title="@string/search" />
     <item
         android:id="@+id/action_favorite"
         android:icon="@drawable/favorite_fill_40"
-        android:title="Избранное" />
-
+        android:title="@string/favorites" />
 </menu>

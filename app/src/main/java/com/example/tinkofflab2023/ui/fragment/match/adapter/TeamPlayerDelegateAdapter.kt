@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.fragment.match.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.match.adapter
 
 import com.bumptech.glide.RequestManager
 import com.example.tinkofflab2023.R
@@ -6,7 +6,7 @@ import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapte
 import com.example.tinkofflab2023.databinding.TeamPlayerItemBinding
 import com.example.tinkofflab2023.ui.model.MatchPlayerItem
 import com.example.tinkofflab2023.ui.util.ViewModifier
-import javax.inject.Inject
+import com.google.android.material.color.MaterialColors
 
 class TeamPlayerDelegateAdapter(
     private val viewModifier: ViewModifier,
@@ -16,8 +16,23 @@ class TeamPlayerDelegateAdapter(
     (TeamPlayerItemBinding::inflate) {
 
     override fun TeamPlayerItemBinding.onBind(item: MatchPlayerItem) {
-
         val context = root.context
+
+        if (item.player.playerSlot % 2 == 0 && item.player.playerSlot < 128) {
+            root.setBackgroundColor( MaterialColors.getColor(root, R.attr.radiant_bg_1))
+        }
+        if (item.player.playerSlot % 2 == 1 && item.player.playerSlot < 128) {
+            root.setBackgroundColor(MaterialColors.getColor(root, R.attr.radiant_bg_2))
+        }
+
+
+        if (item.player.playerSlot % 2 == 0 && item.player.playerSlot >= 128) {
+            root.setBackgroundColor(MaterialColors.getColor(root, R.attr.dire_bg_1))
+        }
+        if (item.player.playerSlot % 2 == 1 && item.player.playerSlot >= 128) {
+            root.setBackgroundColor(MaterialColors.getColor(root, R.attr.dire_bg_2))
+        }
+
         with(item.player) {
             tvPlayerName.text = personaname ?: context.getString(R.string.anonym)
             tvKills.text = "$kills"

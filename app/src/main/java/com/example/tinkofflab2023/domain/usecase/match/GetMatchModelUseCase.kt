@@ -15,5 +15,6 @@ class GetMatchModelUseCase @Inject constructor(
     suspend operator fun invoke(
         matchId: String
     ): MatchModel? =
-        matchRepository.getEntity(matchId)?.toModel(constantsRepository.getHeroes())
+        matchRepository.getEntity(matchId)
+            ?.toModel(constantsRepository.getHeroes(), constantsRepository.getItems())
 }

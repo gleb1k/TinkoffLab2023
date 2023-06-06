@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
@@ -24,6 +25,7 @@ import com.example.tinkofflab2023.ui.fragment.search.adapter.SearchPlayerDelegat
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
+import jp.wasabeef.glide.transformations.BlurTransformation
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -56,7 +58,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
-                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
+//                    R.id.action_more -> binding?.root?.showSnackbar("sdfsfd")
                 }
                 return true
             }
@@ -83,6 +85,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
         binding = FragmentSearchBinding.bind(view)
+
         binding?.run {
             rvSearch.layoutManager = LinearLayoutManager(context)
             rvSearch.adapter = adapter

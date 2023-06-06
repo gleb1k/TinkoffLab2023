@@ -13,9 +13,6 @@ class GetPlayerMatchesUseCase @Inject constructor(
 ) : UseCase {
     suspend operator fun invoke(
         accountId: String
-    ): List<PlayerMatchItem>? {
-        playerRepository.getMatches(accountId).also {
-            return it?.addHeroes(constantsRepository.getHeroes())
-        }
-    }
+    ): List<PlayerMatchItem>? =
+        playerRepository.getMatches(accountId)?.addHeroes(constantsRepository.getHeroes())
 }

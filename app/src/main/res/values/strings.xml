@@ -22,7 +22,7 @@
     <string name="test">Test</string>
     <string name="base_number_big" translatable="false">999</string>
     <string name="last_played">Last played:</string>
-    <string name="win_slash_loss_big">Win/Loss</string>
+    <string name="win_slash_loss_big" translatable="false">Win/Loss</string>
     <string name="win_rate">Win rate</string>
     <string name="matches">Matches</string>
     <string name="win_percent">Win %</string>
@@ -57,5 +57,35 @@
     <string name="an_error_has_occurred">An error has occurred</string>
     <string name="radiant_victory">Radiant victory</string>
     <string name="dire_victory">Dire victory</string>
+    <string name="details">Details</string>
+    <string name="lvl" translatable="false">LVL:</string>
+    <string name="gold">Gold:</string>
+    <string name="estimate">Estimate</string>
+    <string name="herald">Herald</string>
+    <string name="guardian">Guardian</string>
+    <string name="crusader">Crusader</string>
+    <string name="archon">Archon</string>
+    <string name="legend">Legend</string>
+    <string name="ancient">Ancient</string>
+    <string name="divine">Divine</string>
+    <string name="immortal">Immortal</string>
+    <string name="calibration">Calibration</string>
+    <string name="gold_per_minute">gpm:</string>
+    <string name="exp_per_minute">xpm:</string>
+    <string name="damage_small">dmg:</string>
+    <string name="heal_small">heal:</string>
+    <string name="last_hits">lh</string>
+    <string name="denays">dn:</string>
+    <string name="statistic">Builds</string>
+    <string name="match_num">Match №</string>
+    <string name="match_result">Match result</string>
+    <string name="game_mode">Game mode</string>
+    <string name="lobby_type">Game type</string>
+    <string name="region">Region</string>
+    <string name="data">Data</string>
+    <string name="first_blood">First blood</string>
+    <string name="mvp">MVP</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="towers_and_barracks">Towers and barracks</string>
 
 </resources>

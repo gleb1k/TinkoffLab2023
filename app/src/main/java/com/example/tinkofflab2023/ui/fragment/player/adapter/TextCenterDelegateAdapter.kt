@@ -1,4 +1,4 @@
-package com.example.tinkofflab2023.ui.fragment.player.overview.adapter
+package com.example.tinkofflab2023.ui.fragment.player.adapter
 
 import com.example.tinkofflab2023.core.delegateadapter.ViewBindingDelegateAdapter
 import com.example.tinkofflab2023.databinding.TextCenterItemBinding

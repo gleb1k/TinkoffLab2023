@@ -8,9 +8,11 @@
         android:id="@+id/tv_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="6dp"
         android:text="@string/the_dire"
-        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/radiant_green"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/hero"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_team" />
@@ -48,26 +50,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/assist_word"
-        android:layout_marginEnd="62dp"
+        android:textAllCaps="true"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/gl_1" />
+
 
     <TextView
         android:id="@+id/tv_deaths_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/death_word"
-        android:layout_marginEnd="12dp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_assists_const" />
+        app:layout_constraintEnd_toStartOf="@+id/gl_2" />
+
 
     <TextView
         android:id="@+id/tv_kills_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/kill_word"
-        android:layout_marginEnd="12dp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_deaths_const" />
+        app:layout_constraintEnd_toStartOf="@+id/gl_3" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="70dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="130dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.tinkofflab2023.ui.util
 
 import android.content.Context
 import com.example.tinkofflab2023.R
+import com.example.tinkofflab2023.ui.model.MatchBuildingsState
 import com.example.tinkofflab2023.ui.model.MatchModel
 import com.example.tinkofflab2023.ui.model.PlayerModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -52,16 +53,42 @@ class ViewGenerator @Inject constructor(
                     add(context.getString(R.string.the_radiant))
                     for (i in 0..4)
                         add(players[i])
-                    addFiveElementsIfPossible(players.subList(0, 4))
                     add(teamOutcomes[0])
                     add(context.getString(R.string.the_dire))
                     for (i in 5..9)
                         add(players[i])
                     add(teamOutcomes[1])
+                    add(
+                        MatchBuildingsState(
+                            barracksStatusDireNum = matchItem.barracksStatusDire,
+                            barracksStatusRadiantNum = matchItem.barracksStatusRadiant,
+                            towerStatusDireNum = matchItem.towerStatusDire,
+                            towerStatusRadiantNum = matchItem.towerStatusRadiant,
+                            radiantWin = matchItem.radiantWin,
+                        )
+                    )
                 }
             }
         } catch (throwable: Throwable) {
             return arrayListOf(context.getString(R.string.an_error_has_occurred))
+        }
+    }
+
+    fun generateMatchDetail(matchModel: MatchModel): ArrayList<Any> {
+        return try {
+            ArrayList<Any>().apply {
+                with(matchModel) {
+                    add(matchItem)
+                    add(context.getString(R.string.the_radiant))
+                    for (i in 0..4)
+                        add(players[i])
+                    add(context.getString(R.string.the_dire))
+                    for (i in 5..9)
+                        add(players[i])
+                }
+            }
+        } catch (throwable: Throwable) {
+            arrayListOf(context.getString(R.string.an_error_has_occurred))
         }
     }
 }

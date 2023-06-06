@@ -10,15 +10,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/tool_bar_color"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:theme="@style/Theme.TinkoffLab2023"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_app_bar_base"
-        app:title=""
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:title="" />
 
 
     <FrameLayout
@@ -40,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main"
-        android:background="@color/purple_500" />
+        android:background="?attr/bottom_nav_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

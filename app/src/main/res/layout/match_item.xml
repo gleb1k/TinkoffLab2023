@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background_test">
+    android:background="@color/background">
 
     <!--todo размер? 113x64-->
     <ImageView
         android:id="@+id/iv_hero"
-        android:layout_width="113dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
         android:src="@drawable/tinker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +41,7 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="2dp"
         android:text="@string/hero"
-        android:textColor="@color/green"
+        android:textColor="@color/radiant_green"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/iv_hero"
         app:layout_constraintTop_toTopOf="@+id/iv_hero" />
@@ -60,13 +60,12 @@
         android:id="@+id/tv_wl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text=""
-        android:textColor="@color/red"
+        android:text="@string/victory"
+        android:textColor="@color/dire_red"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/iv_hero" />
 
     <TextView
         android:id="@+id/tv_time"
@@ -82,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="@string/kda"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,10 +102,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/duration"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kda_const"
         app:layout_constraintEnd_toStartOf="@+id/tv_kda_const" />
 
     <TextView

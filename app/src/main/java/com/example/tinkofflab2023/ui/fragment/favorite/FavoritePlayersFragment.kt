@@ -39,7 +39,7 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
         super.onCreate(savedInstanceState)
         val glide = Glide.with(this)
         adapter = CompositeDelegateAdapter(
-            SearchPlayerDelegateAdapter(
+            FavoritePlayerDelegateAdapter(
                 viewModifier,
                 glide,
                 ::onPlayerClick
@@ -52,12 +52,23 @@ class FavoritePlayersFragment : Fragment(R.layout.fragment_favorite_players) {
         binding = FragmentFavoritePlayersBinding.bind(view)
 
         binding?.run {
+            swipeRefreshLayout.setOnRefreshListener {
+                swapAdapterData()
+                swipeRefreshLayout.isRefreshing = false
+            }
+
             rvPlayers.layoutManager = LinearLayoutManager(context)
             rvPlayers.adapter = adapter
 
+            swapAdapterData()
+        }
+    }
+
+    private fun swapAdapterData() {
+        lifecycleScope.launch {
             lifecycleScope.launch {
                 adapter?.swapData(
-                    getFavoritePlayersUseCase()?.map { it.toSearchResponse() }
+                    getFavoritePlayersUseCase()?.map { it }
                         ?: listOf())
             }
         }

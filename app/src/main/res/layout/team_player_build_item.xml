@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/iv_hero"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/tinker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:maxWidth="140dp"
+        android:text="@string/player"
+        app:layout_constraintEnd_toStartOf="@+id/iv_rating"
+        app:layout_constraintStart_toEndOf="@+id/iv_hero"
+        app:layout_constraintTop_toTopOf="@+id/iv_hero" />
+
+    <ImageView
+        android:id="@+id/iv_rating"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-4dp"
+        android:src="@drawable/herald"
+        app:layout_constraintStart_toEndOf="@+id/tv_player_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_lvl_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lvl"
+        app:layout_constraintStart_toStartOf="@+id/iv_hero"
+        app:layout_constraintTop_toBottomOf="@+id/iv_hero" />
+
+    <TextView
+        android:id="@+id/tv_lvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number"
+        app:layout_constraintStart_toEndOf="@+id/tv_lvl_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_lvl_const" />
+
+    <TextView
+        android:id="@+id/tv_gold_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gold"
+        app:layout_constraintStart_toStartOf="@+id/tv_lvl_const"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lvl_const" />
+
+    <TextView
+        android:id="@+id/tv_gold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number_big"
+        app:layout_constraintStart_toEndOf="@+id/tv_gold_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_gold_const" />
+
+    <TextView
+        android:id="@+id/tv_last_hits_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_hits"
+        android:layout_marginBottom="2dp"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_lvl_const"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gold_const" />
+
+    <TextView
+        android:id="@+id/tv_last_hits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number_big"
+        app:layout_constraintStart_toEndOf="@+id/tv_last_hits_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_last_hits_const" />
+
+
+    <TextView
+        android:id="@+id/tv_exp_per_minute_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exp_per_minute"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="@+id/tv_gold_per_minute_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_lvl_const" />
+
+    <TextView
+        android:id="@+id/tv_exp_per_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number_big"
+        app:layout_constraintStart_toEndOf="@+id/tv_exp_per_minute_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_exp_per_minute_const" />
+
+    <TextView
+        android:id="@+id/tv_gold_per_minute_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="@string/gold_per_minute"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toEndOf="@+id/tv_gold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lvl_const" />
+
+    <TextView
+        android:id="@+id/tv_gold_per_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number_big"
+        app:layout_constraintStart_toEndOf="@+id/tv_gold_per_minute_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_gold_per_minute_const" />
+
+    <TextView
+        android:id="@+id/tv_damage_const"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:text="@string/damage_small"
+        app:layout_constraintStart_toStartOf="@+id/tv_gold_per_minute_const"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gold_per_minute_const" />
+
+    <TextView
+        android:id="@+id/tv_damage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/base_number_big"
+        app:layout_constraintStart_toEndOf="@+id/tv_damage_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_damage_const" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_item_neutral"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dragon_scale"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_item_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_item_2"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <!-- 87 64-->
+    <ImageView
+        android:id="@+id/iv_item_2"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toStartOf="@id/iv_item_neutral"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_item_1"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toStartOf="@+id/iv_item_2"
+        app:layout_constraintTop_toTopOf="@+id/iv_item_2" />
+
+    <ImageView
+        android:id="@+id/iv_item_0"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toStartOf="@+id/iv_item_1"
+        app:layout_constraintTop_toTopOf="@+id/iv_item_1" />
+
+    <ImageView
+        android:id="@+id/iv_item_5"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toEndOf="@+id/iv_item_2"
+        app:layout_constraintTop_toBottomOf="@+id/iv_item_2" />
+
+    <ImageView
+        android:id="@+id/iv_item_4"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toStartOf="@+id/iv_item_5"
+        app:layout_constraintTop_toTopOf="@+id/iv_item_5" />
+
+    <ImageView
+        android:id="@+id/iv_item_3"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/mithril_hammer"
+        app:layout_constraintEnd_toStartOf="@+id/iv_item_4"
+        app:layout_constraintTop_toTopOf="@+id/iv_item_4" />
+
+    <ImageView
+        android:id="@+id/iv_backpack_2"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:background="@drawable/item_background"
+        android:src="@drawable/magic_wand"
+        app:layout_constraintEnd_toEndOf="@+id/iv_item_5"
+        app:layout_constraintStart_toStartOf="@+id/iv_item_5"
+        app:layout_constraintTop_toBottomOf="@+id/iv_item_5" />
+
+    <ImageView
+        android:id="@+id/iv_backpack_1"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:background="@drawable/item_background"
+        android:src="@drawable/magic_wand"
+        app:layout_constraintEnd_toEndOf="@+id/iv_item_4"
+        app:layout_constraintStart_toStartOf="@+id/iv_item_4"
+        app:layout_constraintTop_toBottomOf="@+id/iv_item_5" />
+
+
+    <ImageView
+        android:id="@+id/iv_backpack_0"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:background="@drawable/item_background"
+        android:src="@drawable/magic_wand"
+        app:layout_constraintEnd_toEndOf="@+id/iv_item_3"
+        app:layout_constraintStart_toStartOf="@+id/iv_item_3"
+        app:layout_constraintTop_toBottomOf="@+id/iv_item_5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

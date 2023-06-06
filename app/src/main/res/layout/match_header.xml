@@ -4,40 +4,19 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_match_const"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:text="@string/match"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_match_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/base_number_big"
-        android:layout_marginStart="4dp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_match_const"
-        app:layout_constraintStart_toEndOf="@+id/tv_match_const"
-        app:layout_constraintTop_toTopOf="@+id/tv_match_const" />
-
 
     <TextView
         android:id="@+id/tv_winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/base_team_victory"
+        android:textStyle="bold"
         android:textAllCaps="true"
+        android:layout_marginTop="4dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_match_id" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_match_time"
@@ -57,6 +36,7 @@
         android:layout_marginEnd="12dp"
         android:text="@string/base_number"
         android:textSize="20sp"
+        android:textColor="@color/radiant_green"
         app:layout_constraintEnd_toStartOf="@+id/tv_match_time"
         app:layout_constraintTop_toBottomOf="@+id/tv_winner" />
 
@@ -66,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/base_number"
+        android:textColor="@color/dire_red"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/tv_match_time"
         app:layout_constraintTop_toTopOf="@+id/tv_radiant_kills" />

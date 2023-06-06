@@ -5,7 +5,7 @@ import com.example.tinkofflab2023.data.remote.response.matches.MatchResponse
 import com.example.tinkofflab2023.domain.repository.SearchRepository
 import javax.inject.Inject
 
-class GetMatchUseCase @Inject constructor(
+class SearchMatchUseCase @Inject constructor(
     private val searchRepository: SearchRepository
 ) : UseCase {
     suspend operator fun invoke(
@@ -16,6 +16,5 @@ class GetMatchUseCase @Inject constructor(
         else
             throw IllegalArgumentException()
     }
-
 }
 

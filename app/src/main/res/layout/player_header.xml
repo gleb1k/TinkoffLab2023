@@ -6,11 +6,13 @@
 
     <TextView
         android:id="@+id/tv_nickname"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="-2dp"
         android:text="@string/player"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_rating"
         app:layout_constraintStart_toEndOf="@+id/iv_avatar"
         app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
@@ -26,19 +28,18 @@
         android:id="@+id/iv_avatar"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/avatar_64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_rating"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_baseline_person_40"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/not_calibrated"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,29 +47,30 @@
         android:id="@+id/tv_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:text="@string/test"
+        android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_rating"
-        app:layout_constraintTop_toTopOf="@+id/iv_rating" />
+        app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
 
     <TextView
-        android:id="@+id/tv_last_online_const"
+        android:id="@+id/tv_estimate_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/last_online"
+        android:text="@string/estimate"
         app:layout_constraintEnd_toStartOf="@+id/tv_wl_const"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
 
     <TextView
-        android:id="@+id/tv_last_online"
+        android:id="@+id/tv_estimate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/base_date"
-        app:layout_constraintEnd_toEndOf="@+id/tv_last_online_const"
-        app:layout_constraintStart_toStartOf="@+id/tv_last_online_const"
-        app:layout_constraintTop_toBottomOf="@+id/tv_last_online_const" />
+        android:text="@string/base_number_big"
+        app:layout_constraintEnd_toEndOf="@+id/tv_estimate_const"
+        app:layout_constraintStart_toStartOf="@+id/tv_estimate_const"
+        app:layout_constraintTop_toBottomOf="@+id/tv_estimate_const" />
 
     <TextView
         android:id="@+id/tv_wl_const"
@@ -76,8 +78,8 @@
         android:layout_height="wrap_content"
         android:text="@string/win_slash_loss_big"
         app:layout_constraintEnd_toStartOf="@+id/tv_winrate_const"
-        app:layout_constraintStart_toEndOf="@+id/tv_last_online_const"
-        app:layout_constraintTop_toTopOf="@+id/tv_last_online_const" />
+        app:layout_constraintStart_toEndOf="@+id/tv_estimate_const"
+        app:layout_constraintTop_toTopOf="@+id/tv_estimate_const" />
 
     <TextView
         android:id="@+id/tv_wl"

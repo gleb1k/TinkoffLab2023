@@ -10,10 +10,10 @@ import com.example.tinkofflab2023.R
 import com.example.tinkofflab2023.core.delegateadapter.CompositeDelegateAdapter
 import com.example.tinkofflab2023.databinding.FragmentPlayerOverviewBinding
 import com.example.tinkofflab2023.di.Screens
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.HeroDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.MatchDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.PlayerHeaderDelegateAdapter
-import com.example.tinkofflab2023.ui.fragment.player.overview.adapter.TextCenterDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.HeroDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.MatchDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.PlayerHeaderDelegateAdapter
+import com.example.tinkofflab2023.ui.fragment.player.adapter.TextCenterDelegateAdapter
 import com.example.tinkofflab2023.ui.util.ViewModifier
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,8 +63,16 @@ class PlayerOverviewFragment : Fragment(R.layout.fragment_player_overview) {
         binding = FragmentPlayerOverviewBinding.bind(view)
 
         binding?.run {
+            swipeRefreshLayout.setOnRefreshListener {
+                viewModel.refreshData(accountId)
+            }
+
             rvOverview.layoutManager = LinearLayoutManager(context)
             rvOverview.adapter = adapter
+
+            viewModel.refreshing.observe(viewLifecycleOwner) {
+                swipeRefreshLayout.isRefreshing = it
+            }
             viewModel.error.observe(viewLifecycleOwner) {
                 tvError.text = it
             }

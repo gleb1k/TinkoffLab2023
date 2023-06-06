@@ -57,4 +57,5 @@ interface DotaApi {
     @GET("constants/heroes")
     suspend fun getHeroes(): HeroesResponse
 
+
 }

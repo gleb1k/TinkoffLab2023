@@ -27,11 +27,9 @@ class PlayerViewModel @Inject constructor(
         }
     }
 
-    fun getFavoriteState(id: String) {
-        viewModelScope.launch {
-            _isFavorite.value = isPlayerFavoriteUseCase(id)
-            val temp = _isFavorite.value
-        }
+    suspend fun getFavoriteState(id: String) {
+        val temp = isPlayerFavoriteUseCase(id)
+        _isFavorite.value = temp
     }
 
 }

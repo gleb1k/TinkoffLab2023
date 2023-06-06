@@ -17,23 +17,27 @@ class PlayerRepositoryImpl @Inject constructor(
 
     private val playerDao = db.getPlayerDao()
 
+    private suspend fun getApiEntity(accountId: String, isFavorite: Boolean = false): PlayerEntity =
+        PlayerEntity(
+            playerData = api.getPlayerData(accountId),
+            heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
+            recentMatches = api.getPlayerRecentMatches(accountId),
+            wl = api.getPlayerWL(accountId),
+            isFavorite = isFavorite
+        )
+
     //todo nasral!!!!!!!!!!
     // Если в бд нет, иду в сеть, если в сети нет -> возвращаю null
-    override suspend fun getEntity(accountId: String): PlayerEntity? {
-        playerDao.get(accountId)?.let {
+    override suspend fun getEntity(id: String): PlayerEntity? {
+        playerDao.get(id)?.let {
             return it
         }
         try {
-            //в отдельную сущность (Метод в апи)
-            return PlayerEntity(
-                playerData = api.getPlayerData(accountId),
-                heroes = api.getPlayerHeroes(accountId).clearNeverPlayedHeroes(),
-                recentMatches = api.getPlayerRecentMatches(accountId),
-                wl = api.getPlayerWL(accountId),
-            ).also {
+            return getApiEntity(id).also {
                 addToCache(it)
             }
-                //runCatching {}
+            //todo
+            //runCatching {}
 //            val result = Result<PlayerEntity>
         } catch (throwable: Throwable) {
             return null
@@ -87,7 +91,18 @@ class PlayerRepositoryImpl @Inject constructor(
         playerDao.removeFromFavorite(id)
     }
 
-    override suspend fun isFavorite(id: String): Boolean = playerDao.isFavorite(id)
+    override suspend fun isFavorite(id: String): Boolean = playerDao.isFavorite(id) ?: false
 
     override suspend fun getFavorites(): List<PlayerEntity>? = playerDao.getFavorites()
+
+    // Иду в сразу в сеть -> потом перезаписываю в бд
+    override suspend fun refresh(id: String) {
+        try {
+            val isFavorite = isFavorite(id)
+            getApiEntity(id, isFavorite).also {
+                playerDao.insert(it)
+            }
+        } catch (_: Throwable) {
+        }
+    }
 }

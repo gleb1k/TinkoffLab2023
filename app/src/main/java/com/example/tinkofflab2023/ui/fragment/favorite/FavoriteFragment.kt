@@ -14,6 +14,7 @@ import com.example.tinkofflab2023.core.ActivityToolBar
 import com.example.tinkofflab2023.databinding.FragmentFavoriteBinding
 import com.example.tinkofflab2023.di.Screens
 import com.github.terrakok.cicerone.Router
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -34,6 +35,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         val tabLayout = binding!!.tabLayout
         val viewPager = binding!!.viewPager
         viewPager.adapter = FavoritePagerAdapter(requireActivity())
+        tabLayout.setSelectedTabIndicatorColor(MaterialColors.getColor(tabLayout, androidx.appcompat.R.attr.colorPrimary))
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
@@ -59,7 +61,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
-                    R.id.action_more -> router.replaceScreen(Screens.Settings())
+//                    R.id.action_more -> router.replaceScreen(Screens.Settings())
                 }
                 return true
             }

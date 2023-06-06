@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tinkofflab2023.domain.usecase.player.GetPlayerModelUseCase
+import com.example.tinkofflab2023.domain.usecase.player.RefreshPlayerUseCase
 import com.example.tinkofflab2023.ui.util.ViewGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PlayerOverviewViewModel @Inject constructor(
     private val getPlayerModelUseCase: GetPlayerModelUseCase,
+    private val refreshPlayerUseCase: RefreshPlayerUseCase,
     private val viewGenerator: ViewGenerator,
 ) : ViewModel() {
 
@@ -23,6 +25,10 @@ class PlayerOverviewViewModel @Inject constructor(
     private val _loading = MutableLiveData(true)
     val loading: LiveData<Boolean>
         get() = _loading
+
+    private val _refreshing = MutableLiveData(false)
+    val refreshing: LiveData<Boolean>
+        get() = _refreshing
 
     private val _error = MutableLiveData<String?>(null)
     val error: LiveData<String?>
@@ -35,17 +41,30 @@ class PlayerOverviewViewModel @Inject constructor(
     }
 
     private fun generateView(accountId: String) {
-        viewModelScope.launch {
-            _loading.value = true
-            getPlayerModelUseCase(accountId).also {
-                if (it == null) {
-                    _error.value = "Error"
-                    _viewList.value = null
-                    return@also
+        try {
+            viewModelScope.launch {
+                _loading.value = true
+                getPlayerModelUseCase(accountId).also {
+                    if (it == null) {
+                        _error.value = "Error"
+                        _viewList.value = null
+                        return@also
+                    }
+                    _viewList.value = viewGenerator.generatePlayerOverview(it)
                 }
-                _viewList.value = viewGenerator.generatePlayerOverview(it)
+                _loading.value = false
             }
-            _loading.value = false
+        } catch (thr: Throwable) {
+        _error.value = "Please check your internet connection or try again later"
+    }
+    }
+
+    fun refreshData(accountId: String) {
+        viewModelScope.launch {
+            _refreshing.value = true
+            refreshPlayerUseCase(accountId)
+            generateView(accountId)
+            _refreshing.value = false
         }
     }
 

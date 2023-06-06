@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/an_error_has_occurred"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/item1"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item2"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item3"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item4"
+            layout="@layout/match_stat_item" />
+        <include
+            android:id="@+id/item5"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item6"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item7"
+            layout="@layout/match_stat_item" />
+
+        <include
+            android:id="@+id/item8"
+            layout="@layout/match_stat_item" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

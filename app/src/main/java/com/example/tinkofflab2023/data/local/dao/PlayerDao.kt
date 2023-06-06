@@ -2,10 +2,6 @@ package com.example.tinkofflab2023.data.local.dao
 
 import androidx.room.*
 import com.example.tinkofflab2023.data.local.entity.PlayerEntity
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroResponse
-import com.example.tinkofflab2023.data.remote.response.players.heroes.PlayerHeroesResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchResponse
-import com.example.tinkofflab2023.data.remote.response.players.matches.PlayerMatchesResponse
 
 @Dao
 interface PlayerDao {
@@ -32,7 +28,7 @@ interface PlayerDao {
     suspend fun removeFromFavorite(id: String)
 
     @Query("SELECT isFavorite FROM players WHERE id=:id")
-    suspend fun isFavorite(id: String): Boolean
+    suspend fun isFavorite(id: String): Boolean?
 
     @Query("SELECT * FROM players WHERE isFavorite=${true}")
     suspend fun getFavorites(): List<PlayerEntity>?
