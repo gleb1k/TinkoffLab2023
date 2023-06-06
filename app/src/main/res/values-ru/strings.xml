@@ -62,7 +62,7 @@
     <string name="heal_small">Леч.:</string>
     <string name="last_hits">лх:</string>
     <string name="denays">дк:</string>
-    <string name="statistic">Статистика</string>
+    <string name="statistic">Сборки</string>
     <string name="match_num">Матч №</string>
     <string name="match_result">Результат матча</string>
     <string name="game_mode">Режим игры</string>

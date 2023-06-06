@@ -41,18 +41,22 @@ class PlayerOverviewViewModel @Inject constructor(
     }
 
     private fun generateView(accountId: String) {
-        viewModelScope.launch {
-            _loading.value = true
-            getPlayerModelUseCase(accountId).also {
-                if (it == null) {
-                    _error.value = "Error"
-                    _viewList.value = null
-                    return@also
+        try {
+            viewModelScope.launch {
+                _loading.value = true
+                getPlayerModelUseCase(accountId).also {
+                    if (it == null) {
+                        _error.value = "Error"
+                        _viewList.value = null
+                        return@also
+                    }
+                    _viewList.value = viewGenerator.generatePlayerOverview(it)
                 }
-                _viewList.value = viewGenerator.generatePlayerOverview(it)
+                _loading.value = false
             }
-            _loading.value = false
-        }
+        } catch (thr: Throwable) {
+        _error.value = "Please check your internet connection or try again later"
+    }
     }
 
     fun refreshData(accountId: String) {

@@ -1,6 +1,5 @@
 package com.example.tinkofflab2023.ui.fragment.match.stat
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,14 +30,14 @@ class MatchStatViewModel @Inject constructor(
 
 
     fun loadData(matchId: String) {
-        viewModelScope.launch {
-            try {
+        try {
+            viewModelScope.launch {
                 _loading.value = true
                 _match.value = getMatchModelUseCase(matchId)
                 _loading.value = false
-            } catch (thr: Throwable) {
-                _error.value = "Error"
             }
+        } catch (thr: Throwable) {
+            _error.value = "Please check your internet connection or try again later"
         }
     }
 }

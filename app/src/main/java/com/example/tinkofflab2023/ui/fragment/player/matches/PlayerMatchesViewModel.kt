@@ -42,17 +42,21 @@ class PlayerMatchesViewModel @Inject constructor(
     }
 
     private fun generateView(accountId: String) {
-        viewModelScope.launch {
-            _loading.value = true
-            getPlayerMatchesUseCase(accountId).also {
-                if (it == null) {
-                    _error.value = "Error"
-                    _viewList.value = null
-                    return@also
-                } else
-                    _viewList.value = it
+        try {
+            viewModelScope.launch {
+                _loading.value = true
+                getPlayerMatchesUseCase(accountId).also {
+                    if (it == null) {
+                        _error.value = "Error"
+                        _viewList.value = null
+                        return@also
+                    } else
+                        _viewList.value = it
+                }
+                _loading.value = false
             }
-            _loading.value = false
+        } catch (thr: Throwable) {
+            _error.value = "Please check your internet connection or try again later"
         }
     }
 

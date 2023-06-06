@@ -36,17 +36,21 @@ class MatchDetailViewModel @Inject constructor(
     }
 
     private fun generateView(matchId: String) {
-        viewModelScope.launch {
-            _loading.value = true
-            getMatchModelUseCase(matchId).also {
-                if (it == null) {
-                    _error.value = "Error"
-                    _viewList.value = null
-                    return@also
+        try {
+            viewModelScope.launch {
+                _loading.value = true
+                getMatchModelUseCase(matchId).also {
+                    if (it == null) {
+                        _error.value = "Error"
+                        _viewList.value = null
+                        return@also
+                    }
+                    _viewList.value = viewGenerator.generateMatchDetail(it)
                 }
-                _viewList.value = viewGenerator.generateMatchDetail(it)
+                _loading.value = false
             }
-            _loading.value = false
+        } catch (thr: Throwable) {
+            _error.value = "Please check your internet connection or try again later"
         }
     }
 }

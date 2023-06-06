@@ -134,6 +134,7 @@
         android:id="@+id/tv_damage_const"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
         android:text="@string/damage_small"
         app:layout_constraintStart_toStartOf="@+id/tv_gold_per_minute_const"
         app:layout_constraintTop_toBottomOf="@+id/tv_gold_per_minute_const" />

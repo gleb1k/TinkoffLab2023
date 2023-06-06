@@ -76,7 +76,7 @@
     <string name="heal_small">heal:</string>
     <string name="last_hits">lh</string>
     <string name="denays">dn:</string>
-    <string name="statistic">Statistic</string>
+    <string name="statistic">Builds</string>
     <string name="match_num">Match №</string>
     <string name="match_result">Match result</string>
     <string name="game_mode">Game mode</string>

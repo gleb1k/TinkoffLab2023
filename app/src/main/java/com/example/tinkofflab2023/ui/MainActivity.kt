@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity(), ActivityToolBar {
         editor.putBoolean("is_dark_theme", isChecked)
 
         editor.apply()
+        binding?.bnvMain?.selectedItemId = R.id.action_search
         recreate()
     }
 
