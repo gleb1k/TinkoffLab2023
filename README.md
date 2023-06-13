@@ -1,5 +1,6 @@
 # DotaStats
-Приложение позволяет просматривать статистику игроков и матчей в игре Dota 2.
+Приложение позволяет просматривать статистику игроков и матчей в игре Dota 2. </br>
+Написал во время технологической практики в Тинькофф лабе
 
 **Поиск и избранное:**
 
@@ -9,9 +10,9 @@
 
 **Профиль игрока:**
 
-<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/74dfa643-100c-40e4-9ab8-31fbfd440954" width="33%">
-<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/e2783285-7144-4f1e-ad88-0dfeb7fd1bec" width="33%">
-<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/7ebf5dc5-b096-4c5c-a4d5-36ebd358e098" width="33%">
+<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/74dfa643-100c-40e4-9ab8-31fbfd440954" width="30%">
+<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/e2783285-7144-4f1e-ad88-0dfeb7fd1bec" width="30%">
+<img src="https://github.com/gleb1k/TinkoffLab2023/assets/94959816/7ebf5dc5-b096-4c5c-a4d5-36ebd358e098" width="30%">
 
 
 **Матч:**
